@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://b82odhi60nx1d"]
+
+[ext_resource type="Script" path="res://Scripts/projectile_spawn_manager.gd" id="1_aasdq"]
+[ext_resource type="Script" path="res://Scenes/game_manager.gd" id="1_guaqu"]
+[ext_resource type="PackedScene" uid="uid://dhhh3ge6cfvb8" path="res://Scenes/player.tscn" id="2_xpvxb"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_m26t4"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7wrr2"]
+distance = -2.38419e-07
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1xanr"]
+
+[node name="gameManager" type="Node2D"]
+script = ExtResource("1_guaqu")
+
+[node name="projectileSpawnManager" type="Node2D" parent="."]
+script = ExtResource("1_aasdq")
+
+[node name="leftMarker" type="Marker2D" parent="projectileSpawnManager"]
+
+[node name="rightMarker" type="Marker2D" parent="projectileSpawnManager"]
+position = Vector2(1152, 0)
+
+[node name="smallProjectileSpawnTimer" type="Timer" parent="projectileSpawnManager"]
+wait_time = 0.1
+autostart = true
+
+[node name="Player" parent="." instance=ExtResource("2_xpvxb")]
+position = Vector2(187, 303)
+collision_layer = 3
+collision_mask = 3
+
+[node name="Area2D" type="StaticBody2D" parent="."]
+position = Vector2(1, 1)
+collision_layer = 2
+collision_mask = 2
+
+[node name="topBorder" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, -1)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_m26t4")
+
+[node name="bottomBorder" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 647)
+shape = SubResource("WorldBoundaryShape2D_7wrr2")
+
+[node name="leftBorder" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 647)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_7wrr2")
+
+[node name="rightBorder" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1151, 647)
+rotation = 4.71239
+shape = SubResource("WorldBoundaryShape2D_7wrr2")
+
+[node name="voidArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="voidArea"]
+position = Vector2(590, 919)
+shape = SubResource("WorldBoundaryShape2D_1xanr")
+
+[connection signal="timeout" from="projectileSpawnManager/smallProjectileSpawnTimer" to="projectileSpawnManager" method="_on_small_projectile_spawn_timer_timeout"]
+[connection signal="body_entered" from="voidArea" to="." method="_on_void_area_body_entered"]
