@@ -1,4 +1,19 @@
 extends Node2D
 
+@onready var health_bar: TextureProgressBar = $CanvasLayer/healthBar
+@onready var boost_bar: TextureProgressBar = $CanvasLayer/boostBar
+@onready var shield_bar: TextureProgressBar = $CanvasLayer/shieldBar
+
+
+@onready var player: CharacterBody2D = $Player
+
 func _on_void_area_body_entered(body: Node2D) -> void:
 	body.queue_free()
+
+func _process(delta: float) -> void:
+	updateBars()
+
+func updateBars():
+	health_bar.value = (player.playerCurHealth/player.playerMaxHealth) * 100
+	shield_bar.value = (player.playerCurShield/player.playerMaxShield) * 100
+	boost_bar.value = (player.playerCurStamina/player.playerMaxStamina) * 100
