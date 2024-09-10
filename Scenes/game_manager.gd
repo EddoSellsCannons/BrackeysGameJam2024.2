@@ -4,8 +4,12 @@ extends Node2D
 @onready var boost_bar: TextureProgressBar = $CanvasLayer/boostBar
 @onready var shield_bar: TextureProgressBar = $CanvasLayer/shieldBar
 
+@onready var projectile_delete_bar: HBoxContainer = $CanvasLayer/projectileDeleteBar
 
 @onready var player: CharacterBody2D = $Player
+
+func _ready() -> void:
+	player.usedProjDeleter.connect(projectile_delete_bar.usedProjDeleter)
 
 func _on_void_area_body_entered(body: Node2D) -> void:
 	body.queue_free()

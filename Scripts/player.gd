@@ -1,6 +1,10 @@
 extends CharacterBody2D
 
+signal usedProjDeleter
+
 const BOOST_MULTIPLIER = 4
+
+@onready var gameManager = $".."
 
 @export var standardPlayerSpeed: float = 200
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -8,14 +12,15 @@ const BOOST_MULTIPLIER = 4
 
 var playerSpeed = standardPlayerSpeed
 
-var playerMaxHealth: float = 100
+var playerMaxHealth: float = 50
 var playerCurHealth:float = playerMaxHealth
 
-var playerMaxShield: float = 10
+var playerMaxShield: float = 30
 var playerCurShield:float = playerMaxShield
 
 var playerMaxStamina: float = 100
 var playerCurStamina:float = playerMaxStamina
+var staminaRegenAmount = 0.4
 
 var repairmanCount: int = 1
 var shieldPerRepairman: int = 1
@@ -23,6 +28,7 @@ var shieldPerRepairman: int = 1
 var isBoosted: bool = false
 var isRegen: bool = true
 var isBurntout: bool = false
+var isDeletingProj: bool = false
 
 func _ready() -> void:
 	pass # Replace with function body.
@@ -45,8 +51,8 @@ func _physics_process(delta: float) -> void:
 				isBoosted = false
 	else:
 		isBoosted = false
-	if playerCurStamina < playerMaxStamina:
-		playerCurStamina += 0.3
+	if playerCurStamina + staminaRegenAmount < playerMaxStamina:
+		playerCurStamina += staminaRegenAmount
 	if regen_stopped.is_stopped() == true:
 		regenShield(delta)
 	if isBurntout:
@@ -70,9 +76,14 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 		body.queue_free()
 
 func projectileDeleteActivate():
+	if gameManager.projectile_delete_bar.curProjIndex <= 0 or isDeletingProj:
+		return
+	isDeletingProj = true
+	usedProjDeleter.emit()
 	animation_player.play("projDeleteActivate")
 	await animation_player.animation_finished
 	animation_player.play("RESET")
+	isDeletingProj = false
 
 func _on_proj_delete_aura_body_entered(body: Node2D) -> void:
 	if body.is_in_group("projectile"):
