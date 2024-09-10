@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 signal usedProjDeleter
 
-const BOOST_MULTIPLIER = 4
+const BOOST_MULTIPLIER = 3
 
 @onready var gameManager = $".."
 
@@ -53,6 +53,8 @@ func _physics_process(delta: float) -> void:
 		isBoosted = false
 	if playerCurStamina + staminaRegenAmount < playerMaxStamina:
 		playerCurStamina += staminaRegenAmount
+	else:
+		playerCurStamina = playerMaxStamina
 	if regen_stopped.is_stopped() == true:
 		regenShield(delta)
 	if isBurntout:
@@ -72,7 +74,7 @@ func takeDamage(damageTaken):
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("projectile"):
-		takeDamage(10)
+		takeDamage(body.damage)
 		body.queue_free()
 
 func projectileDeleteActivate():
