@@ -19,6 +19,10 @@ distance = -2.38419e-07
 [node name="gameManager" type="Node2D"]
 script = ExtResource("1_guaqu")
 
+[node name="scoreTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
 [node name="projectileSpawnManager" type="Node2D" parent="."]
 script = ExtResource("1_aasdq")
 
@@ -103,15 +107,26 @@ texture_progress = ExtResource("7_bjpqd")
 
 [node name="projectileDeleteBar" type="HBoxContainer" parent="CanvasLayer"]
 texture_filter = 1
-offset_left = 782.0
+offset_left = 386.0
 offset_top = 584.0
-offset_right = 967.0
+offset_right = 769.0
 offset_bottom = 616.0
 scale = Vector2(2, 2)
 alignment = 2
 script = ExtResource("8_78f3n")
-maxProjDeletes = 3
+maxProjDeletes = 1
 
+[node name="scoreLabel" type="Label" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 986.0
+offset_right = 1152.0
+offset_bottom = 51.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "9999m"
+horizontal_alignment = 2
+
+[connection signal="timeout" from="scoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="projectileSpawnManager/smallProjectileSpawnTimer" to="projectileSpawnManager" method="_on_small_projectile_spawn_timer_timeout"]
 [connection signal="timeout" from="projectileSpawnManager/medProjSpawnTimer" to="projectileSpawnManager" method="_on_med_proj_spawn_timer_timeout"]
 [connection signal="body_entered" from="voidArea" to="." method="_on_void_area_body_entered"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfaaplknsl2cx"]
+[gd_scene load_steps=7 format=3 uid="uid://dfaaplknsl2cx"]
 
 [ext_resource type="Texture2D" uid="uid://ddo1wntqce10" path="res://assets/images/watermelon.png" id="1_6ft6t"]
+[ext_resource type="Script" path="res://Scripts/medium_projectile.gd" id="1_112of"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y43fi"]
 radius = 36.0
@@ -48,6 +49,8 @@ _data = {
 [node name="mediumProjectile" type="RigidBody2D" groups=["projectile"]]
 texture_filter = 1
 gravity_scale = 0.1
+script = ExtResource("1_112of")
+damage = 20.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2.84375, 2.84375)
