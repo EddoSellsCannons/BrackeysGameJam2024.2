@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://b82odhi60nx1d"]
+[gd_scene load_steps=12 format=3 uid="uid://b82odhi60nx1d"]
 
 [ext_resource type="Script" path="res://Scripts/projectile_spawn_manager.gd" id="1_aasdq"]
-[ext_resource type="Script" path="res://Scenes/game_manager.gd" id="1_guaqu"]
+[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_guaqu"]
 [ext_resource type="PackedScene" uid="uid://dhhh3ge6cfvb8" path="res://Scenes/player.tscn" id="2_xpvxb"]
 [ext_resource type="Texture2D" uid="uid://c5mj2owoognqw" path="res://assets/images/healthBarBottom.png" id="4_nqlcq"]
 [ext_resource type="Texture2D" uid="uid://cealaqip2jtj0" path="res://assets/images/healthBarTop.png" id="5_de0gl"]
 [ext_resource type="Texture2D" uid="uid://dmhfrkgiqis8o" path="res://assets/images/healthBar.png" id="6_nvk4k"]
 [ext_resource type="Texture2D" uid="uid://0eetsjfe8ope" path="res://assets/images/stamina.png" id="7_bjpqd"]
+[ext_resource type="Script" path="res://Scripts/projectile_delete_bar.gd" id="8_78f3n"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_m26t4"]
 
@@ -72,8 +73,9 @@ shape = SubResource("WorldBoundaryShape2D_1xanr")
 
 [node name="healthBar" type="TextureProgressBar" parent="CanvasLayer"]
 texture_filter = 1
+offset_top = 584.0
 offset_right = 128.0
-offset_bottom = 32.0
+offset_bottom = 616.0
 scale = Vector2(3, 2)
 value = 100.0
 texture_under = ExtResource("4_nqlcq")
@@ -82,8 +84,9 @@ texture_progress = ExtResource("6_nvk4k")
 
 [node name="shieldBar" type="TextureProgressBar" parent="CanvasLayer"]
 texture_filter = 1
+offset_top = 584.0
 offset_right = 128.0
-offset_bottom = 32.0
+offset_bottom = 616.0
 scale = Vector2(3, 2)
 value = 100.0
 texture_over = ExtResource("5_de0gl")
@@ -92,12 +95,22 @@ tint_progress = Color(0, 0, 1, 1)
 
 [node name="boostBar" type="TextureProgressBar" parent="CanvasLayer"]
 texture_filter = 1
-offset_top = 64.0
+offset_top = 552.0
 offset_right = 320.0
-offset_bottom = 96.0
-scale = Vector2(1, 0.5)
+offset_bottom = 584.0
 value = 100.0
 texture_progress = ExtResource("7_bjpqd")
+
+[node name="projectileDeleteBar" type="HBoxContainer" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 782.0
+offset_top = 584.0
+offset_right = 967.0
+offset_bottom = 616.0
+scale = Vector2(2, 2)
+alignment = 2
+script = ExtResource("8_78f3n")
+maxProjDeletes = 3
 
 [connection signal="timeout" from="projectileSpawnManager/smallProjectileSpawnTimer" to="projectileSpawnManager" method="_on_small_projectile_spawn_timer_timeout"]
 [connection signal="timeout" from="projectileSpawnManager/medProjSpawnTimer" to="projectileSpawnManager" method="_on_med_proj_spawn_timer_timeout"]

@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://t1uqta62acpi"]
+
+[ext_resource type="Texture2D" uid="uid://3m6kr84snj0x" path="res://assets/images/radialUnder.png" id="1_1epoa"]
+[ext_resource type="Texture2D" uid="uid://b8cxws2qu6iql" path="res://assets/images/radialOver.png" id="2_6vnuf"]
+[ext_resource type="Texture2D" uid="uid://ccocir5h2m7w7" path="res://assets/images/radialFill.png" id="3_nw82b"]
+
+[node name="projDeleter" type="TextureProgressBar"]
+custom_minimum_size = Vector2(32, 32)
+fill_mode = 4
+texture_under = ExtResource("1_1epoa")
+texture_over = ExtResource("2_6vnuf")
+texture_progress = ExtResource("3_nw82b")
