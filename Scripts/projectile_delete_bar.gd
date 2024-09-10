@@ -1,14 +1,22 @@
 extends HBoxContainer
 
-@onready var projDeleterArray = [$projDeleter, $projDeleter2, $projDeleter3, $projDeleter4, $projDeleter5]
+@onready var projDeleterArray: Array
 
-@export var maxProjDeletes: int = 5
-var maxProjectileDeleteValue: float = maxProjDeletes * 100 #100 per use
+@export var maxProjDeletes: int
+var maxProjectileDeleteValue: float = 100 #100 per use
 
 var curProjDeleteValue = 0
 var projDeleteRegenRate = 0.2
-var curProjIndex = maxProjDeletes - 1
+var curProjIndex
+@onready var projDeleterSingularUI = preload("res://Scenes/proj_deleter_singular.tscn")
 
+func _ready() -> void:
+	for a in range(maxProjDeletes):
+		var p = projDeleterSingularUI.instantiate()
+		add_child(p)
+		projDeleterArray.append(p)
+	curProjIndex = maxProjDeletes
+		
 func _process(delta: float) -> void:
 	updateProjDeleteBar()
 	if curProjIndex <= maxProjDeletes - 1:

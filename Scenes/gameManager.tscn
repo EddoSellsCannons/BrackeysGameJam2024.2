@@ -1,16 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://b82odhi60nx1d"]
+[gd_scene load_steps=12 format=3 uid="uid://b82odhi60nx1d"]
 
 [ext_resource type="Script" path="res://Scripts/projectile_spawn_manager.gd" id="1_aasdq"]
-[ext_resource type="Script" path="res://Scenes/game_manager.gd" id="1_guaqu"]
+[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_guaqu"]
 [ext_resource type="PackedScene" uid="uid://dhhh3ge6cfvb8" path="res://Scenes/player.tscn" id="2_xpvxb"]
 [ext_resource type="Texture2D" uid="uid://c5mj2owoognqw" path="res://assets/images/healthBarBottom.png" id="4_nqlcq"]
 [ext_resource type="Texture2D" uid="uid://cealaqip2jtj0" path="res://assets/images/healthBarTop.png" id="5_de0gl"]
 [ext_resource type="Texture2D" uid="uid://dmhfrkgiqis8o" path="res://assets/images/healthBar.png" id="6_nvk4k"]
 [ext_resource type="Texture2D" uid="uid://0eetsjfe8ope" path="res://assets/images/stamina.png" id="7_bjpqd"]
 [ext_resource type="Script" path="res://Scripts/projectile_delete_bar.gd" id="8_78f3n"]
-[ext_resource type="Texture2D" uid="uid://3m6kr84snj0x" path="res://assets/images/radialUnder.png" id="9_d0a68"]
-[ext_resource type="Texture2D" uid="uid://b8cxws2qu6iql" path="res://assets/images/radialOver.png" id="10_m215v"]
-[ext_resource type="Texture2D" uid="uid://ccocir5h2m7w7" path="res://assets/images/radialFill.png" id="11_qb14c"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_m26t4"]
 
@@ -106,51 +103,14 @@ texture_progress = ExtResource("7_bjpqd")
 
 [node name="projectileDeleteBar" type="HBoxContainer" parent="CanvasLayer"]
 texture_filter = 1
-offset_left = 389.0
-offset_top = 613.0
-offset_right = 574.0
-offset_bottom = 645.0
+offset_left = 782.0
+offset_top = 584.0
+offset_right = 967.0
+offset_bottom = 616.0
+scale = Vector2(2, 2)
+alignment = 2
 script = ExtResource("8_78f3n")
-
-[node name="projDeleter" type="TextureProgressBar" parent="CanvasLayer/projectileDeleteBar"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-fill_mode = 4
-texture_under = ExtResource("9_d0a68")
-texture_over = ExtResource("10_m215v")
-texture_progress = ExtResource("11_qb14c")
-
-[node name="projDeleter2" type="TextureProgressBar" parent="CanvasLayer/projectileDeleteBar"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-fill_mode = 4
-texture_under = ExtResource("9_d0a68")
-texture_over = ExtResource("10_m215v")
-texture_progress = ExtResource("11_qb14c")
-
-[node name="projDeleter3" type="TextureProgressBar" parent="CanvasLayer/projectileDeleteBar"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-fill_mode = 4
-texture_under = ExtResource("9_d0a68")
-texture_over = ExtResource("10_m215v")
-texture_progress = ExtResource("11_qb14c")
-
-[node name="projDeleter4" type="TextureProgressBar" parent="CanvasLayer/projectileDeleteBar"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-fill_mode = 4
-texture_under = ExtResource("9_d0a68")
-texture_over = ExtResource("10_m215v")
-texture_progress = ExtResource("11_qb14c")
-
-[node name="projDeleter5" type="TextureProgressBar" parent="CanvasLayer/projectileDeleteBar"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-fill_mode = 4
-texture_under = ExtResource("9_d0a68")
-texture_over = ExtResource("10_m215v")
-texture_progress = ExtResource("11_qb14c")
+maxProjDeletes = 3
 
 [connection signal="timeout" from="projectileSpawnManager/smallProjectileSpawnTimer" to="projectileSpawnManager" method="_on_small_projectile_spawn_timer_timeout"]
 [connection signal="timeout" from="projectileSpawnManager/medProjSpawnTimer" to="projectileSpawnManager" method="_on_med_proj_spawn_timer_timeout"]
