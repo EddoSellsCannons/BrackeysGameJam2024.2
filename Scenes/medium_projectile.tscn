@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6bgckt7dcbuv"]
+[gd_scene load_steps=6 format=3 uid="uid://dfaaplknsl2cx"]
 
-[ext_resource type="Texture2D" uid="uid://li0hd23rigyc" path="res://assets/images/CowMob1.png" id="2_urvwd"]
+[ext_resource type="Texture2D" uid="uid://ddo1wntqce10" path="res://assets/images/watermelon.png" id="1_6ft6t"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_egn1u"]
-height = 26.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y43fi"]
+radius = 36.0
+height = 82.0
 
 [sub_resource type="Animation" id="Animation_xrdvv"]
 length = 0.001
@@ -44,18 +45,16 @@ _data = {
 "projectileSpin": SubResource("Animation_ppuiv")
 }
 
-[node name="smallProjectile" type="RigidBody2D" groups=["projectile"]]
+[node name="mediumProjectile" type="RigidBody2D" groups=["projectile"]]
 texture_filter = 1
-gravity_scale = 0.2
-linear_velocity = Vector2(-150, 0)
+gravity_scale = 0.1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_urvwd")
+scale = Vector2(2.84375, 2.84375)
+texture = ExtResource("1_6ft6t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_egn1u")
+shape = SubResource("CapsuleShape2D_y43fi")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

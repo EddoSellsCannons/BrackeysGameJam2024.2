@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://b82odhi60nx1d"]
+[gd_scene load_steps=11 format=3 uid="uid://b82odhi60nx1d"]
 
 [ext_resource type="Script" path="res://Scripts/projectile_spawn_manager.gd" id="1_aasdq"]
 [ext_resource type="Script" path="res://Scenes/game_manager.gd" id="1_guaqu"]
 [ext_resource type="PackedScene" uid="uid://dhhh3ge6cfvb8" path="res://Scenes/player.tscn" id="2_xpvxb"]
+[ext_resource type="Texture2D" uid="uid://c5mj2owoognqw" path="res://assets/images/healthBarBottom.png" id="4_nqlcq"]
+[ext_resource type="Texture2D" uid="uid://cealaqip2jtj0" path="res://assets/images/healthBarTop.png" id="5_de0gl"]
+[ext_resource type="Texture2D" uid="uid://dmhfrkgiqis8o" path="res://assets/images/healthBar.png" id="6_nvk4k"]
+[ext_resource type="Texture2D" uid="uid://0eetsjfe8ope" path="res://assets/images/stamina.png" id="7_bjpqd"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_m26t4"]
 
@@ -26,8 +30,11 @@ position = Vector2(1152, 0)
 wait_time = 0.1
 autostart = true
 
+[node name="medProjSpawnTimer" type="Timer" parent="projectileSpawnManager"]
+autostart = true
+
 [node name="Player" parent="." instance=ExtResource("2_xpvxb")]
-position = Vector2(187, 303)
+position = Vector2(87, 368)
 collision_layer = 3
 collision_mask = 3
 
@@ -37,7 +44,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="topBorder" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1, -1)
+position = Vector2(0, 137)
 rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_m26t4")
 
@@ -61,5 +68,37 @@ shape = SubResource("WorldBoundaryShape2D_7wrr2")
 position = Vector2(590, 919)
 shape = SubResource("WorldBoundaryShape2D_1xanr")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="healthBar" type="TextureProgressBar" parent="CanvasLayer"]
+texture_filter = 1
+offset_right = 128.0
+offset_bottom = 32.0
+scale = Vector2(3, 2)
+value = 100.0
+texture_under = ExtResource("4_nqlcq")
+texture_over = ExtResource("5_de0gl")
+texture_progress = ExtResource("6_nvk4k")
+
+[node name="shieldBar" type="TextureProgressBar" parent="CanvasLayer"]
+texture_filter = 1
+offset_right = 128.0
+offset_bottom = 32.0
+scale = Vector2(3, 2)
+value = 100.0
+texture_over = ExtResource("5_de0gl")
+texture_progress = ExtResource("6_nvk4k")
+tint_progress = Color(0, 0, 1, 1)
+
+[node name="boostBar" type="TextureProgressBar" parent="CanvasLayer"]
+texture_filter = 1
+offset_top = 64.0
+offset_right = 320.0
+offset_bottom = 96.0
+scale = Vector2(1, 0.5)
+value = 100.0
+texture_progress = ExtResource("7_bjpqd")
+
 [connection signal="timeout" from="projectileSpawnManager/smallProjectileSpawnTimer" to="projectileSpawnManager" method="_on_small_projectile_spawn_timer_timeout"]
+[connection signal="timeout" from="projectileSpawnManager/medProjSpawnTimer" to="projectileSpawnManager" method="_on_med_proj_spawn_timer_timeout"]
 [connection signal="body_entered" from="voidArea" to="." method="_on_void_area_body_entered"]

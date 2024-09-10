@@ -1,21 +1,92 @@
 extends CharacterBody2D
 
-@export var playerSpeed: float = 200
+const BOOST_MULTIPLIER = 4
 
-# Called when the node enters the scene tree for the first time.
+@export var standardPlayerSpeed: float = 200
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var regen_stopped: Timer = $regenStopped
+
+var playerSpeed = standardPlayerSpeed
+
+var playerMaxHealth: float = 100
+var playerCurHealth:float = playerMaxHealth
+
+var playerMaxShield: float = 10
+var playerCurShield:float = playerMaxShield
+
+var playerMaxStamina: float = 100
+var playerCurStamina:float = playerMaxStamina
+
+var repairmanCount: int = 1
+var shieldPerRepairman: int = 1
+
+var isBoosted: bool = false
+var isRegen: bool = true
+var isBurntout: bool = false
+
 func _ready() -> void:
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	var dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	applyBoost()
 	position += dir * playerSpeed * delta
 	move_and_slide()
+	if Input.is_action_pressed("ui_accept"):
+		projectileDeleteActivate()
+	if Input.is_action_pressed("boost"):
+		if !isBurntout:
+			if playerCurStamina >= 0:
+				isBoosted = true
+				playerCurStamina -= 1
+			else:
+				isBurntout = true
+				isBoosted = false
+	else:
+		isBoosted = false
+	if playerCurStamina < playerMaxStamina:
+		playerCurStamina += 0.3
+	if regen_stopped.is_stopped() == true:
+		regenShield(delta)
+	if isBurntout:
+		if playerCurStamina >= playerMaxStamina:
+			isBurntout = false
 
-func takeDamage():
-	print("Dmg")
+func takeDamage(damageTaken):
+	if playerCurShield >= 0:
+		if playerCurShield - damageTaken < 0:
+			playerCurHealth -= damageTaken - playerCurShield
+			playerCurShield = 0
+		else:
+			playerCurShield -= damageTaken
+	else:
+		playerCurHealth -= damageTaken
+	regen_stopped.start()
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("projectile"):
-		takeDamage()
+		takeDamage(10)
 		body.queue_free()
+
+func projectileDeleteActivate():
+	animation_player.play("projDeleteActivate")
+	await animation_player.animation_finished
+	animation_player.play("RESET")
+
+func _on_proj_delete_aura_body_entered(body: Node2D) -> void:
+	if body.is_in_group("projectile"):
+		body.queue_free()
+
+func applyBoost():
+	if isBoosted:
+		playerSpeed = standardPlayerSpeed * BOOST_MULTIPLIER
+	else:
+		playerSpeed = standardPlayerSpeed
+
+func regenShield(delta):
+	var shieldAmount = (repairmanCount * shieldPerRepairman) * delta
+	if playerCurShield + shieldAmount > playerMaxShield:
+		playerCurShield = playerMaxShield
+	else:
+		playerCurShield += shieldAmount
