@@ -8,6 +8,8 @@ extends Node2D
 
 @onready var player: CharacterBody2D = $Player
 
+var score: float
+
 func _ready() -> void:
 	player.usedProjDeleter.connect(projectile_delete_bar.usedProjDeleter)
 
@@ -16,8 +18,12 @@ func _on_void_area_body_entered(body: Node2D) -> void:
 
 func _process(delta: float) -> void:
 	updateBars()
-
+	
 func updateBars():
 	health_bar.value = (player.playerCurHealth/player.playerMaxHealth) * 100
 	shield_bar.value = (player.playerCurShield/player.playerMaxShield) * 100
 	boost_bar.value = (player.playerCurStamina/player.playerMaxStamina) * 100
+
+func _on_score_timer_timeout() -> void:
+	score += 1
+	$CanvasLayer/scoreLabel.text = str(score) + "m"

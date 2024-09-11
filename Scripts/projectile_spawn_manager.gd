@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var gameManager = $".."
+
 @onready var left_marker: Marker2D = $leftMarker
 @onready var right_marker: Marker2D = $rightMarker
 
@@ -33,4 +35,5 @@ func spawnMedProjectile():
 	add_child(proj)
 
 func _on_med_proj_spawn_timer_timeout() -> void:
-	spawnMedProjectile()
+	if gameManager.score >= 100:
+		spawnMedProjectile()

@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6bgckt7dcbuv"]
+[gd_scene load_steps=7 format=3 uid="uid://c6bgckt7dcbuv"]
 
+[ext_resource type="Script" path="res://Scripts/small_projectile.gd" id="1_sh5on"]
 [ext_resource type="Texture2D" uid="uid://li0hd23rigyc" path="res://assets/images/CowMob1.png" id="2_urvwd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_egn1u"]
@@ -48,6 +49,8 @@ _data = {
 texture_filter = 1
 gravity_scale = 0.2
 linear_velocity = Vector2(-150, 0)
+script = ExtResource("1_sh5on")
+damage = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_urvwd")

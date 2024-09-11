@@ -6,7 +6,7 @@ extends HBoxContainer
 var maxProjectileDeleteValue: float = 100 #100 per use
 
 var curProjDeleteValue = 0
-var projDeleteRegenRate = 0.2
+var projDeleteRegenRate = 0.03 * maxProjDeletes
 var curProjIndex
 @onready var projDeleterSingularUI = preload("res://Scenes/proj_deleter_singular.tscn")
 
@@ -16,6 +16,7 @@ func _ready() -> void:
 		add_child(p)
 		projDeleterArray.append(p)
 	curProjIndex = maxProjDeletes
+	projDeleteRegenRate = 0.02 * maxProjDeletes
 		
 func _process(delta: float) -> void:
 	updateProjDeleteBar()
@@ -28,7 +29,6 @@ func _process(delta: float) -> void:
 			if curProjIndex <= maxProjDeletes - 1:
 				curProjIndex += 1
 				curProjDeleteValue = 0
-	print(curProjIndex)
 	
 func updateProjDeleteBar():
 	var afterCurIndex = false
