@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b82odhi60nx1d"]
+[gd_scene load_steps=23 format=3 uid="uid://b82odhi60nx1d"]
 
 [ext_resource type="Script" path="res://Scripts/projectile_spawn_manager.gd" id="1_aasdq"]
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_guaqu"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dmhfrkgiqis8o" path="res://assets/images/healthBar.png" id="6_nvk4k"]
 [ext_resource type="Texture2D" uid="uid://0eetsjfe8ope" path="res://assets/images/stamina.png" id="7_bjpqd"]
 [ext_resource type="Script" path="res://Scripts/projectile_delete_bar.gd" id="8_78f3n"]
+[ext_resource type="Texture2D" uid="uid://cui2ldsv1btiq" path="res://assets/images/background/water background.png" id="9_eqys0"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_m26t4"]
 
@@ -15,6 +16,77 @@
 distance = -2.38419e-07
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1xanr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ll0g"]
+atlas = ExtResource("9_eqys0")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_056p8"]
+atlas = ExtResource("9_eqys0")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhnr0"]
+atlas = ExtResource("9_eqys0")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbi80"]
+atlas = ExtResource("9_eqys0")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjiop"]
+atlas = ExtResource("9_eqys0")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ms8k3"]
+atlas = ExtResource("9_eqys0")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehqbu"]
+atlas = ExtResource("9_eqys0")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7uc5"]
+atlas = ExtResource("9_eqys0")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56oas"]
+atlas = ExtResource("9_eqys0")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qwos4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ll0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_056p8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhnr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbi80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjiop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ms8k3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehqbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7uc5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56oas")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="gameManager" type="Node2D"]
 script = ExtResource("1_guaqu")
@@ -125,6 +197,14 @@ theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "9999m"
 horizontal_alignment = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -5
+texture_filter = 1
+position = Vector2(577, 322.5)
+scale = Vector2(9.09375, 5.13281)
+sprite_frames = SubResource("SpriteFrames_qwos4")
+autoplay = "default"
 
 [connection signal="timeout" from="scoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="projectileSpawnManager/smallProjectileSpawnTimer" to="projectileSpawnManager" method="_on_small_projectile_spawn_timer_timeout"]
