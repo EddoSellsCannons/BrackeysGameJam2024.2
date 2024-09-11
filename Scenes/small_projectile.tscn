@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c6bgckt7dcbuv"]
 
 [ext_resource type="Script" path="res://Scripts/small_projectile.gd" id="1_sh5on"]
-[ext_resource type="Texture2D" uid="uid://li0hd23rigyc" path="res://assets/images/CowMob1.png" id="2_urvwd"]
+[ext_resource type="Texture2D" uid="uid://cxsl21stvd4de" path="res://assets/images/projectile/Plank.png" id="2_tdfd8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_egn1u"]
 height = 26.0
@@ -53,7 +53,9 @@ script = ExtResource("1_sh5on")
 damage = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_urvwd")
+position = Vector2(3, 6)
+scale = Vector2(0.664063, 0.664063)
+texture = ExtResource("2_tdfd8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
