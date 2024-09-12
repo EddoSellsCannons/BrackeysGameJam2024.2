@@ -1,25 +1,27 @@
 extends Node2D
 
+@onready var curPlayerStats = preload("res://Scenes/playerStats.tres")
+
 var numWood:int = 0
 var woodEarningRate = 0
 
-var numFood:int = 1000
+var numFood:int = 2200
 var foodEarningRate = 0
 
-var numPopulation = 10
+var numPopulation = 5
 
 var numLumberjack = 0
 var costLumberjack:int = 30
 var woodPerLumberjack = 1
 
-var numFisherman = 0
-var costFisherman:int = 10
-var foodPerFisherman = 1
+var numFisherman = 5
+var costFisherman:int = 20
+var foodPerFisherman = 3
 
 var numRepairman = 0
-var costRepairman:int = 100
+var costRepairman:int = 200
 
-var costIncreaseMultiplier = 1.1
+var costIncreaseMultiplier = 1.05
 var scoreMultiplier:float = 0.02 #every x metres, gets 1 rate of resource (50 for now)
 
 @onready var wood_count: Label = $CanvasLayer/woodUI/woodCount
@@ -66,7 +68,7 @@ func addFisherman():
 func addRepairman():
 	if numFood >= costRepairman and numPopulation >= 1:
 		numFood -= costRepairman
-		numRepairman += 1
+		curPlayerStats.numRepairman += 1
 		numPopulation -= 1
 		costRepairman *= costIncreaseMultiplier
 

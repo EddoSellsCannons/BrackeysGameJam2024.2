@@ -19,9 +19,9 @@ var maxHealthUpgradeCost:int = 150
 var maxShieldUpgradeCost:int = 50
 var maxStaminaUpgradeCost:int = 50
 var speedUpgradeCost:int = 100
-var projDeleterUpgradeCost:int = 1
+var projDeleterUpgradeCost:int = 200
 
-var costMultiplier = 1.1
+var costMultiplier = 1.5
 
 func _ready() -> void:
 	#Currently redundant

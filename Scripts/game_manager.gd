@@ -32,6 +32,6 @@ func _on_score_timer_timeout() -> void:
 	$CanvasLayer/scoreLabel.text = str(score) + "m"
 
 func gameOver():
-	#play anim for game overa
+	#play anim for game over
 	transition_manager.villageStart(score, rescuedCount)
 	queue_free()
