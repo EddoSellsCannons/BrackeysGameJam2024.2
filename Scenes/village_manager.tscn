@@ -1,0 +1,575 @@
+[gd_scene load_steps=21 format=3 uid="uid://3tg3fvdml66v"]
+
+[ext_resource type="Script" path="res://Scripts/village_manager.gd" id="1_8453s"]
+[ext_resource type="Texture2D" uid="uid://0eetsjfe8ope" path="res://assets/images/stamina.png" id="1_m0j4t"]
+[ext_resource type="Texture2D" uid="uid://cui2ldsv1btiq" path="res://assets/images/background/water background.png" id="2_af0s1"]
+[ext_resource type="Texture2D" uid="uid://dmhfrkgiqis8o" path="res://assets/images/healthBar.png" id="3_agjv4"]
+[ext_resource type="Texture2D" uid="uid://li0hd23rigyc" path="res://assets/images/CowMob1.png" id="4_nixov"]
+[ext_resource type="Texture2D" uid="uid://b8cxws2qu6iql" path="res://assets/images/radialOver.png" id="5_p5gal"]
+[ext_resource type="Texture2D" uid="uid://brnpibv3xflon" path="res://assets/images/ninepatchWooden.png" id="7_nrjl2"]
+[ext_resource type="Texture2D" uid="uid://ddo1wntqce10" path="res://assets/images/watermelon.png" id="8_wm16u"]
+[ext_resource type="Texture2D" uid="uid://c8hvamduq5vnf" path="res://assets/images/TextBoxTexture.png" id="9_g40b4"]
+[ext_resource type="Script" path="res://Scripts/shipyard_menu.gd" id="9_tmpcr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4jdr"]
+atlas = ExtResource("2_af0s1")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np8rp"]
+atlas = ExtResource("2_af0s1")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npk7u"]
+atlas = ExtResource("2_af0s1")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4fdi"]
+atlas = ExtResource("2_af0s1")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krqe7"]
+atlas = ExtResource("2_af0s1")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1os8"]
+atlas = ExtResource("2_af0s1")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5ht3"]
+atlas = ExtResource("2_af0s1")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmgj8"]
+atlas = ExtResource("2_af0s1")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwjd8"]
+atlas = ExtResource("2_af0s1")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q7dmf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4jdr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np8rp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npk7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4fdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krqe7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1os8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5ht3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmgj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwjd8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="villageManager" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_8453s")
+
+[node name="TODO_ background" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="water" type="AnimatedSprite2D" parent="TODO_ background"]
+position = Vector2(577, 570)
+scale = Vector2(9.03125, 1.26563)
+sprite_frames = SubResource("SpriteFrames_q7dmf")
+autoplay = "default"
+
+[node name="water2" type="AnimatedSprite2D" parent="TODO_ background"]
+position = Vector2(981, 325.5)
+scale = Vector2(2.71875, 5.11719)
+sprite_frames = SubResource("SpriteFrames_q7dmf")
+autoplay = "default"
+
+[node name="forest" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 17.0
+offset_top = 84.0
+offset_right = 546.0
+offset_bottom = 237.0
+
+[node name="forest" type="TextureRect" parent="forest"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = -15.0
+offset_right = 310.0
+offset_bottom = 17.0
+scale = Vector2(1.72187, 5.6875)
+texture = ExtResource("1_m0j4t")
+
+[node name="lumberjackCount" type="Label" parent="forest"]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 13.0
+offset_right = 394.0
+offset_bottom = 58.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Lumberjack: 9999"
+
+[node name="addLumberjack" type="Button" parent="forest"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 65.0
+offset_right = 431.0
+offset_bottom = 138.0
+theme_override_font_sizes/font_size = 32
+text = "+"
+
+[node name="fisherman" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 17.0
+offset_top = 390.0
+offset_right = 549.0
+offset_bottom = 554.0
+
+[node name="fishing" type="TextureRect" parent="fisherman"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 2.00003
+offset_right = 124.0
+offset_bottom = 34.0
+scale = Vector2(4.24805, 4.875)
+texture = ExtResource("3_agjv4")
+
+[node name="fishermanCount" type="Label" parent="fisherman"]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 23.0
+offset_right = 406.0
+offset_bottom = 68.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Fisherman: 9999"
+
+[node name="addFisherman" type="Button" parent="fisherman"]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 85.0
+offset_right = 411.0
+offset_bottom = 138.0
+theme_override_font_sizes/font_size = 32
+text = "+"
+
+[node name="shipyard" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 619.0
+offset_top = 125.0
+offset_right = 839.0
+offset_bottom = 323.0
+
+[node name="shipyard" type="TextureRect" parent="shipyard"]
+layout_mode = 0
+offset_left = -19.0
+offset_top = -16.0
+offset_right = 13.0
+offset_bottom = 16.0
+scale = Vector2(7.79688, 7.04688)
+texture = ExtResource("5_p5gal")
+
+[node name="shipyardMenuButton" type="Button" parent="shipyard"]
+layout_mode = 0
+offset_right = 209.0
+offset_bottom = 195.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Shipyard"
+
+[node name="repairman" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 615.0
+offset_top = 434.0
+offset_right = 655.0
+offset_bottom = 474.0
+
+[node name="addRepairman" type="Button" parent="repairman"]
+layout_mode = 0
+offset_right = 380.0
+offset_bottom = 120.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Add Repairman"
+
+[node name="repairmanCount" type="Label" parent="repairman"]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 270.0
+offset_bottom = 45.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Repairman: 9999"
+
+[node name="boat" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 805.0
+offset_top = 326.0
+offset_right = 845.0
+offset_bottom = 366.0
+
+[node name="boat" type="TextureRect" parent="boat"]
+layout_mode = 0
+offset_left = 22.0001
+offset_top = -285.0
+offset_right = 54.0001
+offset_bottom = -253.0
+scale = Vector2(22.5313, 15.625)
+texture = ExtResource("4_nixov")
+
+[node name="StartGame" type="Button" parent="boat"]
+layout_mode = 0
+offset_right = 377.0
+offset_bottom = 74.0
+text = "Begin Mission"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="woodUI" type="Control" parent="CanvasLayer"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 601.0
+offset_right = 34.0
+offset_bottom = 627.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/woodUI"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -5.0
+offset_top = -4.0
+offset_right = 237.0
+offset_bottom = 47.0
+texture = ExtResource("7_nrjl2")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/woodUI"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 7.0
+offset_right = 32.0
+offset_bottom = 39.0
+texture = ExtResource("8_wm16u")
+
+[node name="woodCount" type="Label" parent="CanvasLayer/woodUI"]
+layout_mode = 0
+offset_left = 35.0
+offset_right = 233.0
+offset_bottom = 45.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Wood: 99999"
+
+[node name="foodUI" type="Control" parent="CanvasLayer"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 277.0
+offset_top = 601.0
+offset_right = 306.0
+offset_bottom = 627.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/foodUI"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -5.0
+offset_top = -4.0
+offset_right = 237.0
+offset_bottom = 47.0
+texture = ExtResource("7_nrjl2")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/foodUI"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 7.0
+offset_right = 32.0
+offset_bottom = 39.0
+texture = ExtResource("8_wm16u")
+
+[node name="foodCount" type="Label" parent="CanvasLayer/foodUI"]
+layout_mode = 0
+offset_left = 35.0
+offset_right = 233.0
+offset_bottom = 45.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Food: 99999"
+
+[node name="popUI" type="Control" parent="CanvasLayer"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 543.0
+offset_top = 601.0
+offset_right = 572.0
+offset_bottom = 627.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/popUI"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -5.0
+offset_top = -4.0
+offset_right = 237.0
+offset_bottom = 47.0
+texture = ExtResource("7_nrjl2")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/popUI"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 7.0
+offset_right = 32.0
+offset_bottom = 39.0
+texture = ExtResource("8_wm16u")
+
+[node name="popCount" type="Label" parent="CanvasLayer/popUI"]
+layout_mode = 0
+offset_left = 35.0
+offset_right = 233.0
+offset_bottom = 45.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "People?: 99999"
+
+[node name="shipyardMenu" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 33.0
+offset_top = -6.0
+offset_right = 73.0
+offset_bottom = 34.0
+script = ExtResource("9_tmpcr")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/shipyardMenu"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 1078.0
+offset_bottom = 607.0
+texture = ExtResource("9_g40b4")
+patch_margin_left = 34
+patch_margin_top = 34
+patch_margin_right = 34
+patch_margin_bottom = 34
+
+[node name="MaxHP" type="Control" parent="CanvasLayer/shipyardMenu/NinePatchRect"]
+anchors_preset = 0
+offset_left = 58.0
+offset_top = 41.0
+offset_right = 164.0
+offset_bottom = 81.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/shipyardMenu/NinePatchRect/MaxHP"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = -5.0
+offset_right = 113.0
+offset_bottom = 103.0
+texture = ExtResource("4_nixov")
+
+[node name="Label" type="Label" parent="CanvasLayer/shipyardMenu/NinePatchRect/MaxHP"]
+layout_mode = 2
+offset_left = 115.0
+offset_top = 4.0
+offset_right = 682.0
+offset_bottom = 110.0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+text = "test"
+
+[node name="buyMaxHPUpgrade" type="Button" parent="CanvasLayer/shipyardMenu/NinePatchRect/MaxHP"]
+layout_mode = 2
+offset_left = 788.0
+offset_top = -4.0
+offset_right = 951.0
+offset_bottom = 111.0
+text = "900"
+
+[node name="MaxShield" type="Control" parent="CanvasLayer/shipyardMenu/NinePatchRect"]
+anchors_preset = 0
+offset_left = 59.0
+offset_top = 156.0
+offset_right = 165.0
+offset_bottom = 196.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/shipyardMenu/NinePatchRect/MaxShield"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = -5.0
+offset_right = 113.0
+offset_bottom = 103.0
+texture = ExtResource("4_nixov")
+
+[node name="Label" type="Label" parent="CanvasLayer/shipyardMenu/NinePatchRect/MaxShield"]
+layout_mode = 2
+offset_left = 115.0
+offset_top = 4.0
+offset_right = 682.0
+offset_bottom = 110.0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+text = "test"
+
+[node name="buyMaxShieldUpgrade" type="Button" parent="CanvasLayer/shipyardMenu/NinePatchRect/MaxShield"]
+layout_mode = 2
+offset_left = 788.0
+offset_top = -4.0
+offset_right = 951.0
+offset_bottom = 111.0
+text = "900"
+
+[node name="stamina" type="Control" parent="CanvasLayer/shipyardMenu/NinePatchRect"]
+anchors_preset = 0
+offset_left = 60.0
+offset_top = 271.0
+offset_right = 166.0
+offset_bottom = 311.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/shipyardMenu/NinePatchRect/stamina"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = -5.0
+offset_right = 113.0
+offset_bottom = 103.0
+texture = ExtResource("4_nixov")
+
+[node name="Label" type="Label" parent="CanvasLayer/shipyardMenu/NinePatchRect/stamina"]
+layout_mode = 2
+offset_left = 115.0
+offset_top = 4.0
+offset_right = 682.0
+offset_bottom = 110.0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+text = "test"
+
+[node name="buyStaminaUpgrade" type="Button" parent="CanvasLayer/shipyardMenu/NinePatchRect/stamina"]
+layout_mode = 2
+offset_left = 788.0
+offset_top = -4.0
+offset_right = 951.0
+offset_bottom = 111.0
+text = "900"
+
+[node name="speed" type="Control" parent="CanvasLayer/shipyardMenu/NinePatchRect"]
+anchors_preset = 0
+offset_left = 59.0
+offset_top = 386.0
+offset_right = 165.0
+offset_bottom = 426.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/shipyardMenu/NinePatchRect/speed"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = -5.0
+offset_right = 113.0
+offset_bottom = 103.0
+texture = ExtResource("4_nixov")
+
+[node name="Label" type="Label" parent="CanvasLayer/shipyardMenu/NinePatchRect/speed"]
+layout_mode = 2
+offset_left = 115.0
+offset_top = 4.0
+offset_right = 682.0
+offset_bottom = 110.0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+text = "test"
+
+[node name="buySpeedUpgrade" type="Button" parent="CanvasLayer/shipyardMenu/NinePatchRect/speed"]
+layout_mode = 2
+offset_left = 788.0
+offset_top = -4.0
+offset_right = 951.0
+offset_bottom = 111.0
+text = "900"
+
+[node name="projDeleter" type="Control" parent="CanvasLayer/shipyardMenu/NinePatchRect"]
+anchors_preset = 0
+offset_left = 59.0
+offset_top = 500.0
+offset_right = 165.0
+offset_bottom = 540.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/shipyardMenu/NinePatchRect/projDeleter"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = -5.0
+offset_right = 113.0
+offset_bottom = 103.0
+texture = ExtResource("4_nixov")
+
+[node name="Label" type="Label" parent="CanvasLayer/shipyardMenu/NinePatchRect/projDeleter"]
+layout_mode = 2
+offset_left = 115.0
+offset_top = 4.0
+offset_right = 682.0
+offset_bottom = 110.0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+text = "test"
+
+[node name="buyprojDeleterUpgrade" type="Button" parent="CanvasLayer/shipyardMenu/NinePatchRect/projDeleter"]
+layout_mode = 2
+offset_left = 788.0
+offset_top = -4.0
+offset_right = 951.0
+offset_bottom = 111.0
+text = "900"
+
+[node name="closeMenu" type="Button" parent="CanvasLayer/shipyardMenu"]
+layout_mode = 0
+offset_left = 996.0
+offset_top = 21.0
+offset_right = 1063.0
+offset_bottom = 86.0
+text = "X"
+
+[connection signal="button_down" from="forest/addLumberjack" to="." method="_on_add_lumberjack_button_down"]
+[connection signal="button_down" from="fisherman/addFisherman" to="." method="_on_add_fisherman_button_down"]
+[connection signal="button_down" from="shipyard/shipyardMenuButton" to="." method="_on_shipyard_menu_button_down"]
+[connection signal="button_down" from="repairman/addRepairman" to="." method="_on_add_repairman_button_down"]
+[connection signal="button_down" from="boat/StartGame" to="." method="_on_start_game_button_down"]
+[connection signal="button_down" from="CanvasLayer/shipyardMenu/NinePatchRect/MaxHP/buyMaxHPUpgrade" to="CanvasLayer/shipyardMenu" method="_on_buy_max_hp_upgrade_button_down"]
+[connection signal="button_down" from="CanvasLayer/shipyardMenu/NinePatchRect/MaxShield/buyMaxShieldUpgrade" to="CanvasLayer/shipyardMenu" method="_on_buy_max_shield_upgrade_button_down"]
+[connection signal="button_down" from="CanvasLayer/shipyardMenu/NinePatchRect/stamina/buyStaminaUpgrade" to="CanvasLayer/shipyardMenu" method="_on_buy_stamina_upgrade_button_down"]
+[connection signal="button_down" from="CanvasLayer/shipyardMenu/NinePatchRect/speed/buySpeedUpgrade" to="CanvasLayer/shipyardMenu" method="_on_buy_speed_upgrade_button_down"]
+[connection signal="button_down" from="CanvasLayer/shipyardMenu/NinePatchRect/projDeleter/buyprojDeleterUpgrade" to="CanvasLayer/shipyardMenu" method="_on_buyproj_deleter_upgrade_button_down"]
+[connection signal="button_down" from="CanvasLayer/shipyardMenu/closeMenu" to="." method="_on_close_menu_button_down"]

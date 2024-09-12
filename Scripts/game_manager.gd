@@ -8,7 +8,10 @@ extends Node2D
 
 @onready var player: CharacterBody2D = $Player
 
+@onready var transition_manager = $".."
+
 var score: float
+var rescuedCount: int = 0
 
 func _ready() -> void:
 	player.usedProjDeleter.connect(projectile_delete_bar.usedProjDeleter)
@@ -27,3 +30,8 @@ func updateBars():
 func _on_score_timer_timeout() -> void:
 	score += 1
 	$CanvasLayer/scoreLabel.text = str(score) + "m"
+
+func gameOver():
+	#play anim for game overa
+	transition_manager.villageStart(score, rescuedCount)
+	queue_free()
