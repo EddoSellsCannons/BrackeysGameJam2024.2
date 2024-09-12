@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cxpvb2odu283s" path="res://assets/images/Boat/damaged/armorDamaged.png" id="8_wfb1p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ct7p"]
-size = Vector2(7, 53.25)
+size = Vector2(0.500008, 1.00136e-05)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ggduc"]
 radius = 24.0
@@ -330,7 +330,7 @@ texture_filter = 1
 script = ExtResource("1_yigw5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5, 27)
+position = Vector2(-3.00001, 30.25)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_6ct7p")
 

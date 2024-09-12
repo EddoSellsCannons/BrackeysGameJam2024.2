@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://belo7c0rfbq7q"]
+
+[ext_resource type="Texture2D" uid="uid://bq8lj2ca1gnyv" path="res://assets/images/tempBKG.png" id="1_k6sa5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vpgp0"]
+radius = 53.0377
+
+[node name="Survivor" type="RigidBody2D" groups=["survivor"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3.8147e-06, 0.499997)
+scale = Vector2(0.414063, 0.628743)
+texture = ExtResource("1_k6sa5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vpgp0")
