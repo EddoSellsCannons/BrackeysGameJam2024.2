@@ -20,7 +20,7 @@ var playerCurShield:float = playerMaxShield
 
 var playerMaxStamina: float = 100
 var playerCurStamina:float = playerMaxStamina
-var staminaRegenAmount = 0.4
+var staminaRegenAmount = 0.3
 
 var repairmanCount: int = 1
 var shieldPerRepairman: int = 1
@@ -31,7 +31,19 @@ var isBurntout: bool = false
 var isDeletingProj: bool = false
 
 func _ready() -> void:
-	pass # Replace with function body.
+	var curPlayerStats = load("res://Scenes/playerStats.tres")
+	playerMaxHealth = curPlayerStats.maxHealth
+	playerCurHealth = playerMaxHealth
+	
+	playerMaxShield = curPlayerStats.maxShield
+	playerCurShield = playerMaxShield
+	
+	playerMaxStamina = curPlayerStats.maxStamina
+	playerCurStamina = playerMaxStamina
+	
+	staminaRegenAmount = curPlayerStats.maxStamina/500
+	
+	repairmanCount =  curPlayerStats.numRepairman
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -60,6 +72,8 @@ func _physics_process(delta: float) -> void:
 	if isBurntout:
 		if playerCurStamina >= playerMaxStamina:
 			isBurntout = false
+	if playerCurHealth <= 0:
+		gameOver()
 
 func takeDamage(damageTaken):
 	if playerCurShield >= 0:
@@ -75,6 +89,9 @@ func takeDamage(damageTaken):
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("projectile"):
 		takeDamage(body.damage)
+		body.queue_free()
+	if body.is_in_group("survivor"):
+		rescuedSurvivor()
 		body.queue_free()
 
 func projectileDeleteActivate():
@@ -103,3 +120,9 @@ func regenShield(delta):
 		playerCurShield = playerMaxShield
 	else:
 		playerCurShield += shieldAmount
+
+func rescuedSurvivor():
+	gameManager.rescuedCount += 1
+
+func gameOver():
+	gameManager.gameOver()

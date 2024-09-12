@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="playerStats" load_steps=2 format=3 uid="uid://cnrh1lv283aji"]
+
+[ext_resource type="Script" path="res://Scripts/playerStats.gd" id="1_tskv5"]
+
+[resource]
+script = ExtResource("1_tskv5")
+maxHealth = 30.0
+maxShield = 10.0
+maxStamina = 100.0
+standardSpeed = 100.0
+numProjDeleters = 1
+numRepairman = 1

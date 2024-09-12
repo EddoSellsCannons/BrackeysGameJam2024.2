@@ -11,6 +11,8 @@ var curProjIndex
 @onready var projDeleterSingularUI = preload("res://Scenes/proj_deleter_singular.tscn")
 
 func _ready() -> void:
+	var curPlayerStats = load("res://Scenes/playerStats.tres")
+	maxProjDeletes = curPlayerStats.numProjDeleters
 	for a in range(maxProjDeletes):
 		var p = projDeleterSingularUI.instantiate()
 		add_child(p)
