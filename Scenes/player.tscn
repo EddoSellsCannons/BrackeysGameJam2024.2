@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b7faeynrhwr0l" path="res://assets/images/CowMob2.png" id="3_6hjtf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ct7p"]
-size = Vector2(7, 53.25)
+size = Vector2(0.500008, 1.00136e-05)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ggduc"]
 radius = 24.0
@@ -28,6 +28,45 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_18bxv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("projDeleteAura/CollisionShape2D:shape:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.01]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("projDeleteAura/auraSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("projDeleteAura/auraSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
 
 [sub_resource type="Animation" id="Animation_nlo0h"]
 resource_name = "projDeleteActivate"
@@ -86,45 +125,6 @@ tracks/3/keys = {
 "values": [Vector2(1e-05, 1e-05), Vector2(18, 18)]
 }
 
-[sub_resource type="Animation" id="Animation_18bxv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("projDeleteAura/CollisionShape2D:shape:radius")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.01]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("projDeleteAura/auraSprite:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("projDeleteAura/auraSprite:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6kd62"]
 _data = {
 "RESET": SubResource("Animation_18bxv"),
@@ -136,7 +136,7 @@ texture_filter = 1
 script = ExtResource("1_yigw5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5, 27)
+position = Vector2(-3.00001, 30.25)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_6ct7p")
 
