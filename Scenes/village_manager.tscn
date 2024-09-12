@@ -369,7 +369,6 @@ theme_override_font_sizes/font_size = 32
 text = "People?: 99999"
 
 [node name="shipyardMenu" type="Control" parent="CanvasLayer"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 33.0
@@ -412,7 +411,7 @@ offset_right = 682.0
 offset_bottom = 110.0
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 32
-text = "test"
+text = "Hull: HP"
 
 [node name="buyMaxHPUpgrade" type="Button" parent="CanvasLayer/shipyardMenu/NinePatchRect/MaxHP"]
 layout_mode = 2
@@ -445,7 +444,7 @@ offset_right = 682.0
 offset_bottom = 110.0
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 32
-text = "test"
+text = "Hull armor: Shield"
 
 [node name="buyMaxShieldUpgrade" type="Button" parent="CanvasLayer/shipyardMenu/NinePatchRect/MaxShield"]
 layout_mode = 2
@@ -478,7 +477,7 @@ offset_right = 682.0
 offset_bottom = 110.0
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 32
-text = "test"
+text = "Boosters: Stamina"
 
 [node name="buyStaminaUpgrade" type="Button" parent="CanvasLayer/shipyardMenu/NinePatchRect/stamina"]
 layout_mode = 2
@@ -511,7 +510,7 @@ offset_right = 682.0
 offset_bottom = 110.0
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 32
-text = "test"
+text = "Propeller: moveSpeed"
 
 [node name="buySpeedUpgrade" type="Button" parent="CanvasLayer/shipyardMenu/NinePatchRect/speed"]
 layout_mode = 2
@@ -544,7 +543,7 @@ offset_right = 682.0
 offset_bottom = 110.0
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 32
-text = "test"
+text = "Deleter: +1 Deleter"
 
 [node name="buyprojDeleterUpgrade" type="Button" parent="CanvasLayer/shipyardMenu/NinePatchRect/projDeleter"]
 layout_mode = 2
