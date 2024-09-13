@@ -12,9 +12,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ct7p"]
 size = Vector2(0.500008, 1.00136e-05)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ggduc"]
-radius = 24.0
-height = 80.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hgna5"]
+size = Vector2(73.0001, 159)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jpfh7"]
 radius = 0.01
@@ -338,9 +337,9 @@ shape = SubResource("RectangleShape2D_6ct7p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
 z_index = 1
-position = Vector2(-5, 6)
+position = Vector2(3.49999, 7.49993)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_ggduc")
+shape = SubResource("RectangleShape2D_hgna5")
 
 [node name="projDeleteAura" type="Area2D" parent="."]
 
@@ -361,7 +360,7 @@ autoplay = "damaged"
 
 [node name="armor" type="AnimatedSprite2D" parent="mainSprite"]
 sprite_frames = SubResource("SpriteFrames_rt6h1")
-animation = &"worn"
+animation = &"damaged"
 autoplay = "worn"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
