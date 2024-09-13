@@ -9,8 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://0eetsjfe8ope" path="res://assets/images/stamina.png" id="7_bjpqd"]
 [ext_resource type="Script" path="res://Scripts/projectile_delete_bar.gd" id="8_78f3n"]
 [ext_resource type="Texture2D" uid="uid://cui2ldsv1btiq" path="res://assets/images/background/water background.png" id="9_eqys0"]
+<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://cmb0e7ijy84w8" path="res://assets/images/boosterEffect.png" id="9_hs1ss"]
 [ext_resource type="Texture2D" uid="uid://c1bp8qrv37u78" path="res://assets/images/rainEffect.png" id="10_c51xi"]
+=======
+[ext_resource type="Texture2D" uid="uid://ccl3qn5mcemir" path="res://assets/images/background/hurricane.png" id="10_d72ya"]
+>>>>>>> ba7035725694ca498ecafd8fdf7cae224b1954e2
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_m26t4"]
 
@@ -139,6 +143,63 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ai5sv"]
+atlas = ExtResource("10_d72ya")
+region = Rect2(0, 0, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cruqa"]
+atlas = ExtResource("10_d72ya")
+region = Rect2(0, 128, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdnbi"]
+atlas = ExtResource("10_d72ya")
+region = Rect2(0, 256, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqfy8"]
+atlas = ExtResource("10_d72ya")
+region = Rect2(0, 384, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5whe5"]
+atlas = ExtResource("10_d72ya")
+region = Rect2(0, 512, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7u6x"]
+atlas = ExtResource("10_d72ya")
+region = Rect2(0, 640, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfr27"]
+atlas = ExtResource("10_d72ya")
+region = Rect2(0, 768, 384, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gsdrs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ai5sv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cruqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdnbi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqfy8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5whe5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7u6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfr27")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
 }]
 
 [node name="gameManager" type="Node2D"]
@@ -282,6 +343,17 @@ scale = Vector2(9, 5.0625)
 sprite_frames = SubResource("SpriteFrames_qwos4")
 autoplay = "default"
 
+<<<<<<< HEAD
+=======
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -6
+texture_filter = 1
+position = Vector2(584, 75)
+scale = Vector2(3.29284, 1.19648)
+sprite_frames = SubResource("SpriteFrames_gsdrs")
+autoplay = "default"
+
+>>>>>>> ba7035725694ca498ecafd8fdf7cae224b1954e2
 [connection signal="timeout" from="scoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="projectileSpawnManager/smallProjectileSpawnTimer" to="projectileSpawnManager" method="_on_small_projectile_spawn_timer_timeout"]
 [connection signal="timeout" from="projectileSpawnManager/medProjSpawnTimer" to="projectileSpawnManager" method="_on_med_proj_spawn_timer_timeout"]
