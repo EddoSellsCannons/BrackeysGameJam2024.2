@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://b82odhi60nx1d"]
+[gd_scene load_steps=41 format=3 uid="uid://b82odhi60nx1d"]
 
 [ext_resource type="Script" path="res://Scripts/projectile_spawn_manager.gd" id="1_aasdq"]
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_guaqu"]
@@ -9,12 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://0eetsjfe8ope" path="res://assets/images/stamina.png" id="7_bjpqd"]
 [ext_resource type="Script" path="res://Scripts/projectile_delete_bar.gd" id="8_78f3n"]
 [ext_resource type="Texture2D" uid="uid://cui2ldsv1btiq" path="res://assets/images/background/water background.png" id="9_eqys0"]
-<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://cmb0e7ijy84w8" path="res://assets/images/boosterEffect.png" id="9_hs1ss"]
 [ext_resource type="Texture2D" uid="uid://c1bp8qrv37u78" path="res://assets/images/rainEffect.png" id="10_c51xi"]
-=======
 [ext_resource type="Texture2D" uid="uid://ccl3qn5mcemir" path="res://assets/images/background/hurricane.png" id="10_d72ya"]
->>>>>>> ba7035725694ca498ecafd8fdf7cae224b1954e2
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_m26t4"]
 
@@ -343,8 +340,6 @@ scale = Vector2(9, 5.0625)
 sprite_frames = SubResource("SpriteFrames_qwos4")
 autoplay = "default"
 
-<<<<<<< HEAD
-=======
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -6
 texture_filter = 1
@@ -353,7 +348,6 @@ scale = Vector2(3.29284, 1.19648)
 sprite_frames = SubResource("SpriteFrames_gsdrs")
 autoplay = "default"
 
->>>>>>> ba7035725694ca498ecafd8fdf7cae224b1954e2
 [connection signal="timeout" from="scoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="projectileSpawnManager/smallProjectileSpawnTimer" to="projectileSpawnManager" method="_on_small_projectile_spawn_timer_timeout"]
 [connection signal="timeout" from="projectileSpawnManager/medProjSpawnTimer" to="projectileSpawnManager" method="_on_med_proj_spawn_timer_timeout"]
