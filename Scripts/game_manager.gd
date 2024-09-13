@@ -26,6 +26,11 @@ func updateBars():
 	health_bar.value = (player.playerCurHealth/player.playerMaxHealth) * 100
 	shield_bar.value = (player.playerCurShield/player.playerMaxShield) * 100
 	boost_bar.value = (player.playerCurStamina/player.playerMaxStamina) * 100
+	
+	if player.isBurntout:
+		boost_bar.tint_progress = Color(0.2, 0.2, 0.2)
+	else:
+		boost_bar.tint_progress = Color.WHITE
 
 func _on_score_timer_timeout() -> void:
 	score += 1

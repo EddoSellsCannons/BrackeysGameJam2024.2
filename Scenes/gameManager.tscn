@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b82odhi60nx1d"]
+[gd_scene load_steps=32 format=3 uid="uid://b82odhi60nx1d"]
 
 [ext_resource type="Script" path="res://Scripts/projectile_spawn_manager.gd" id="1_aasdq"]
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_guaqu"]
@@ -9,7 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://0eetsjfe8ope" path="res://assets/images/stamina.png" id="7_bjpqd"]
 [ext_resource type="Script" path="res://Scripts/projectile_delete_bar.gd" id="8_78f3n"]
 [ext_resource type="Texture2D" uid="uid://cui2ldsv1btiq" path="res://assets/images/background/water background.png" id="9_eqys0"]
-[ext_resource type="Texture2D" uid="uid://bq8lj2ca1gnyv" path="res://assets/images/tempBKG.png" id="9_q8f23"]
+[ext_resource type="Texture2D" uid="uid://cmb0e7ijy84w8" path="res://assets/images/boosterEffect.png" id="9_hs1ss"]
+[ext_resource type="Texture2D" uid="uid://c1bp8qrv37u78" path="res://assets/images/rainEffect.png" id="10_c51xi"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_m26t4"]
 
@@ -17,6 +18,57 @@
 distance = -2.38419e-07
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1xanr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnd4o"]
+atlas = ExtResource("9_hs1ss")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4rq4"]
+atlas = ExtResource("9_hs1ss")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ewrkt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nnd4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4rq4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vny0f"]
+atlas = ExtResource("10_c51xi")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0j5tt"]
+atlas = ExtResource("10_c51xi")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6j8d"]
+atlas = ExtResource("10_c51xi")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ekjvt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vny0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0j5tt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6j8d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ll0g"]
 atlas = ExtResource("9_eqys0")
@@ -180,6 +232,7 @@ offset_right = 320.0
 offset_bottom = 584.0
 value = 100.0
 texture_progress = ExtResource("7_bjpqd")
+tint_progress = Color(0.194349, 0.194349, 0.194349, 1)
 
 [node name="projectileDeleteBar" type="HBoxContainer" parent="CanvasLayer"]
 texture_filter = 1
@@ -202,19 +255,32 @@ theme_override_font_sizes/font_size = 32
 text = "9999m"
 horizontal_alignment = 2
 
+[node name="boosterEffect" type="AnimatedSprite2D" parent="CanvasLayer"]
+visible = false
+modulate = Color(1, 1, 1, 0.294118)
+texture_filter = 1
+position = Vector2(578, 315.5)
+scale = Vector2(12.8281, 6.35156)
+sprite_frames = SubResource("SpriteFrames_ewrkt")
+autoplay = "default"
+frame_progress = 0.373307
+
+[node name="rainEffect" type="AnimatedSprite2D" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.0980392)
+texture_filter = 1
+position = Vector2(576.5, 325)
+scale = Vector2(4.51172, 2.52344)
+sprite_frames = SubResource("SpriteFrames_ekjvt")
+autoplay = "default"
+frame_progress = 0.963563
+
 [node name="background" type="AnimatedSprite2D" parent="."]
 z_index = -5
 texture_filter = 1
-position = Vector2(577, 322.5)
-scale = Vector2(9.09375, 5.13281)
+position = Vector2(576, 324)
+scale = Vector2(9, 5.0625)
 sprite_frames = SubResource("SpriteFrames_qwos4")
 autoplay = "default"
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -6
-position = Vector2(552, 209)
-scale = Vector2(6.92969, 2.51796)
-texture = ExtResource("9_q8f23")
 
 [connection signal="timeout" from="scoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="projectileSpawnManager/smallProjectileSpawnTimer" to="projectileSpawnManager" method="_on_small_projectile_spawn_timer_timeout"]
