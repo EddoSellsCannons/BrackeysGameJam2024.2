@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://3tg3fvdml66v"]
+[gd_scene load_steps=31 format=3 uid="uid://3tg3fvdml66v"]
 
 [ext_resource type="Script" path="res://Scripts/village_manager.gd" id="1_8453s"]
 [ext_resource type="Texture2D" uid="uid://0eetsjfe8ope" path="res://assets/images/stamina.png" id="1_m0j4t"]
@@ -10,6 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://ddo1wntqce10" path="res://assets/images/watermelon.png" id="8_wm16u"]
 [ext_resource type="Texture2D" uid="uid://c8hvamduq5vnf" path="res://assets/images/TextBoxTexture.png" id="9_g40b4"]
 [ext_resource type="Script" path="res://Scripts/shipyard_menu.gd" id="9_tmpcr"]
+[ext_resource type="Texture2D" uid="uid://c1bp8qrv37u78" path="res://assets/images/rainEffect.png" id="11_5xih2"]
+[ext_resource type="Texture2D" uid="uid://dlucc1i517aap" path="res://assets/images/UI_Icons/hullUpgradeIcon.png" id="11_6ui0l"]
+[ext_resource type="Texture2D" uid="uid://b5picuxjon0pt" path="res://assets/images/UI_Icons/shieldUpgradeIcon.png" id="12_wmped"]
+[ext_resource type="Texture2D" uid="uid://b8wbhctw23c0p" path="res://assets/images/UI_Icons/boosterUpgradeIcon.png" id="13_hktes"]
+[ext_resource type="Texture2D" uid="uid://co1pvwo4nwaye" path="res://assets/images/UI_Icons/movespeedUpgrade.png" id="14_xsiyv"]
+[ext_resource type="Texture2D" uid="uid://c8vpsf4p7h7ab" path="res://assets/images/UI_Icons/projDeleterUpgradeIcon.png" id="15_owwt0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m4jdr"]
 atlas = ExtResource("2_af0s1")
@@ -80,6 +86,35 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vny0f"]
+atlas = ExtResource("11_5xih2")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0j5tt"]
+atlas = ExtResource("11_5xih2")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6j8d"]
+atlas = ExtResource("11_5xih2")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8igb4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vny0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0j5tt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6j8d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
 }]
 
 [node name="villageManager" type="Node2D"]
@@ -401,7 +436,7 @@ offset_left = 4.0
 offset_top = -5.0
 offset_right = 113.0
 offset_bottom = 103.0
-texture = ExtResource("4_nixov")
+texture = ExtResource("11_6ui0l")
 
 [node name="Label" type="Label" parent="CanvasLayer/shipyardMenu/NinePatchRect/MaxHP"]
 layout_mode = 2
@@ -424,9 +459,9 @@ text = "900"
 [node name="MaxShield" type="Control" parent="CanvasLayer/shipyardMenu/NinePatchRect"]
 anchors_preset = 0
 offset_left = 59.0
-offset_top = 156.0
+offset_top = 143.0
 offset_right = 165.0
-offset_bottom = 196.0
+offset_bottom = 183.0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/shipyardMenu/NinePatchRect/MaxShield"]
 layout_mode = 2
@@ -434,7 +469,7 @@ offset_left = 4.0
 offset_top = -5.0
 offset_right = 113.0
 offset_bottom = 103.0
-texture = ExtResource("4_nixov")
+texture = ExtResource("12_wmped")
 
 [node name="Label" type="Label" parent="CanvasLayer/shipyardMenu/NinePatchRect/MaxShield"]
 layout_mode = 2
@@ -456,10 +491,10 @@ text = "900"
 
 [node name="stamina" type="Control" parent="CanvasLayer/shipyardMenu/NinePatchRect"]
 anchors_preset = 0
-offset_left = 60.0
-offset_top = 271.0
-offset_right = 166.0
-offset_bottom = 311.0
+offset_left = 59.0
+offset_top = 244.0
+offset_right = 165.0
+offset_bottom = 284.0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/shipyardMenu/NinePatchRect/stamina"]
 layout_mode = 2
@@ -467,7 +502,7 @@ offset_left = 4.0
 offset_top = -5.0
 offset_right = 113.0
 offset_bottom = 103.0
-texture = ExtResource("4_nixov")
+texture = ExtResource("13_hktes")
 
 [node name="Label" type="Label" parent="CanvasLayer/shipyardMenu/NinePatchRect/stamina"]
 layout_mode = 2
@@ -490,9 +525,9 @@ text = "900"
 [node name="speed" type="Control" parent="CanvasLayer/shipyardMenu/NinePatchRect"]
 anchors_preset = 0
 offset_left = 59.0
-offset_top = 386.0
+offset_top = 348.0
 offset_right = 165.0
-offset_bottom = 426.0
+offset_bottom = 388.0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/shipyardMenu/NinePatchRect/speed"]
 layout_mode = 2
@@ -500,7 +535,7 @@ offset_left = 4.0
 offset_top = -5.0
 offset_right = 113.0
 offset_bottom = 103.0
-texture = ExtResource("4_nixov")
+texture = ExtResource("14_xsiyv")
 
 [node name="Label" type="Label" parent="CanvasLayer/shipyardMenu/NinePatchRect/speed"]
 layout_mode = 2
@@ -523,9 +558,9 @@ text = "900"
 [node name="projDeleter" type="Control" parent="CanvasLayer/shipyardMenu/NinePatchRect"]
 anchors_preset = 0
 offset_left = 59.0
-offset_top = 500.0
+offset_top = 453.0
 offset_right = 165.0
-offset_bottom = 540.0
+offset_bottom = 493.0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/shipyardMenu/NinePatchRect/projDeleter"]
 layout_mode = 2
@@ -533,7 +568,7 @@ offset_left = 4.0
 offset_top = -5.0
 offset_right = 113.0
 offset_bottom = 103.0
-texture = ExtResource("4_nixov")
+texture = ExtResource("15_owwt0")
 
 [node name="Label" type="Label" parent="CanvasLayer/shipyardMenu/NinePatchRect/projDeleter"]
 layout_mode = 2
@@ -560,6 +595,14 @@ offset_top = 21.0
 offset_right = 1063.0
 offset_bottom = 86.0
 text = "X"
+
+[node name="rainEffect" type="AnimatedSprite2D" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.0980392)
+texture_filter = 1
+position = Vector2(576.5, 325)
+scale = Vector2(4.51172, 2.52344)
+sprite_frames = SubResource("SpriteFrames_8igb4")
+autoplay = "default"
 
 [connection signal="button_down" from="forest/addLumberjack" to="." method="_on_add_lumberjack_button_down"]
 [connection signal="button_down" from="fisherman/addFisherman" to="." method="_on_add_fisherman_button_down"]

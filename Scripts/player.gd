@@ -30,6 +30,10 @@ var isRegen: bool = true
 var isBurntout: bool = false
 var isDeletingProj: bool = false
 
+@onready var main_sprite: AnimatedSprite2D = $mainSprite
+@onready var armor: AnimatedSprite2D = $mainSprite/armor
+
+
 func _ready() -> void:
 	var curPlayerStats = load("res://Scenes/playerStats.tres")
 	playerMaxHealth = curPlayerStats.maxHealth
@@ -74,6 +78,7 @@ func _physics_process(delta: float) -> void:
 			isBurntout = false
 	if playerCurHealth <= 0:
 		gameOver()
+	updatePlayerSprite()
 
 func takeDamage(damageTaken):
 	if playerCurShield >= 0:
@@ -111,8 +116,10 @@ func _on_proj_delete_aura_body_entered(body: Node2D) -> void:
 func applyBoost():
 	if isBoosted:
 		playerSpeed = standardPlayerSpeed * BOOST_MULTIPLIER
+		$"../CanvasLayer/boosterEffect".visible = true
 	else:
 		playerSpeed = standardPlayerSpeed
+		$"../CanvasLayer/boosterEffect".visible = false
 
 func regenShield(delta):
 	var shieldAmount = (repairmanCount * shieldPerRepairman) * delta
@@ -123,6 +130,28 @@ func regenShield(delta):
 
 func rescuedSurvivor():
 	gameManager.rescuedCount += 1
+	
+func updatePlayerSprite():
+	var curFrame = main_sprite.get_frame()
+	if (playerCurHealth/playerMaxHealth) * 100 >= 60: #More than 60%, default
+		main_sprite.play("default")
+	elif (playerCurHealth/playerMaxHealth) * 100 >= 25:
+		main_sprite.play("worn")
+	else:
+		main_sprite.play("damaged")
+	
+	if (playerCurShield/playerMaxShield) * 100 >= 60: #More than 60%, default
+		armor.play("default")
+		armor.visible = true
+	elif (playerCurShield/playerMaxShield) * 100 >= 25:
+		armor.play("worn")
+		armor.visible = true
+	elif (playerCurShield/playerMaxShield) * 100 > 0:
+		armor.play("damaged")
+		armor.visible = true
+	else:
+		armor.visible = false
+	armor.set_frame(curFrame)
 
 func gameOver():
 	gameManager.gameOver()
