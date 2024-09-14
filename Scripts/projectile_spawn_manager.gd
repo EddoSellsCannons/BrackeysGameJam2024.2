@@ -35,7 +35,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if fmod(gameManager.score, 50) == 0 and prevScoreVal != gameManager.score:
 		prevScoreVal = gameManager.score
-		var timerModifier = 1 - gameManager.score * 0.02 / 100
+		var timerModifier = 1 - gameManager.score * 0.01 / 100
 		small_projectile_spawn_timer.stop()
 		small_projectile_spawn_timer.wait_time = small_projectile_spawn_timer.wait_time * timerModifier
 		small_projectile_spawn_timer.start()
@@ -87,7 +87,7 @@ func spawnSmallObstacle():
 func spawnLargeObstacle():
 	var obstacle = largeObstacle.instantiate()
 	obstacle.position = obstacle_spawnpoint_array.pick_random().position
-	obstacle.set_linear_velocity(Vector2(-randf_range(25, 100), randf_range(-50, 50)))
+	obstacle.set_linear_velocity(Vector2(-randf_range(75, 150), randf_range(-50, 50)))
 	add_child(obstacle)
 
 func _on_small_projectile_spawn_timer_timeout() -> void:

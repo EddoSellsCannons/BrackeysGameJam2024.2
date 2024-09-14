@@ -17,7 +17,7 @@ extends Node2D
 var score: float
 var rescuedCount: int = 0
 
-const SCORE_FOR_BOSS:float = 1500
+const SCORE_FOR_BOSS:float = 1000
 
 func _ready() -> void:
 	player.usedProjDeleter.connect(projectile_delete_bar.usedProjDeleter)

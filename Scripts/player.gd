@@ -23,7 +23,7 @@ var playerCurStamina:float = playerMaxStamina
 var staminaRegenAmount = 0.3
 
 var repairmanCount: int = 1
-var shieldPerRepairman: int = 1
+var shieldPerRepairman: int = 2
 
 var isBoosted: bool = false
 var isRegen: bool = true
