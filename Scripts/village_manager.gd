@@ -36,6 +36,9 @@ var scoreMultiplier:float = 0.02 #every x metres, gets 1 rate of resource (50 fo
 
 @onready var transition_manager: Node2D = $".."
 
+func _ready() -> void:
+	$boat/skipToBoss.visible = false
+
 func _process(delta: float) -> void:
 	wood_count.text = "Wood: " + str(numWood)
 	food_count.text = "Food: " + str(numFood)
@@ -45,9 +48,9 @@ func _process(delta: float) -> void:
 	fisherman_count.text = "Fisherman: " + str(numFisherman)
 	repairman_count.text = "Repairman: " + str(curPlayerStats.numRepairman)
 	
-	$forest/addLumberjack.text = "Assign Lumberjack: " + str(costLumberjack) + " food"
-	$fisherman/addFisherman.text = "Assign Fisherman: " + str(costFisherman) + " food"
-	$repairman/addRepairman.text = "Assign Repairman: " + str(costRepairman) + " food"
+	$forest/addLumberjack.text = "Assign Lumberjack:\n" + str(costLumberjack) + " food"
+	$fisherman/addFisherman.text = "Assign Fisherman:\n" + str(costFisherman) + " food"
+	$repairman/addRepairman.text = "Assign Repairman:\n" + str(costRepairman) + " food"
 
 func addLumberjack():
 	if numFood >= costLumberjack and numPopulation >= 1:
@@ -99,8 +102,16 @@ func showVillage():
 	visible = true
 	$CanvasLayer.visible = true
 	$AudioStreamPlayer.play()
+	if transition_manager.hasSeenBoss:
+		$boat/skipToBoss.visible = true
+	else:
+		$boat/skipToBoss.visible = false
 
 func earnResources(score, rescuedCount):
 	numWood += score * scoreMultiplier * woodEarningRate
 	numFood += score * scoreMultiplier * foodEarningRate
 	numPopulation += rescuedCount
+
+func _on_skip_to_boss_button_down() -> void:
+	hideVillage()
+	transition_manager.bossFightStart(0, 0)

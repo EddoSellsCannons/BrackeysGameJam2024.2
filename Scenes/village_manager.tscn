@@ -233,6 +233,7 @@ offset_left = 542.0
 offset_top = 147.0
 offset_right = 762.0
 offset_bottom = 345.0
+scale = Vector2(0.99189, 0.988453)
 
 [node name="shipyard" type="TextureRect" parent="shipyard"]
 texture_filter = 1
@@ -258,24 +259,27 @@ flat = true
 [node name="repairman" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 747.0
-offset_top = 310.0
-offset_right = 787.0
-offset_bottom = 350.0
+offset_left = 762.0
+offset_top = 245.0
+offset_right = 802.0
+offset_bottom = 285.0
 
 [node name="addRepairman" type="Button" parent="repairman"]
 layout_mode = 0
-offset_right = 380.0
-offset_bottom = 120.0
+offset_left = 11.0
+offset_top = 13.0
+offset_right = 391.0
+offset_bottom = 133.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "Add Repairman"
 
 [node name="repairmanCount" type="Label" parent="repairman"]
 layout_mode = 0
-offset_left = 10.0
-offset_right = 270.0
-offset_bottom = 45.0
+offset_left = 129.0
+offset_top = -31.0
+offset_right = 389.0
+offset_bottom = 14.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "Repairman: 9999"
@@ -294,10 +298,20 @@ position = Vector2(290, 248)
 scale = Vector2(8.58161, 5.95117)
 sprite_frames = SubResource("SpriteFrames_wm63m")
 
+[node name="skipToBoss" type="Button" parent="boat"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 467.0
+offset_right = 346.0
+offset_bottom = 541.0
+text = "Skip to Boss"
+
 [node name="StartGame" type="Button" parent="boat"]
 layout_mode = 0
-offset_right = 377.0
-offset_bottom = 74.0
+offset_left = 39.0
+offset_top = 544.0
+offset_right = 346.0
+offset_bottom = 618.0
 text = "Begin Mission"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -419,6 +433,98 @@ offset_bottom = 45.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "People?: 99999"
+
+[node name="rainEffect" type="AnimatedSprite2D" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.0980392)
+texture_filter = 1
+position = Vector2(576.5, 325)
+scale = Vector2(4.51172, 2.52344)
+sprite_frames = SubResource("SpriteFrames_8igb4")
+autoplay = "default"
+
+[node name="helpButton" type="Button" parent="CanvasLayer"]
+offset_left = 1002.0
+offset_top = 14.0
+offset_right = 1144.0
+offset_bottom = 89.0
+text = "How to play"
+
+[node name="helpMenu" type="Control" parent="CanvasLayer"]
+visible = false
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/helpMenu"]
+visible = false
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 648.0
+texture = ExtResource("9_g40b4")
+patch_margin_left = 34
+patch_margin_top = 34
+patch_margin_right = 34
+patch_margin_bottom = 34
+
+[node name="emergencyOutpostTxt" type="Label" parent="CanvasLayer/helpMenu/NinePatchRect"]
+visible = false
+layout_mode = 0
+offset_left = 50.0
+offset_top = 38.0
+offset_right = 1107.0
+offset_bottom = 611.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "The Emergency Outpost:
+You can assign volunteers to chop wood or fish for food. Each 
+assigned worker will generate resources as you are away on
+your boat rescuing more survivors.
+
+Assign repairmen to speed up the reinforcements to your hull.
+
+The Shipyard allows you to upgrade your boat in exchange for
+wood.
+
+The longer (and further) you go, the more resources your workers
+will gather."
+
+[node name="oceanText" type="Label" parent="CanvasLayer/helpMenu/NinePatchRect"]
+visible = false
+layout_mode = 0
+offset_left = 50.0
+offset_top = 38.0
+offset_right = 1107.0
+offset_bottom = 611.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "The Rescue Mission:
+Go on a rescue mission against the Hurricane to bring back
+survivors.
+
+Your reinforced hull can be repaired by very efficient repairmen
+while you are out at sea, but your boat cannot, so be careful.
+
+Use your boosters to zip around obstacles and falling debris.
+
+Deploy your Safety Net to remove hazardous materials."
+
+[node name="oceanText2" type="Label" parent="CanvasLayer/helpMenu/NinePatchRect"]
+visible = false
+layout_mode = 0
+offset_left = 50.0
+offset_top = 38.0
+offset_right = 1107.0
+offset_bottom = 611.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "The progress bar at the top shows you how close you are to \"it\".
+
+Reports say that \"it\" is the cause of the hurricane, and only you
+can stop them.
+
+"
 
 [node name="shipyardMenu" type="Control" parent="CanvasLayer"]
 visible = false
@@ -614,98 +720,6 @@ offset_right = 1063.0
 offset_bottom = 86.0
 text = "X"
 
-[node name="rainEffect" type="AnimatedSprite2D" parent="CanvasLayer"]
-modulate = Color(1, 1, 1, 0.0980392)
-texture_filter = 1
-position = Vector2(576.5, 325)
-scale = Vector2(4.51172, 2.52344)
-sprite_frames = SubResource("SpriteFrames_8igb4")
-autoplay = "default"
-
-[node name="helpButton" type="Button" parent="CanvasLayer"]
-offset_left = 988.0
-offset_top = 113.0
-offset_right = 1130.0
-offset_bottom = 188.0
-text = "How to play"
-
-[node name="helpMenu" type="Control" parent="CanvasLayer"]
-visible = false
-texture_filter = 1
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/helpMenu"]
-visible = false
-layout_mode = 0
-offset_right = 1150.0
-offset_bottom = 648.0
-texture = ExtResource("9_g40b4")
-patch_margin_left = 34
-patch_margin_top = 34
-patch_margin_right = 34
-patch_margin_bottom = 34
-
-[node name="emergencyOutpostTxt" type="Label" parent="CanvasLayer/helpMenu/NinePatchRect"]
-visible = false
-layout_mode = 0
-offset_left = 50.0
-offset_top = 38.0
-offset_right = 1107.0
-offset_bottom = 611.0
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 32
-text = "The Emergency Outpost:
-You can assign volunteers to chop wood or fish for food. Each 
-assigned worker will generate resources as you are away on
-your boat rescuing more survivors.
-
-Assign repairmen to speed up the reinforcements to your hull.
-
-The Shipyard allows you to upgrade your boat in exchange for
-wood.
-
-The longer (and further) you go, the more resources yourworkers
-will gather."
-
-[node name="oceanText" type="Label" parent="CanvasLayer/helpMenu/NinePatchRect"]
-visible = false
-layout_mode = 0
-offset_left = 50.0
-offset_top = 38.0
-offset_right = 1107.0
-offset_bottom = 611.0
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 32
-text = "The Rescue Mission:
-Go on a rescue mission against the Hurricane to bring back
-survivors.
-
-Your reinforced hull can be repaired by very efficient repairmen
-while you are out at sea, but your boat cannot, so be careful.
-
-Use your boosters to zip around obstacles and falling debris.
-
-Deploy your Safety Net to remove hazardous materials."
-
-[node name="oceanText2" type="Label" parent="CanvasLayer/helpMenu/NinePatchRect"]
-visible = false
-layout_mode = 0
-offset_left = 50.0
-offset_top = 38.0
-offset_right = 1107.0
-offset_bottom = 611.0
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 32
-text = "The progress bar at the top shows you how close you are to \"it\".
-
-Reports say that \"it\" is the cause of the hurricane, and only you
-can stop them.
-
-"
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_3x7vg")
 volume_db = -10.0
@@ -715,6 +729,7 @@ autoplay = true
 [connection signal="button_down" from="fisherman/addFisherman" to="." method="_on_add_fisherman_button_down"]
 [connection signal="button_down" from="shipyard/shipyardMenuButton" to="." method="_on_shipyard_menu_button_down"]
 [connection signal="button_down" from="repairman/addRepairman" to="." method="_on_add_repairman_button_down"]
+[connection signal="button_down" from="boat/skipToBoss" to="." method="_on_skip_to_boss_button_down"]
 [connection signal="button_down" from="boat/StartGame" to="." method="_on_start_game_button_down"]
 [connection signal="button_down" from="CanvasLayer/shipyardMenu/NinePatchRect/MaxHP/buyMaxHPUpgrade" to="CanvasLayer/shipyardMenu" method="_on_buy_max_hp_upgrade_button_down"]
 [connection signal="button_down" from="CanvasLayer/shipyardMenu/NinePatchRect/MaxShield/buyMaxShieldUpgrade" to="CanvasLayer/shipyardMenu" method="_on_buy_max_shield_upgrade_button_down"]

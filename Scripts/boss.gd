@@ -2,12 +2,12 @@ extends Node2D
 
 @onready var animation_player: AnimationPlayer = $"../eventsAnim"
 
-var bossMaxHealth = 100
-var bossHealth: float = 100
+var bossMaxHealth = 200
+var bossHealth: float = 200
 
 
 var eventsArray:Array = ["affectedByWind", "cameraRocking", "inkDebuff", "lightningStrikes"]
-var prevEventHealth = 100
+var prevEventHealth = 200
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

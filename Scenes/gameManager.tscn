@@ -349,11 +349,11 @@ script = ExtResource("1_aasdq")
 position = Vector2(1242, 0)
 
 [node name="smallProjectileSpawnTimer" type="Timer" parent="projectileSpawnManager"]
-wait_time = 0.5
+wait_time = 0.4
 autostart = true
 
 [node name="medProjSpawnTimer" type="Timer" parent="projectileSpawnManager"]
-wait_time = 4.0
+wait_time = 3.0
 autostart = true
 
 [node name="survivorSpawnTimer" type="Timer" parent="projectileSpawnManager"]
@@ -361,7 +361,7 @@ wait_time = 10.0
 autostart = true
 
 [node name="smallObstacleTimer" type="Timer" parent="projectileSpawnManager"]
-wait_time = 5.0
+wait_time = 4.0
 autostart = true
 
 [node name="largeObstacleTimer" type="Timer" parent="projectileSpawnManager"]

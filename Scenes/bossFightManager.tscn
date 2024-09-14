@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://dxmpdnbf8ei8r"]
+[gd_scene load_steps=65 format=3 uid="uid://dxmpdnbf8ei8r"]
 
 [ext_resource type="Script" path="res://Scripts/boss_fight_manager.gd" id="1_ym6xm"]
 [ext_resource type="Script" path="res://Scripts/boss_projectile_spawn_manager.gd" id="2_vc5f8"]
@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://be3m8w8cgc7nd" path="res://assets/music/bossBGM.mp3" id="16_bmt8h"]
 [ext_resource type="PackedScene" uid="uid://detbi67on35bp" path="res://Scenes/boss_obstacle.tscn" id="17_5rt8p"]
 [ext_resource type="Script" path="res://Scripts/event_system.gd" id="17_mfwi3"]
+[ext_resource type="Texture2D" uid="uid://d02mk7fso2hr3" path="res://assets/images/inkSplatterDebuff.png" id="20_g1p6b"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7wrr2"]
 distance = -2.38419e-07
@@ -403,6 +404,78 @@ tracks/12/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("eventSystem/windEffectObstacles/largeObstacle:collision_layer")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("eventSystem/windEffectObstacles/largeObstacle:collision_mask")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("eventSystem/windEffectObstacles/largeObstacle2:collision_layer")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("eventSystem/windEffectObstacles/largeObstacle2:collision_mask")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("eventSystem/windEffectObstacles/largeObstacle3:collision_layer")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("eventSystem/windEffectObstacles/largeObstacle3:collision_mask")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_mkf7h"]
 resource_name = "affectedByWind"
@@ -432,7 +505,7 @@ tracks/1/path = NodePath("eventSystem/windEffectObstacles:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2, 7.96667),
+"times": PackedFloat32Array(0, 1, 7.96667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -496,6 +569,78 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0.698132, 0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("eventSystem/windEffectObstacles/largeObstacle:collision_layer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1, 7.9975),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [16, 0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("eventSystem/windEffectObstacles/largeObstacle:collision_mask")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1, 7.9975),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [16, 0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("eventSystem/windEffectObstacles/largeObstacle2:collision_layer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(1, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [16, 0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("eventSystem/windEffectObstacles/largeObstacle2:collision_mask")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(1, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [16, 0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("eventSystem/windEffectObstacles/largeObstacle3:collision_layer")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(1, 7.9975),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [16, 0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("eventSystem/windEffectObstacles/largeObstacle3:collision_mask")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(1, 7.9975),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [16, 0]
 }
 
 [sub_resource type="Animation" id="Animation_c5n40"]
@@ -563,7 +708,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_w8jhr"]
 resource_name = "lightningStrikes"
 length = 8.0
-step = 0.1
+step = 0.05
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -972,6 +1117,7 @@ autoplay = "default"
 libraries = {
 "": SubResource("AnimationLibrary_ay3vc")
 }
+autoplay = "lightningStrikes"
 
 [node name="oceanMovement" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1001,7 +1147,7 @@ modulate = Color(1, 1, 1, 0)
 texture_filter = 1
 offset_right = 1153.0
 offset_bottom = 644.0
-texture = ExtResource("9_qu2q7")
+texture = ExtResource("20_g1p6b")
 
 [node name="windEffectObstacles" type="Node2D" parent="eventSystem"]
 visible = false
@@ -1009,20 +1155,20 @@ position = Vector2(74, 243)
 
 [node name="largeObstacle" parent="eventSystem/windEffectObstacles" instance=ExtResource("17_5rt8p")]
 position = Vector2(49, 146)
-collision_layer = 16
-collision_mask = 16
+collision_layer = 0
+collision_mask = 0
 linear_velocity = Vector2(0, 0)
 
 [node name="largeObstacle2" parent="eventSystem/windEffectObstacles" instance=ExtResource("17_5rt8p")]
 position = Vector2(8, 256)
-collision_layer = 16
-collision_mask = 16
+collision_layer = 0
+collision_mask = 0
 linear_velocity = Vector2(0, 0)
 
 [node name="largeObstacle3" parent="eventSystem/windEffectObstacles" instance=ExtResource("17_5rt8p")]
 position = Vector2(9, 41)
-collision_layer = 16
-collision_mask = 16
+collision_layer = 0
+collision_mask = 0
 linear_velocity = Vector2(0, 0)
 
 [node name="leftLightningSpawn" type="Marker2D" parent="."]
