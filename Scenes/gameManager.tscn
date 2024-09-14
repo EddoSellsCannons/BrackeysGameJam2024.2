@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://b82odhi60nx1d"]
+[gd_scene load_steps=48 format=3 uid="uid://b82odhi60nx1d"]
 
 [ext_resource type="Script" path="res://Scripts/projectile_spawn_manager.gd" id="1_aasdq"]
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_guaqu"]
@@ -12,13 +12,19 @@
 [ext_resource type="Texture2D" uid="uid://cmb0e7ijy84w8" path="res://assets/images/boosterEffect.png" id="9_hs1ss"]
 [ext_resource type="Texture2D" uid="uid://c1bp8qrv37u78" path="res://assets/images/rainEffect.png" id="10_c51xi"]
 [ext_resource type="Texture2D" uid="uid://ccl3qn5mcemir" path="res://assets/images/background/hurricane.png" id="10_d72ya"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_m26t4"]
+[ext_resource type="PackedScene" uid="uid://bicjcplm70tw8" path="res://Scenes/emergency_raft.tscn" id="11_5b0sp"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7wrr2"]
 distance = -2.38419e-07
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldrr1"]
+size = Vector2(448, 152)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_m26t4"]
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1xanr"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hyu5o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nnd4o"]
 atlas = ExtResource("9_hs1ss")
@@ -199,6 +205,98 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_h8n58"]
+resource_name = "oceanMovement"
+length = 5.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(312, 347), Vector2(-312, 347)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(935, 347), Vector2(312, 347)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("background3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(-0.0333333, 4.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1558, 347), Vector2(937, 347)]
+}
+
+[sub_resource type="Animation" id="Animation_uqyi0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(312, 347.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(935, 347)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("background3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1558, 347)]
+}
+
+[sub_resource type="Animation" id="Animation_gxap6"]
+resource_name = "emRaftAnim"
+step = 0.1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ay3vc"]
+_data = {
+"RESET": SubResource("Animation_uqyi0"),
+"emRaftAnim": SubResource("Animation_gxap6"),
+"oceanMovement": SubResource("Animation_h8n58")
+}
+
 [node name="gameManager" type="Node2D"]
 script = ExtResource("1_guaqu")
 
@@ -212,52 +310,92 @@ script = ExtResource("1_aasdq")
 [node name="leftMarker" type="Marker2D" parent="projectileSpawnManager"]
 
 [node name="rightMarker" type="Marker2D" parent="projectileSpawnManager"]
-position = Vector2(1152, 0)
+position = Vector2(1242, 0)
 
 [node name="smallProjectileSpawnTimer" type="Timer" parent="projectileSpawnManager"]
-wait_time = 0.1
 autostart = true
 
 [node name="medProjSpawnTimer" type="Timer" parent="projectileSpawnManager"]
+wait_time = 5.0
 autostart = true
 
 [node name="survivorSpawnTimer" type="Timer" parent="projectileSpawnManager"]
+wait_time = 10.0
 autostart = true
+
+[node name="smallObstacleTimer" type="Timer" parent="projectileSpawnManager"]
+wait_time = 3.0
+autostart = true
+
+[node name="largeObstacleTimer" type="Timer" parent="projectileSpawnManager"]
+wait_time = 10.0
+autostart = true
+
+[node name="obstacleSpawnpoint" type="Marker2D" parent="projectileSpawnManager"]
+position = Vector2(1280, 576)
+
+[node name="obstacleSpawnpoint2" type="Marker2D" parent="projectileSpawnManager"]
+position = Vector2(1280, 512)
+
+[node name="obstacleSpawnpoint3" type="Marker2D" parent="projectileSpawnManager"]
+position = Vector2(1280, 448)
+
+[node name="obstacleSpawnpoint4" type="Marker2D" parent="projectileSpawnManager"]
+position = Vector2(1280, 320)
+
+[node name="obstacleSpawnpoint5" type="Marker2D" parent="projectileSpawnManager"]
+position = Vector2(1280, 224)
 
 [node name="Player" parent="." instance=ExtResource("2_xpvxb")]
 position = Vector2(87, 368)
-collision_layer = 3
-collision_mask = 3
+collision_layer = 7
+collision_mask = 7
 
-[node name="Area2D" type="StaticBody2D" parent="."]
+[node name="worldBound" type="StaticBody2D" parent="."]
 position = Vector2(1, 1)
 collision_layer = 2
 collision_mask = 2
 
-[node name="topBorder" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 137)
-rotation = 3.14159
-shape = SubResource("WorldBoundaryShape2D_m26t4")
-
-[node name="bottomBorder" type="CollisionShape2D" parent="Area2D"]
+[node name="bottomBorder" type="CollisionShape2D" parent="worldBound"]
 position = Vector2(-1, 647)
 shape = SubResource("WorldBoundaryShape2D_7wrr2")
 
-[node name="leftBorder" type="CollisionShape2D" parent="Area2D"]
+[node name="leftBorder" type="CollisionShape2D" parent="worldBound"]
 position = Vector2(-1, 647)
 rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_7wrr2")
 
-[node name="rightBorder" type="CollisionShape2D" parent="Area2D"]
+[node name="rightBorder" type="CollisionShape2D" parent="worldBound"]
 position = Vector2(1151, 647)
 rotation = 4.71239
 shape = SubResource("WorldBoundaryShape2D_7wrr2")
 
+[node name="UIBound" type="CollisionShape2D" parent="worldBound"]
+position = Vector2(159, 627)
+shape = SubResource("RectangleShape2D_ldrr1")
+
+[node name="topWorldBound" type="StaticBody2D" parent="."]
+position = Vector2(1, 1)
+collision_layer = 6
+collision_mask = 6
+
+[node name="topBorder" type="CollisionShape2D" parent="topWorldBound"]
+position = Vector2(-1, 167)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_m26t4")
+
 [node name="voidArea" type="Area2D" parent="."]
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="voidArea"]
 position = Vector2(590, 919)
 shape = SubResource("WorldBoundaryShape2D_1xanr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="voidArea"]
+position = Vector2(-256, 384)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_hyu5o")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -290,7 +428,6 @@ offset_right = 320.0
 offset_bottom = 584.0
 value = 100.0
 texture_progress = ExtResource("7_bjpqd")
-tint_progress = Color(0.194349, 0.194349, 0.194349, 1)
 
 [node name="projectileDeleteBar" type="HBoxContainer" parent="CanvasLayer"]
 texture_filter = 1
@@ -332,24 +469,55 @@ sprite_frames = SubResource("SpriteFrames_ekjvt")
 autoplay = "default"
 frame_progress = 0.963563
 
+[node name="emergencyRaft" parent="CanvasLayer" instance=ExtResource("11_5b0sp")]
+visible = false
+
+[node name="emRaftTimer" type="Timer" parent="CanvasLayer/emergencyRaft"]
+wait_time = 3.0
+one_shot = true
+
 [node name="background" type="AnimatedSprite2D" parent="."]
 z_index = -5
 texture_filter = 1
-position = Vector2(576, 324)
-scale = Vector2(9, 5.0625)
+position = Vector2(312, 347.5)
+scale = Vector2(4.875, 4.69531)
 sprite_frames = SubResource("SpriteFrames_qwos4")
 autoplay = "default"
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="background2" type="AnimatedSprite2D" parent="."]
+z_index = -5
+texture_filter = 1
+position = Vector2(935, 347)
+scale = Vector2(4.875, 4.6875)
+sprite_frames = SubResource("SpriteFrames_qwos4")
+autoplay = "default"
+
+[node name="background3" type="AnimatedSprite2D" parent="."]
+z_index = -5
+texture_filter = 1
+position = Vector2(1558, 347)
+scale = Vector2(4.875, 4.6875)
+sprite_frames = SubResource("SpriteFrames_qwos4")
+autoplay = "default"
+
+[node name="hurricaneBkg" type="AnimatedSprite2D" parent="."]
 z_index = -6
 texture_filter = 1
-position = Vector2(584, 75)
-scale = Vector2(3.29284, 1.19648)
+position = Vector2(576, 77)
+scale = Vector2(3, 1.59375)
 sprite_frames = SubResource("SpriteFrames_gsdrs")
 autoplay = "default"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ay3vc")
+}
+autoplay = "oceanMovement"
 
 [connection signal="timeout" from="scoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="projectileSpawnManager/smallProjectileSpawnTimer" to="projectileSpawnManager" method="_on_small_projectile_spawn_timer_timeout"]
 [connection signal="timeout" from="projectileSpawnManager/medProjSpawnTimer" to="projectileSpawnManager" method="_on_med_proj_spawn_timer_timeout"]
 [connection signal="timeout" from="projectileSpawnManager/survivorSpawnTimer" to="projectileSpawnManager" method="_on_survivor_spawn_timer_timeout"]
+[connection signal="timeout" from="projectileSpawnManager/smallObstacleTimer" to="projectileSpawnManager" method="_on_small_obstacle_timer_timeout"]
+[connection signal="timeout" from="projectileSpawnManager/largeObstacleTimer" to="projectileSpawnManager" method="_on_large_obstacle_timer_timeout"]
 [connection signal="body_entered" from="voidArea" to="." method="_on_void_area_body_entered"]

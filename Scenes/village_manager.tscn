@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://3tg3fvdml66v"]
+[gd_scene load_steps=32 format=3 uid="uid://3tg3fvdml66v"]
 
 [ext_resource type="Script" path="res://Scripts/village_manager.gd" id="1_8453s"]
 [ext_resource type="Texture2D" uid="uid://0eetsjfe8ope" path="res://assets/images/stamina.png" id="1_m0j4t"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://b8wbhctw23c0p" path="res://assets/images/UI_Icons/boosterUpgradeIcon.png" id="13_hktes"]
 [ext_resource type="Texture2D" uid="uid://co1pvwo4nwaye" path="res://assets/images/UI_Icons/movespeedUpgrade.png" id="14_xsiyv"]
 [ext_resource type="Texture2D" uid="uid://c8vpsf4p7h7ab" path="res://assets/images/UI_Icons/projDeleterUpgradeIcon.png" id="15_owwt0"]
+[ext_resource type="AudioStream" uid="uid://bv8y2m5yvngvh" path="res://assets/music/Tranquil_Tempest (1).mp3" id="17_3x7vg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m4jdr"]
 atlas = ExtResource("2_af0s1")
@@ -404,6 +405,7 @@ theme_override_font_sizes/font_size = 32
 text = "People?: 99999"
 
 [node name="shipyardMenu" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 33.0
@@ -603,6 +605,11 @@ position = Vector2(576.5, 325)
 scale = Vector2(4.51172, 2.52344)
 sprite_frames = SubResource("SpriteFrames_8igb4")
 autoplay = "default"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_3x7vg")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="button_down" from="forest/addLumberjack" to="." method="_on_add_lumberjack_button_down"]
 [connection signal="button_down" from="fisherman/addFisherman" to="." method="_on_add_fisherman_button_down"]

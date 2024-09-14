@@ -59,7 +59,7 @@ func upgradeStamina():
 func upgradeSpeed():
 	if villageManager.numWood >= speedUpgradeCost:
 		villageManager.numWood -= speedUpgradeCost
-		curPlayerStats.standardSpeed += upgradeAmount
+		curPlayerStats.standardSpeed += upgradeAmount * 3
 		speedUpgradeCost *= costMultiplier
 		
 func upgradeProjDeleter():

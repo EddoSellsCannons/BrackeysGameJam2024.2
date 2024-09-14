@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var curPlayerStats = preload("res://Scenes/playerStats.tres")
 
-var numWood:int = 0
+var numWood:int = 10000
 var woodEarningRate = 0
 
 var numFood:int = 2200
@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 	
 	lumberjack_count.text = "Lumberjacks: " + str(numLumberjack)
 	fisherman_count.text = "Fisherman: " + str(numFisherman)
-	repairman_count.text = "Repairman: " + str(numRepairman)
+	repairman_count.text = "Repairman: " + str(curPlayerStats.numRepairman)
 	
 	$forest/addLumberjack.text = "Assign Lumberjack: " + str(costLumberjack) + " food"
 	$fisherman/addFisherman.text = "Assign Fisherman: " + str(costFisherman) + " food"
@@ -93,10 +93,12 @@ func _on_close_menu_button_down() -> void:
 func hideVillage():
 	visible = false
 	$CanvasLayer.visible = false
+	$AudioStreamPlayer.stop()
 
 func showVillage():
 	visible = true
 	$CanvasLayer.visible = true
+	$AudioStreamPlayer.play()
 
 func earnResources(score, rescuedCount):
 	numWood += score * scoreMultiplier * woodEarningRate

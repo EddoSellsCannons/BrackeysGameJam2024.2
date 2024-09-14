@@ -6,7 +6,7 @@ const BOOST_MULTIPLIER = 3
 
 @onready var gameManager = $".."
 
-@export var standardPlayerSpeed: float = 200
+@export var standardPlayerSpeed: float
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var regen_stopped: Timer = $regenStopped
 
@@ -46,6 +46,10 @@ func _ready() -> void:
 	playerCurStamina = playerMaxStamina
 	
 	staminaRegenAmount = curPlayerStats.maxStamina/500
+	
+	standardPlayerSpeed = curPlayerStats.standardSpeed
+	playerSpeed = standardPlayerSpeed
+	print(playerSpeed)
 	
 	repairmanCount =  curPlayerStats.numRepairman
 
