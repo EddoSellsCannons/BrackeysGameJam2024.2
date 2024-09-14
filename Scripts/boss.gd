@@ -2,7 +2,9 @@ extends Node2D
 
 @onready var animation_player: AnimationPlayer = $"../eventsAnim"
 
+var bossMaxHealth = 100
 var bossHealth: float = 100
+
 
 var eventsArray:Array = ["affectedByWind", "cameraRocking", "inkDebuff", "lightningStrikes"]
 var prevEventHealth = 100

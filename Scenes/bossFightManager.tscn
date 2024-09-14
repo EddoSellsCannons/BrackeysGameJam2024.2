@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://dxmpdnbf8ei8r"]
+[gd_scene load_steps=64 format=3 uid="uid://dxmpdnbf8ei8r"]
 
 [ext_resource type="Script" path="res://Scripts/boss_fight_manager.gd" id="1_ym6xm"]
 [ext_resource type="Script" path="res://Scripts/boss_projectile_spawn_manager.gd" id="2_vc5f8"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bicjcplm70tw8" path="res://Scenes/emergency_raft.tscn" id="11_5sy86"]
 [ext_resource type="Texture2D" uid="uid://cui2ldsv1btiq" path="res://assets/images/background/water background.png" id="12_mlwo1"]
 [ext_resource type="Texture2D" uid="uid://ccl3qn5mcemir" path="res://assets/images/background/hurricane.png" id="13_036hu"]
+[ext_resource type="Texture2D" uid="uid://bqqv1vorjofw4" path="res://assets/images/Boat/new/boatNew.png" id="15_ltyy4"]
 [ext_resource type="AudioStream" uid="uid://be3m8w8cgc7nd" path="res://assets/music/bossBGM.mp3" id="16_bmt8h"]
 [ext_resource type="PackedScene" uid="uid://detbi67on35bp" path="res://Scenes/boss_obstacle.tscn" id="17_5rt8p"]
 [ext_resource type="Script" path="res://Scripts/event_system.gd" id="17_mfwi3"]
@@ -78,6 +79,42 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 15.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r85wf"]
+atlas = ExtResource("15_ltyy4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26vqk"]
+atlas = ExtResource("15_ltyy4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5ktd"]
+atlas = ExtResource("15_ltyy4")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2s7xk"]
+atlas = ExtResource("15_ltyy4")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b2i7t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r85wf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26vqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5ktd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2s7xk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ll0g"]
@@ -367,68 +404,6 @@ tracks/12/keys = {
 "values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_gxap6"]
-resource_name = "emRaftAnim"
-step = 0.1
-
-[sub_resource type="Animation" id="Animation_c5n40"]
-resource_name = "cameraRocking"
-length = 8.0
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("eventSystem/Camera2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6, 7, 8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.261799, 0.0, -0.261799, 0.0, 0.523599, 0.0, -0.523599, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_f1gal"]
-resource_name = "inkDebuff"
-length = 8.0
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("eventSystem/CanvasLayer/inkDebuff:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 6, 8),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("eventSystem/Camera2D:zoom")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1.3, 1.3), Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("eventSystem/CanvasLayer/inkDebuff:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
 [sub_resource type="Animation" id="Animation_mkf7h"]
 resource_name = "affectedByWind"
 length = 8.0
@@ -521,6 +496,68 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0.698132, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_c5n40"]
+resource_name = "cameraRocking"
+length = 8.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("eventSystem/Camera2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6, 7, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.261799, 0.0, -0.261799, 0.0, 0.523599, 0.0, -0.523599, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_gxap6"]
+resource_name = "emRaftAnim"
+step = 0.1
+
+[sub_resource type="Animation" id="Animation_f1gal"]
+resource_name = "inkDebuff"
+length = 8.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("eventSystem/CanvasLayer/inkDebuff:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("eventSystem/Camera2D:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.3, 1.3), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("eventSystem/CanvasLayer/inkDebuff:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_w8jhr"]
@@ -839,6 +876,25 @@ position = Vector2(-87, -97)
 [node name="emRaftTimer" type="Timer" parent="CanvasLayer/emergencyRaft"]
 wait_time = 3.0
 one_shot = true
+
+[node name="progressBar" type="TextureProgressBar" parent="CanvasLayer"]
+texture_filter = 1
+offset_right = 128.0
+offset_bottom = 32.0
+scale = Vector2(9, 0.5)
+step = 0.01
+value = 100.0
+nine_patch_stretch = true
+texture_over = ExtResource("5_478x4")
+texture_progress = ExtResource("6_rvmvp")
+
+[node name="progressBarIcon" type="AnimatedSprite2D" parent="CanvasLayer/progressBar"]
+z_index = 1
+texture_filter = 1
+position = Vector2(128, 18)
+scale = Vector2(0.05, 1)
+sprite_frames = SubResource("SpriteFrames_b2i7t")
+flip_h = true
 
 [node name="background" type="AnimatedSprite2D" parent="."]
 z_index = -5
