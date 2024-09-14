@@ -3,7 +3,6 @@ extends Node2D
 @onready var gameManager = $".."
 
 @onready var small_projectile_spawn_timer: Timer = $smallProjectileSpawnTimer
-@onready var survivor_spawn_timer: Timer = $survivorSpawnTimer
 @onready var large_obstacle_timer: Timer = $largeObstacleTimer
 
 @onready var left_marker: Marker2D = $leftMarker

@@ -4,6 +4,7 @@ extends Node2D
 @onready var boss_fight_manager = preload("res://Scenes/bossFightManager.tscn")
 @onready var village_manager: Node2D = $villageManager
 
+var hasSeenBoss: bool = false
 
 func _ready() -> void:
 	pass
@@ -18,6 +19,7 @@ func villageStart(score, rescuedCount):
 	village_manager.earnResources(score, rescuedCount)
 
 func bossFightStart(score, rescuedCount):
+	hasSeenBoss = true
 	village_manager.earnResources(score, rescuedCount)
 	var b = boss_fight_manager.instantiate()
 	add_child(b)

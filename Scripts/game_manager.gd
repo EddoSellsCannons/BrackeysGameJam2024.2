@@ -14,7 +14,7 @@ extends Node2D
 
 
 
-var score: float
+var score: float = 900
 var rescuedCount: int = 0
 
 const SCORE_FOR_BOSS:float = 1000

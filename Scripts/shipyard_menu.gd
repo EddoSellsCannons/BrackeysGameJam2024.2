@@ -13,7 +13,7 @@ var numProjDeleters
 #var numRepairman
 # ^^ Currently unused
 
-var upgradeAmount = 20
+var upgradeAmount = 10
 
 var maxHealthUpgradeCost:int = 200
 var maxShieldUpgradeCost:int = 50
@@ -22,6 +22,8 @@ var speedUpgradeCost:int = 100
 var projDeleterUpgradeCost:int = 150
 
 var costMultiplier = 1.25
+
+var SAFETY_NET_LIMIT = 10
 
 func _ready() -> void:
 	#Currently redundant
@@ -36,12 +38,15 @@ func _process(delta: float) -> void:
 	$NinePatchRect/MaxShield/buyMaxShieldUpgrade.text = str(maxShieldUpgradeCost)
 	$NinePatchRect/stamina/buyStaminaUpgrade.text = str(maxStaminaUpgradeCost)
 	$NinePatchRect/speed/buySpeedUpgrade.text = str(speedUpgradeCost)
-	$NinePatchRect/projDeleter/buyprojDeleterUpgrade.text = str(projDeleterUpgradeCost)
+	if curPlayerStats.numProjDeleters >= 10:
+		$NinePatchRect/projDeleter/buyprojDeleterUpgrade.text = "MAX"
+	else:
+		$NinePatchRect/projDeleter/buyprojDeleterUpgrade.text = str(projDeleterUpgradeCost)
 
 func upgradeHealth():
 	if villageManager.numWood >= maxHealthUpgradeCost:
 		villageManager.numWood -= maxHealthUpgradeCost
-		curPlayerStats.maxHealth += upgradeAmount
+		curPlayerStats.maxHealth += upgradeAmount * 2
 		maxHealthUpgradeCost *= costMultiplier
 		
 func upgradeShields():
@@ -59,10 +64,12 @@ func upgradeStamina():
 func upgradeSpeed():
 	if villageManager.numWood >= speedUpgradeCost:
 		villageManager.numWood -= speedUpgradeCost
-		curPlayerStats.standardSpeed += upgradeAmount * 2
+		curPlayerStats.standardSpeed += upgradeAmount * 3
 		speedUpgradeCost *= costMultiplier
 		
 func upgradeProjDeleter():
+	if curPlayerStats.numProjDeleters >= 10:
+		return
 	if villageManager.numWood >= projDeleterUpgradeCost:
 		villageManager.numWood -= projDeleterUpgradeCost
 		curPlayerStats.numProjDeleters += 1

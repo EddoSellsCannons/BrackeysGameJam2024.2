@@ -87,7 +87,7 @@ func spawnSmallObstacle():
 func spawnLargeObstacle():
 	var obstacle = largeObstacle.instantiate()
 	obstacle.position = obstacle_spawnpoint_array.pick_random().position
-	obstacle.set_linear_velocity(Vector2(-randf_range(75, 150), randf_range(-50, 50)))
+	obstacle.set_linear_velocity(Vector2(-randf_range(100, 300), randf_range(-50, 50)))
 	add_child(obstacle)
 
 func _on_small_projectile_spawn_timer_timeout() -> void:
