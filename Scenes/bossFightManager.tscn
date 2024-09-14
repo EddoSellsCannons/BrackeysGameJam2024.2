@@ -8,9 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://c5mj2owoognqw" path="res://assets/images/healthBarBottom.png" id="4_xeq3f"]
 [ext_resource type="Texture2D" uid="uid://cealaqip2jtj0" path="res://assets/images/healthBarTop.png" id="5_478x4"]
 [ext_resource type="Texture2D" uid="uid://dmhfrkgiqis8o" path="res://assets/images/healthBar.png" id="6_rvmvp"]
-[ext_resource type="Texture2D" uid="uid://0eetsjfe8ope" path="res://assets/images/stamina.png" id="7_hdn1x"]
 [ext_resource type="Script" path="res://Scripts/projectile_delete_bar.gd" id="8_aiai0"]
+[ext_resource type="Texture2D" uid="uid://c2bc4tt1gxlxy" path="res://assets/images/shieldProgress.png" id="9_bs11t"]
 [ext_resource type="Texture2D" uid="uid://cmb0e7ijy84w8" path="res://assets/images/boosterEffect.png" id="9_qu2q7"]
+[ext_resource type="Texture2D" uid="uid://07gylv4m6pi7" path="res://assets/images/staminaBar.png" id="10_83pnu"]
 [ext_resource type="Texture2D" uid="uid://c1bp8qrv37u78" path="res://assets/images/rainEffect.png" id="10_prwe0"]
 [ext_resource type="PackedScene" uid="uid://bicjcplm70tw8" path="res://Scenes/emergency_raft.tscn" id="11_5sy86"]
 [ext_resource type="Texture2D" uid="uid://cui2ldsv1btiq" path="res://assets/images/background/water background.png" id="12_mlwo1"]
@@ -21,9 +22,6 @@
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7wrr2"]
 distance = -2.38419e-07
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldrr1"]
-size = Vector2(448, 152)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_m26t4"]
 
@@ -667,10 +665,6 @@ position = Vector2(1242, 0)
 wait_time = 0.3
 autostart = true
 
-[node name="survivorSpawnTimer" type="Timer" parent="projectileSpawnManager"]
-wait_time = 10.0
-autostart = true
-
 [node name="largeObstacleTimer" type="Timer" parent="projectileSpawnManager"]
 wait_time = 3.0
 autostart = true
@@ -720,7 +714,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="bottomBorder" type="CollisionShape2D" parent="worldBound"]
-position = Vector2(-1, 647)
+position = Vector2(-1, 551)
 shape = SubResource("WorldBoundaryShape2D_7wrr2")
 
 [node name="leftBorder" type="CollisionShape2D" parent="worldBound"]
@@ -732,10 +726,6 @@ shape = SubResource("WorldBoundaryShape2D_7wrr2")
 position = Vector2(936, 647)
 rotation = 4.71239
 shape = SubResource("WorldBoundaryShape2D_7wrr2")
-
-[node name="UIBound" type="CollisionShape2D" parent="worldBound"]
-position = Vector2(159, 627)
-shape = SubResource("RectangleShape2D_ldrr1")
 
 [node name="topWorldBound" type="StaticBody2D" parent="."]
 position = Vector2(1, 1)
@@ -781,23 +771,25 @@ offset_bottom = 616.0
 scale = Vector2(3, 2)
 value = 100.0
 texture_over = ExtResource("5_478x4")
-texture_progress = ExtResource("6_rvmvp")
-tint_progress = Color(0, 0, 1, 1)
+texture_progress = ExtResource("9_bs11t")
 
 [node name="boostBar" type="TextureProgressBar" parent="CanvasLayer"]
 texture_filter = 1
 offset_top = 552.0
-offset_right = 320.0
+offset_right = 128.0
 offset_bottom = 584.0
+scale = Vector2(3, 1)
 value = 100.0
-texture_progress = ExtResource("7_hdn1x")
+texture_under = ExtResource("4_xeq3f")
+texture_over = ExtResource("5_478x4")
+texture_progress = ExtResource("10_83pnu")
 
 [node name="projectileDeleteBar" type="HBoxContainer" parent="CanvasLayer"]
 texture_filter = 1
 offset_left = 386.0
-offset_top = 584.0
-offset_right = 769.0
-offset_bottom = 616.0
+offset_top = 569.0
+offset_right = 757.0
+offset_bottom = 600.0
 scale = Vector2(2, 2)
 alignment = 2
 script = ExtResource("8_aiai0")
@@ -899,8 +891,8 @@ autoplay = "default"
 [node name="hurricaneBkg" type="AnimatedSprite2D" parent="."]
 z_index = -6
 texture_filter = 1
-position = Vector2(576, 77)
-scale = Vector2(3, 1.59375)
+position = Vector2(576, 78)
+scale = Vector2(3, 1.60938)
 sprite_frames = SubResource("SpriteFrames_gsdrs")
 autoplay = "default"
 
@@ -978,14 +970,13 @@ collision_mask = 16
 linear_velocity = Vector2(0, 0)
 
 [node name="leftLightningSpawn" type="Marker2D" parent="."]
-position = Vector2(93, 231)
+position = Vector2(29, 194)
 
 [node name="rightLightningSpawn" type="Marker2D" parent="."]
-position = Vector2(915, 554)
+position = Vector2(919, 623)
 
 [connection signal="timeout" from="scoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="projectileSpawnManager/smallProjectileSpawnTimer" to="projectileSpawnManager" method="_on_small_projectile_spawn_timer_timeout"]
-[connection signal="timeout" from="projectileSpawnManager/survivorSpawnTimer" to="projectileSpawnManager" method="_on_survivor_spawn_timer_timeout"]
 [connection signal="timeout" from="projectileSpawnManager/largeObstacleTimer" to="projectileSpawnManager" method="_on_large_obstacle_timer_timeout"]
 [connection signal="timeout" from="projectileSpawnManager/tentacleSlamTimer" to="projectileSpawnManager" method="_on_tentacle_slam_timer_timeout"]
 [connection signal="body_entered" from="voidArea" to="." method="_on_void_area_body_entered"]
