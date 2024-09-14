@@ -21,7 +21,7 @@ var foodPerFisherman = 3
 var numRepairman = 0
 var costRepairman:int = 200
 
-var costIncreaseMultiplier = 1.02
+var costIncreaseMultiplier = 1.05
 var scoreMultiplier:float = 0.02 #every x metres, gets 1 rate of resource (50 for now)
 
 @onready var wood_count: Label = $CanvasLayer/woodUI/woodCount
@@ -39,7 +39,7 @@ var scoreMultiplier:float = 0.02 #every x metres, gets 1 rate of resource (50 fo
 func _process(delta: float) -> void:
 	wood_count.text = "Wood: " + str(numWood)
 	food_count.text = "Food: " + str(numFood)
-	pop_count.text = "Volunteers?: " + str(numPopulation)
+	pop_count.text = "Volunteers: " + str(numPopulation)
 	
 	lumberjack_count.text = "Lumberjacks: " + str(numLumberjack)
 	fisherman_count.text = "Fisherman: " + str(numFisherman)

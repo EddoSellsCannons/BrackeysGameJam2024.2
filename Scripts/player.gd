@@ -81,6 +81,9 @@ func _physics_process(delta: float) -> void:
 		playerCurStamina = playerMaxStamina
 	if regen_stopped.is_stopped() == true:
 		regenShield(delta)
+		$mainSprite/repairAnim.visible = true
+	else:
+		$mainSprite/repairAnim.visible = false
 	if isBurntout:
 		if playerCurStamina >= playerMaxStamina:
 			isBurntout = false
