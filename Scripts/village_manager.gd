@@ -12,7 +12,7 @@ var numPopulation = 5
 
 var numLumberjack = 0
 var costLumberjack:int = 30
-var woodPerLumberjack = 1
+var woodPerLumberjack = 2
 
 var numFisherman = 5
 var costFisherman:int = 20
@@ -21,7 +21,7 @@ var foodPerFisherman = 3
 var numRepairman = 0
 var costRepairman:int = 200
 
-var costIncreaseMultiplier = 1.05
+var costIncreaseMultiplier = 1.02
 var scoreMultiplier:float = 0.02 #every x metres, gets 1 rate of resource (50 for now)
 
 @onready var wood_count: Label = $CanvasLayer/woodUI/woodCount

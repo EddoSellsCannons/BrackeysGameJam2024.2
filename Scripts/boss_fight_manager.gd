@@ -45,5 +45,5 @@ func gameOver():
 	emRaft.activateRaft()
 	$CanvasLayer/emergencyRaft/emRaftTimer.start()
 	await $CanvasLayer/emergencyRaft/emRaftTimer.timeout
-	transition_manager.villageStart(score, rescuedCount)
+	transition_manager.villageStart(score * 3, rescuedCount)
 	queue_free()

@@ -47,10 +47,6 @@ func _process(delta: float) -> void:
 		large_obstacle_timer.stop()
 		large_obstacle_timer.wait_time = large_obstacle_timer.wait_time * timerModifier
 		large_obstacle_timer.start()
-		
-		survivor_spawn_timer.stop()
-		survivor_spawn_timer.wait_time = survivor_spawn_timer.wait_time * timerModifier
-		survivor_spawn_timer.start()
 
 func spawnSmallProjectile():
 	#Randomise proj with weighting

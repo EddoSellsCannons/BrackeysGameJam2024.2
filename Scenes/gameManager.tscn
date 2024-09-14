@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://b82odhi60nx1d"]
+[gd_scene load_steps=49 format=3 uid="uid://b82odhi60nx1d"]
 
 [ext_resource type="Script" path="res://Scripts/projectile_spawn_manager.gd" id="1_aasdq"]
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_guaqu"]
@@ -6,19 +6,18 @@
 [ext_resource type="Texture2D" uid="uid://c5mj2owoognqw" path="res://assets/images/healthBarBottom.png" id="4_nqlcq"]
 [ext_resource type="Texture2D" uid="uid://cealaqip2jtj0" path="res://assets/images/healthBarTop.png" id="5_de0gl"]
 [ext_resource type="Texture2D" uid="uid://dmhfrkgiqis8o" path="res://assets/images/healthBar.png" id="6_nvk4k"]
-[ext_resource type="Texture2D" uid="uid://0eetsjfe8ope" path="res://assets/images/stamina.png" id="7_bjpqd"]
+[ext_resource type="Texture2D" uid="uid://c2bc4tt1gxlxy" path="res://assets/images/shieldProgress.png" id="7_ux1mb"]
 [ext_resource type="Script" path="res://Scripts/projectile_delete_bar.gd" id="8_78f3n"]
+[ext_resource type="Texture2D" uid="uid://07gylv4m6pi7" path="res://assets/images/staminaBar.png" id="8_teq4q"]
 [ext_resource type="Texture2D" uid="uid://cui2ldsv1btiq" path="res://assets/images/background/water background.png" id="9_eqys0"]
 [ext_resource type="Texture2D" uid="uid://cmb0e7ijy84w8" path="res://assets/images/boosterEffect.png" id="9_hs1ss"]
 [ext_resource type="Texture2D" uid="uid://c1bp8qrv37u78" path="res://assets/images/rainEffect.png" id="10_c51xi"]
 [ext_resource type="Texture2D" uid="uid://ccl3qn5mcemir" path="res://assets/images/background/hurricane.png" id="10_d72ya"]
 [ext_resource type="PackedScene" uid="uid://bicjcplm70tw8" path="res://Scenes/emergency_raft.tscn" id="11_5b0sp"]
+[ext_resource type="AudioStream" uid="uid://dehgwmphwnvs1" path="res://assets/music/beast_awakened.mp3" id="14_6ataw"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7wrr2"]
 distance = -2.38419e-07
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldrr1"]
-size = Vector2(448, 152)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_m26t4"]
 
@@ -357,7 +356,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="bottomBorder" type="CollisionShape2D" parent="worldBound"]
-position = Vector2(-1, 647)
+position = Vector2(-1, 551)
 shape = SubResource("WorldBoundaryShape2D_7wrr2")
 
 [node name="leftBorder" type="CollisionShape2D" parent="worldBound"]
@@ -369,10 +368,6 @@ shape = SubResource("WorldBoundaryShape2D_7wrr2")
 position = Vector2(1151, 647)
 rotation = 4.71239
 shape = SubResource("WorldBoundaryShape2D_7wrr2")
-
-[node name="UIBound" type="CollisionShape2D" parent="worldBound"]
-position = Vector2(159, 627)
-shape = SubResource("RectangleShape2D_ldrr1")
 
 [node name="topWorldBound" type="StaticBody2D" parent="."]
 position = Vector2(1, 1)
@@ -418,23 +413,25 @@ offset_bottom = 616.0
 scale = Vector2(3, 2)
 value = 100.0
 texture_over = ExtResource("5_de0gl")
-texture_progress = ExtResource("6_nvk4k")
-tint_progress = Color(0, 0, 1, 1)
+texture_progress = ExtResource("7_ux1mb")
 
 [node name="boostBar" type="TextureProgressBar" parent="CanvasLayer"]
 texture_filter = 1
 offset_top = 552.0
-offset_right = 320.0
+offset_right = 128.0
 offset_bottom = 584.0
+scale = Vector2(3, 1)
 value = 100.0
-texture_progress = ExtResource("7_bjpqd")
+texture_under = ExtResource("4_nqlcq")
+texture_over = ExtResource("5_de0gl")
+texture_progress = ExtResource("8_teq4q")
 
 [node name="projectileDeleteBar" type="HBoxContainer" parent="CanvasLayer"]
 texture_filter = 1
 offset_left = 386.0
-offset_top = 584.0
-offset_right = 769.0
-offset_bottom = 616.0
+offset_top = 569.0
+offset_right = 760.0
+offset_bottom = 603.0
 scale = Vector2(2, 2)
 alignment = 2
 script = ExtResource("8_78f3n")
@@ -513,6 +510,11 @@ libraries = {
 "": SubResource("AnimationLibrary_ay3vc")
 }
 autoplay = "oceanMovement"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_6ataw")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="timeout" from="scoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="projectileSpawnManager/smallProjectileSpawnTimer" to="projectileSpawnManager" method="_on_small_projectile_spawn_timer_timeout"]

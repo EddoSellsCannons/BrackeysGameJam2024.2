@@ -39,14 +39,14 @@ func updateProjDeleteBar():
 		if curIndex == curProjIndex:
 			i.value = curProjDeleteValue
 			afterCurIndex = true
-			i.modulate = Color.WHITE
+			i.get_node("glowEffect").visible = false
 		else:
 			if !afterCurIndex:
 				i.value = 100
-				i.modulate = Color.GREEN
+				i.get_node("glowEffect").visible = true
 			else:
 				i.value = 0
-				i.modulate = Color.WHITE
+				i.get_node("glowEffect").visible = false
 		curIndex += 1
 		
 func usedProjDeleter():

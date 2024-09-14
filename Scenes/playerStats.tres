@@ -8,5 +8,5 @@ maxHealth = 20.0
 maxShield = 20.0
 maxStamina = 100.0
 standardSpeed = 150.0
-numProjDeleters = 1
+numProjDeleters = 5
 numRepairman = 1

@@ -1,12 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://t1uqta62acpi"]
+[gd_scene load_steps=5 format=3 uid="uid://t1uqta62acpi"]
 
-[ext_resource type="Texture2D" uid="uid://3m6kr84snj0x" path="res://assets/images/radialUnder.png" id="1_1epoa"]
 [ext_resource type="Texture2D" uid="uid://b8cxws2qu6iql" path="res://assets/images/radialOver.png" id="2_6vnuf"]
+[ext_resource type="Texture2D" uid="uid://dhywdmlnrv8r8" path="res://assets/images/netIcon.png" id="3_d1wng"]
 [ext_resource type="Texture2D" uid="uid://ccocir5h2m7w7" path="res://assets/images/radialFill.png" id="3_nw82b"]
+[ext_resource type="Texture2D" uid="uid://jao7raxh5p8w" path="res://assets/images/glowEffect.png" id="4_w12jo"]
 
 [node name="projDeleter" type="TextureProgressBar"]
+texture_filter = 1
 custom_minimum_size = Vector2(32, 32)
+value = 50.0
 fill_mode = 4
-texture_under = ExtResource("1_1epoa")
+texture_under = ExtResource("3_nw82b")
 texture_over = ExtResource("2_6vnuf")
-texture_progress = ExtResource("3_nw82b")
+texture_progress = ExtResource("3_d1wng")
+
+[node name="glowEffect" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = -15.0
+offset_top = -17.0
+offset_right = 49.0
+offset_bottom = 47.0
+texture = ExtResource("4_w12jo")
