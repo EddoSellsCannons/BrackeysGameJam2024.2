@@ -30,8 +30,11 @@ var isRegen: bool = true
 var isBurntout: bool = false
 var isDeletingProj: bool = false
 
+var isAffectedByWind: bool = false
+
 @onready var main_sprite: AnimatedSprite2D = $mainSprite
 @onready var armor: AnimatedSprite2D = $mainSprite/armor
+
 
 
 func _ready() -> void:
@@ -49,7 +52,6 @@ func _ready() -> void:
 	
 	standardPlayerSpeed = curPlayerStats.standardSpeed
 	playerSpeed = standardPlayerSpeed
-	print(playerSpeed)
 	
 	repairmanCount =  curPlayerStats.numRepairman
 
@@ -58,6 +60,8 @@ func _physics_process(delta: float) -> void:
 	var dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	applyBoost()
 	position += dir * playerSpeed * delta
+	if isAffectedByWind:
+		position += Vector2(-100, 0) * delta
 	move_and_slide()
 	if Input.is_action_pressed("ui_accept"):
 		projectileDeleteActivate()
@@ -97,11 +101,19 @@ func takeDamage(damageTaken):
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("projectile"):
+		print(body)
 		takeDamage(body.damage)
+		if body.has_method("playInkSplatter"):
+			body.playInkSplatter()
+			await body.animation_player.animation_finished
 		body.queue_free()
 	if body.is_in_group("survivor"):
 		rescuedSurvivor()
 		body.queue_free()
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("projectile"):
+		takeDamage(area.damage)
 
 func projectileDeleteActivate():
 	if gameManager.projectile_delete_bar.curProjIndex <= 0 or isDeletingProj:
@@ -159,3 +171,9 @@ func updatePlayerSprite():
 
 func gameOver():
 	gameManager.gameOver()
+
+func affectedByWind(isAffected: bool):
+	if isAffected:
+		isAffectedByWind = true
+	else:
+		isAffectedByWind = false

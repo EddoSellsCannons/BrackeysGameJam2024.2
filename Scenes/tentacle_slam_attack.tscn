@@ -1,0 +1,149 @@
+[gd_scene load_steps=10 format=3 uid="uid://dmsujrqe0fxwc"]
+
+[ext_resource type="Script" path="res://Scripts/tentacle_slam_attack.gd" id="1_rmmaa"]
+[ext_resource type="Texture2D" uid="uid://b4xwri34u7mpr" path="res://assets/images/iceStaffSprite3x1.png" id="1_tecan"]
+[ext_resource type="Texture2D" uid="uid://igu0ri2qamf0" path="res://assets/images/iceStaffSprite3x1 - 2.png" id="2_gn4fy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_firnd"]
+size = Vector2(221, 534.125)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bcnad"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tecan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gn4fy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_86qkk"]
+resource_name = "tentacleAttack"
+length = 5.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tentacleSprite/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 3.2, 3.4, 3.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0.0, 3.14159]
+}
+
+[sub_resource type="Animation" id="Animation_h36y0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tentacleSprite/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_dt2nj"]
+resource_name = "tentacleSafe"
+length = 5.3
+step = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(5.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lxu62"]
+_data = {
+"RESET": SubResource("Animation_h36y0"),
+"tentacleAttack": SubResource("Animation_86qkk"),
+"tentacleSafe": SubResource("Animation_dt2nj")
+}
+
+[node name="tentacleSlamAttack" type="Area2D" groups=["projectile"]]
+texture_filter = 1
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_rmmaa")
+damage = 50.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -266.938)
+shape = SubResource("RectangleShape2D_firnd")
+
+[node name="tentacleSprite" type="AnimatedSprite2D" parent="."]
+clip_children = 2
+position = Vector2(8.50001, -266.625)
+scale = Vector2(19.6875, 11.099)
+sprite_frames = SubResource("SpriteFrames_bcnad")
+autoplay = "default"
+frame_progress = 0.374106
+
+[node name="ColorRect" type="ColorRect" parent="tentacleSprite"]
+offset_left = -19.0
+offset_top = -46.0
+offset_right = 18.0
+offset_bottom = 49.0
+color = Color(1, 1, 1, 0)
+
+[node name="animation_player" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lxu62")
+}

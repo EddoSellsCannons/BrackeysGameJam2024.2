@@ -1,0 +1,106 @@
+[gd_scene load_steps=8 format=3 uid="uid://cogn5fdefpamw"]
+
+[ext_resource type="Script" path="res://Scripts/ink_proj.gd" id="1_10u56"]
+[ext_resource type="Texture2D" uid="uid://cv3puop48487" path="res://assets/images/projectile/poison.png" id="2_ntorf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_usl0j"]
+
+[sub_resource type="Animation" id="Animation_xrdvv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_puovk"]
+resource_name = "inkSplatter"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ppuiv"]
+resource_name = "projectileSpin"
+length = 3.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yoabm"]
+_data = {
+"RESET": SubResource("Animation_xrdvv"),
+"inkSplatter": SubResource("Animation_puovk"),
+"projectileSpin": SubResource("Animation_ppuiv")
+}
+
+[node name="inkProj" type="RigidBody2D" groups=["projectile"]]
+texture_filter = 1
+gravity_scale = 0.2
+linear_velocity = Vector2(-150, 0)
+script = ExtResource("1_10u56")
+damage = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.288919, 0.000788911, 0.467141, 1)
+position = Vector2(9.53674e-07, 9.53674e-07)
+scale = Vector2(1.42578, 1.33203)
+texture = ExtResource("2_ntorf")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_usl0j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yoabm")
+}
+autoplay = "projectileSpin"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1155.0
+offset_bottom = 644.0
+color = Color(0, 0, 0, 0)

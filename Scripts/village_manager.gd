@@ -2,10 +2,10 @@ extends Node2D
 
 @onready var curPlayerStats = preload("res://Scenes/playerStats.tres")
 
-var numWood:int = 10000
+var numWood:int = 0
 var woodEarningRate = 0
 
-var numFood:int = 2200
+var numFood:int = 200
 var foodEarningRate = 0
 
 var numPopulation = 5

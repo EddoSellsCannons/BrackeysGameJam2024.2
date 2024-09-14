@@ -13,6 +13,8 @@ extends Node2D
 var score: float
 var rescuedCount: int = 0
 
+const SCORE_FOR_BOSS = 1500
+
 func _ready() -> void:
 	player.usedProjDeleter.connect(projectile_delete_bar.usedProjDeleter)
 
@@ -35,6 +37,8 @@ func updateBars():
 func _on_score_timer_timeout() -> void:
 	score += 1
 	$CanvasLayer/scoreLabel.text = str(score) + "m"
+	if score >= SCORE_FOR_BOSS:
+		goToBoss()
 
 func gameOver():
 	var emRaft = $CanvasLayer/emergencyRaft
@@ -46,4 +50,8 @@ func gameOver():
 	$CanvasLayer/emergencyRaft/emRaftTimer.start()
 	await $CanvasLayer/emergencyRaft/emRaftTimer.timeout
 	transition_manager.villageStart(score, rescuedCount)
+	queue_free()
+
+func goToBoss():
+	transition_manager.bossFightStart(score, rescuedCount)
 	queue_free()
