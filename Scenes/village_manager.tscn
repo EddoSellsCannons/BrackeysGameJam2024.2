@@ -1,10 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://3tg3fvdml66v"]
+[gd_scene load_steps=36 format=3 uid="uid://3tg3fvdml66v"]
 
 [ext_resource type="Script" path="res://Scripts/village_manager.gd" id="1_8453s"]
-[ext_resource type="Texture2D" uid="uid://cui2ldsv1btiq" path="res://assets/images/background/water background.png" id="2_af0s1"]
-[ext_resource type="Texture2D" uid="uid://dmhfrkgiqis8o" path="res://assets/images/healthBar.png" id="3_agjv4"]
-[ext_resource type="Texture2D" uid="uid://li0hd23rigyc" path="res://assets/images/CowMob1.png" id="4_nixov"]
+[ext_resource type="Texture2D" uid="uid://b6ctmndytodw5" path="res://assets/images/background/environment.png" id="2_ye1tv"]
+[ext_resource type="Texture2D" uid="uid://8yp0mog88sjy" path="res://assets/images/background/forest.png" id="3_coavi"]
+[ext_resource type="Texture2D" uid="uid://bovh5se2x4wem" path="res://assets/images/background/fishingDock.png" id="4_erpi2"]
 [ext_resource type="Texture2D" uid="uid://4srgh3gfrr0l" path="res://assets/images/shipyard.png" id="5_31vu7"]
+[ext_resource type="Texture2D" uid="uid://bqqv1vorjofw4" path="res://assets/images/Boat/new/boatNew.png" id="5_gspg7"]
 [ext_resource type="Texture2D" uid="uid://brnpibv3xflon" path="res://assets/images/ninepatchWooden.png" id="7_nrjl2"]
 [ext_resource type="Texture2D" uid="uid://dgody1wqwkoc6" path="res://assets/images/woodIcon.png" id="8_ss86h"]
 [ext_resource type="Texture2D" uid="uid://ddo1wntqce10" path="res://assets/images/watermelon.png" id="8_wm16u"]
@@ -19,79 +20,91 @@
 [ext_resource type="Texture2D" uid="uid://c8vpsf4p7h7ab" path="res://assets/images/UI_Icons/projDeleterUpgradeIcon.png" id="15_owwt0"]
 [ext_resource type="AudioStream" uid="uid://bv8y2m5yvngvh" path="res://assets/music/Tranquil_Tempest (1).mp3" id="17_3x7vg"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m4jdr"]
-atlas = ExtResource("2_af0s1")
-region = Rect2(0, 0, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2i21o"]
+atlas = ExtResource("2_ye1tv")
+region = Rect2(0, 0, 384, 256)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_np8rp"]
-atlas = ExtResource("2_af0s1")
-region = Rect2(128, 0, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ikhp"]
+atlas = ExtResource("2_ye1tv")
+region = Rect2(384, 0, 384, 256)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_npk7u"]
-atlas = ExtResource("2_af0s1")
-region = Rect2(256, 0, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwxs1"]
+atlas = ExtResource("2_ye1tv")
+region = Rect2(768, 0, 384, 256)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a4fdi"]
-atlas = ExtResource("2_af0s1")
-region = Rect2(0, 128, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_gm5og"]
+atlas = ExtResource("2_ye1tv")
+region = Rect2(0, 256, 384, 256)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_krqe7"]
-atlas = ExtResource("2_af0s1")
-region = Rect2(128, 128, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_76ads"]
+atlas = ExtResource("2_ye1tv")
+region = Rect2(384, 256, 384, 256)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n1os8"]
-atlas = ExtResource("2_af0s1")
-region = Rect2(256, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a5ht3"]
-atlas = ExtResource("2_af0s1")
-region = Rect2(0, 256, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rmgj8"]
-atlas = ExtResource("2_af0s1")
-region = Rect2(128, 256, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fwjd8"]
-atlas = ExtResource("2_af0s1")
-region = Rect2(256, 256, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfcei"]
+atlas = ExtResource("2_ye1tv")
+region = Rect2(768, 256, 384, 256)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q7dmf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m4jdr")
+"texture": SubResource("AtlasTexture_2i21o")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_np8rp")
+"texture": SubResource("AtlasTexture_0ikhp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_npk7u")
+"texture": SubResource("AtlasTexture_vwxs1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a4fdi")
+"texture": SubResource("AtlasTexture_gm5og")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_krqe7")
+"texture": SubResource("AtlasTexture_76ads")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n1os8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a5ht3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rmgj8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fwjd8")
+"texture": SubResource("AtlasTexture_cfcei")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_446go"]
-load_path = "res://.godot/imported/stamina.png-badda15a6c515835641ed2495a97e487.ctex"
+[sub_resource type="AtlasTexture" id="AtlasTexture_lggij"]
+atlas = ExtResource("5_gspg7")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mdcx"]
+atlas = ExtResource("5_gspg7")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bsth"]
+atlas = ExtResource("5_gspg7")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odbl3"]
+atlas = ExtResource("5_gspg7")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wm63m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lggij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mdcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bsth")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odbl3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vny0f"]
 atlas = ExtResource("11_5xih2")
@@ -133,14 +146,9 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="water" type="AnimatedSprite2D" parent="TODO_ background"]
-position = Vector2(577, 570)
-scale = Vector2(9.03125, 1.26563)
-sprite_frames = SubResource("SpriteFrames_q7dmf")
-autoplay = "default"
-
-[node name="water2" type="AnimatedSprite2D" parent="TODO_ background"]
-position = Vector2(981, 325.5)
-scale = Vector2(2.71875, 5.11719)
+z_index = -1
+position = Vector2(577, 315)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_q7dmf")
 autoplay = "default"
 
@@ -154,12 +162,13 @@ offset_bottom = 237.0
 
 [node name="forest" type="TextureRect" parent="forest"]
 layout_mode = 0
-offset_left = -10.0
-offset_top = -15.0
-offset_right = 310.0
-offset_bottom = 17.0
-scale = Vector2(1.72187, 5.6875)
-texture = SubResource("CompressedTexture2D_446go")
+offset_left = -18.0
+offset_top = -153.0
+offset_right = 366.0
+offset_bottom = 103.0
+scale = Vector2(3, 3)
+mouse_filter = 2
+texture = ExtResource("3_coavi")
 
 [node name="lumberjackCount" type="Label" parent="forest"]
 layout_mode = 0
@@ -187,15 +196,16 @@ offset_left = 17.0
 offset_top = 390.0
 offset_right = 549.0
 offset_bottom = 554.0
+mouse_filter = 2
 
 [node name="fishing" type="TextureRect" parent="fisherman"]
 layout_mode = 0
-offset_left = -4.0
-offset_top = 2.00003
-offset_right = 124.0
-offset_bottom = 34.0
-scale = Vector2(4.24805, 4.875)
-texture = ExtResource("3_agjv4")
+offset_left = -18.0
+offset_top = -459.0
+offset_right = 1134.0
+offset_bottom = 309.0
+mouse_filter = 2
+texture = ExtResource("4_erpi2")
 
 [node name="fishermanCount" type="Label" parent="fisherman"]
 layout_mode = 0
@@ -219,10 +229,10 @@ text = "+"
 [node name="shipyard" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 589.0
-offset_top = 66.0
-offset_right = 809.0
-offset_bottom = 264.0
+offset_left = 542.0
+offset_top = 147.0
+offset_right = 762.0
+offset_bottom = 345.0
 
 [node name="shipyard" type="TextureRect" parent="shipyard"]
 texture_filter = 1
@@ -248,10 +258,10 @@ flat = true
 [node name="repairman" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 615.0
-offset_top = 434.0
-offset_right = 655.0
-offset_bottom = 474.0
+offset_left = 747.0
+offset_top = 310.0
+offset_right = 787.0
+offset_bottom = 350.0
 
 [node name="addRepairman" type="Button" parent="repairman"]
 layout_mode = 0
@@ -273,19 +283,16 @@ text = "Repairman: 9999"
 [node name="boat" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 805.0
-offset_top = 326.0
-offset_right = 845.0
-offset_bottom = 366.0
+offset_left = 806.0
+offset_top = 30.0
+offset_right = 846.0
+offset_bottom = 70.0
 
-[node name="boat" type="TextureRect" parent="boat"]
-layout_mode = 0
-offset_left = 22.0001
-offset_top = -285.0
-offset_right = 54.0001
-offset_bottom = -253.0
-scale = Vector2(22.5313, 15.625)
-texture = ExtResource("4_nixov")
+[node name="boat" type="AnimatedSprite2D" parent="boat"]
+z_index = -1
+position = Vector2(290, 248)
+scale = Vector2(8.58161, 5.95117)
+sprite_frames = SubResource("SpriteFrames_wm63m")
 
 [node name="StartGame" type="Button" parent="boat"]
 layout_mode = 0
