@@ -4,16 +4,20 @@ extends Node2D
 @onready var boost_bar: TextureProgressBar = $CanvasLayer/boostBar
 @onready var shield_bar: TextureProgressBar = $CanvasLayer/shieldBar
 
+@onready var progress_bar: TextureProgressBar = $CanvasLayer/progressBar
+
 @onready var projectile_delete_bar: HBoxContainer = $CanvasLayer/projectileDeleteBar
 
 @onready var player: CharacterBody2D = $Player
 
 @onready var transition_manager = $".."
 
+
+
 var score: float
 var rescuedCount: int = 0
 
-const SCORE_FOR_BOSS = 150
+const SCORE_FOR_BOSS:float = 1500
 
 func _ready() -> void:
 	player.usedProjDeleter.connect(projectile_delete_bar.usedProjDeleter)
@@ -28,6 +32,8 @@ func updateBars():
 	health_bar.value = (player.playerCurHealth/player.playerMaxHealth) * 100
 	shield_bar.value = (player.playerCurShield/player.playerMaxShield) * 100
 	boost_bar.value = (player.playerCurStamina/player.playerMaxStamina) * 100
+	progress_bar.value = (score/SCORE_FOR_BOSS) * 100
+	$CanvasLayer/progressBar/progressBarIcon.position.x = (128 * (score/SCORE_FOR_BOSS))
 	
 	if player.isBurntout:
 		boost_bar.tint_progress = Color(0.2, 0.2, 0.2)
