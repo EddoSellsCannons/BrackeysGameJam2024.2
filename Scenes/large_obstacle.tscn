@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://ddo1wntqce10" path="res://assets/images/watermelon.png" id="2_iph1b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_egn1u"]
-radius = 29.0
-height = 58.0
+radius = 51.0
+height = 102.0
 
 [sub_resource type="Animation" id="Animation_xrdvv"]
 length = 0.001
@@ -57,12 +57,11 @@ script = ExtResource("1_ru6po")
 damage = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-5.72205e-06, 0)
-scale = Vector2(2.11328, 2.14453)
+position = Vector2(1.90735e-06, 0)
+scale = Vector2(3.55664, 3.60352)
 texture = ExtResource("2_iph1b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_egn1u")
 

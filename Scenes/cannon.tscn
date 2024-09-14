@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b011sih07bmqs"]
+
+[ext_resource type="Script" path="res://Scripts/cannon.gd" id="1_ukn3t"]
+[ext_resource type="Texture2D" uid="uid://li0hd23rigyc" path="res://assets/images/CowMob1.png" id="2_y1u54"]
+
+[node name="cannon" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_ukn3t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1, 0.5)
+texture = ExtResource("2_y1u54")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

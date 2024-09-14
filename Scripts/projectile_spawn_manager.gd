@@ -81,7 +81,13 @@ func spawnSurvivorObject():
 func spawnSmallObstacle():
 	var obstacle = smallObstacle.instantiate()
 	obstacle.position = obstacle_spawnpoint_array.pick_random().position
-	obstacle.set_linear_velocity(Vector2(-randf_range(200, 400), randf_range(-50, 50)))
+	obstacle.set_linear_velocity(Vector2(-randf_range(100, 300), randf_range(-50, 50)))
+	add_child(obstacle)
+	
+func spawnLargeObstacle():
+	var obstacle = largeObstacle.instantiate()
+	obstacle.position = obstacle_spawnpoint_array.pick_random().position
+	obstacle.set_linear_velocity(Vector2(-randf_range(25, 100), randf_range(-50, 50)))
 	add_child(obstacle)
 
 func _on_small_projectile_spawn_timer_timeout() -> void:
@@ -99,5 +105,4 @@ func _on_small_obstacle_timer_timeout() -> void:
 
 func _on_large_obstacle_timer_timeout() -> void:
 	if gameManager.score >= 300:
-		#spawnMedObstacle()
-		spawnSmallObstacle()
+		spawnLargeObstacle()

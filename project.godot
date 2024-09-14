@@ -28,6 +28,7 @@ version_control/autoload_on_startup=true
 
 projectile=""
 survivor=""
+playerProj=""
 
 [input]
 
@@ -74,3 +75,5 @@ boost={
 2d_physics/layer_1="proj"
 2d_physics/layer_2="playerBound"
 2d_physics/layer_3="obstacles"
+2d_physics/layer_4="tentacleSlam"
+2d_physics/layer_5="tentacleStaticObstacle"
