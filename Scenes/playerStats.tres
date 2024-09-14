@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_tskv5")
-maxHealth = 30.0
-maxShield = 10.0
+maxHealth = 20.0
+maxShield = 20.0
 maxStamina = 100.0
-standardSpeed = 100.0
+standardSpeed = 150.0
 numProjDeleters = 1
 numRepairman = 1

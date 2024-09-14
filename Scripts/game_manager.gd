@@ -37,6 +37,13 @@ func _on_score_timer_timeout() -> void:
 	$CanvasLayer/scoreLabel.text = str(score) + "m"
 
 func gameOver():
-	#play anim for game over
+	var emRaft = $CanvasLayer/emergencyRaft
+	player.set_physics_process(false)
+	emRaft.position = player.position
+	emRaft.visible = true
+	player.visible = false
+	emRaft.activateRaft()
+	$CanvasLayer/emergencyRaft/emRaftTimer.start()
+	await $CanvasLayer/emergencyRaft/emRaftTimer.timeout
 	transition_manager.villageStart(score, rescuedCount)
 	queue_free()
