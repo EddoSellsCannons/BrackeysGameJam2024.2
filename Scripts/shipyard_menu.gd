@@ -13,12 +13,12 @@ var numProjDeleters
 #var numRepairman
 # ^^ Currently unused
 
-var upgradeAmount = 10
+var upgradeAmount = 20
 
 var maxHealthUpgradeCost:int = 150
 var maxShieldUpgradeCost:int = 50
 var maxStaminaUpgradeCost:int = 50
-var speedUpgradeCost:int = 100
+var speedUpgradeCost:int = 50
 var projDeleterUpgradeCost:int = 200
 
 var costMultiplier = 1.5
@@ -59,7 +59,7 @@ func upgradeStamina():
 func upgradeSpeed():
 	if villageManager.numWood >= speedUpgradeCost:
 		villageManager.numWood -= speedUpgradeCost
-		curPlayerStats.standardSpeed += upgradeAmount
+		curPlayerStats.standardSpeed += upgradeAmount * 2
 		speedUpgradeCost *= costMultiplier
 		
 func upgradeProjDeleter():

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bicjcplm70tw8"]
+
+[ext_resource type="Texture2D" uid="uid://li0hd23rigyc" path="res://assets/images/CowMob1.png" id="1_ibe1o"]
+[ext_resource type="Script" path="res://Scripts/emergency_raft.gd" id="1_y032i"]
+[ext_resource type="Texture2D" uid="uid://b7faeynrhwr0l" path="res://assets/images/CowMob2.png" id="2_i16vv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wto3c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ibe1o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_i16vv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="emergencyRaft" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_y032i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wto3c")
+autoplay = "default"
+frame_progress = 0.572727
