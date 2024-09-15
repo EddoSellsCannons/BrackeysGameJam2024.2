@@ -74,7 +74,7 @@ script = ExtResource("3_m668j")
 
 [node name="pickupSurvivor" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("4_su0lg")
-volume_db = -20.0
+volume_db = -10.0
 
 [node name="upgradeBoat" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("5_if36l")
@@ -82,7 +82,6 @@ volume_db = -20.0
 
 [node name="getHit" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("6_h2t1e")
-volume_db = -10.0
 pitch_scale = 2.0
 
 [node name="gameOver" type="AudioStreamPlayer" parent="SFX"]
@@ -96,5 +95,6 @@ pitch_scale = 1.5
 
 [node name="assignWorker" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("9_ekhs6")
+volume_db = -15.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
