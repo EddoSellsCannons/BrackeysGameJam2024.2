@@ -1,8 +1,17 @@
+
 [gd_scene load_steps=15 format=3 uid="uid://dmsujrqe0fxwc"]
 
 [ext_resource type="Script" path="res://Scripts/tentacle_slam_attack.gd" id="1_rmmaa"]
 [ext_resource type="Texture2D" uid="uid://b06ijtf6n7q5d" path="res://assets/images/boss/idleSlam-Sheet.png" id="2_82sl7"]
 [ext_resource type="Texture2D" uid="uid://bh67gwhjap3bn" path="res://assets/images/boss/attackingSlam-Sheet.png" id="2_iqyvi"]
+
+[gd_scene load_steps=13 format=3 uid="uid://dmsujrqe0fxwc"]
+
+[ext_resource type="Script" path="res://Scripts/tentacle_slam_attack.gd" id="1_rmmaa"]
+[ext_resource type="Script" path="res://Scripts/boss_sfx.gd" id="4_nickd"]
+[ext_resource type="AudioStream" uid="uid://0hy0escaphh8" path="res://assets/sfx/Alert.wav" id="5_lng0m"]
+[ext_resource type="AudioStream" uid="uid://w0axpyquhpqe" path="res://assets/sfx/Explosion.wav" id="6_jl1ko"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_firnd"]
 size = Vector2(221, 534.125)
@@ -177,6 +186,23 @@ tracks/4/keys = {
 "update": 1,
 "values": [0, 8]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BossSFX")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3, 5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"playSlamAlert"
+}, {
+"args": [],
+"method": &"playSlamSound"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_dt2nj"]
 resource_name = "tentacleSafe"
@@ -235,3 +261,15 @@ color = Color(1, 1, 1, 0)
 libraries = {
 "": SubResource("AnimationLibrary_lxu62")
 }
+
+[node name="BossSFX" type="Node" parent="."]
+script = ExtResource("4_nickd")
+
+[node name="slamAlert" type="AudioStreamPlayer" parent="BossSFX"]
+stream = ExtResource("5_lng0m")
+volume_db = 10.0
+
+[node name="slamSound" type="AudioStreamPlayer" parent="BossSFX"]
+stream = ExtResource("6_jl1ko")
+volume_db = -10.0
+pitch_scale = 1.5

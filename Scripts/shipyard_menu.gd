@@ -34,24 +34,28 @@ func upgradeHealth():
 		villageManager.numWood -= maxHealthUpgradeCost
 		playerStats.maxHealth += upgradeAmount * 2
 		maxHealthUpgradeCost *= costMultiplier
+		villageManager.transition_manager.SFX.playUpgradeBoat()
 		
 func upgradeShields():
 	if villageManager.numWood >= maxShieldUpgradeCost:
 		villageManager.numWood -= maxShieldUpgradeCost
 		playerStats.maxShield += upgradeAmount
 		maxShieldUpgradeCost *= costMultiplier
+		villageManager.transition_manager.SFX.playUpgradeBoat()
 		
 func upgradeStamina():
 	if villageManager.numWood >= maxStaminaUpgradeCost:
 		villageManager.numWood -= maxStaminaUpgradeCost
 		playerStats.maxStamina += upgradeAmount
 		maxStaminaUpgradeCost *= costMultiplier
+		villageManager.transition_manager.SFX.playUpgradeBoat()
 		
 func upgradeSpeed():
 	if villageManager.numWood >= speedUpgradeCost:
 		villageManager.numWood -= speedUpgradeCost
 		playerStats.standardSpeed += upgradeAmount * 3
 		speedUpgradeCost *= costMultiplier
+		villageManager.transition_manager.SFX.playUpgradeBoat()
 		
 func upgradeProjDeleter():
 	if playerStats.numProjDeleters >= 10:
@@ -60,6 +64,7 @@ func upgradeProjDeleter():
 		villageManager.numWood -= projDeleterUpgradeCost
 		playerStats.numProjDeleters += 1
 		projDeleterUpgradeCost *= costMultiplier
+		villageManager.transition_manager.SFX.playUpgradeBoat()
 
 func _on_buy_max_hp_upgrade_button_down() -> void:
 	upgradeHealth()

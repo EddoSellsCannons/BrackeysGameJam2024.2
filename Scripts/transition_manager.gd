@@ -9,6 +9,8 @@ var playerStats = preload("res://Scenes/playerStats.tres")
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+@onready var SFX = $SFX
+
 var hasSeenBoss: bool = false
 
 var oldScore: float = 0
