@@ -1,20 +1,15 @@
-
-[gd_scene load_steps=15 format=3 uid="uid://dmsujrqe0fxwc"]
+[gd_scene load_steps=21 format=3 uid="uid://dmsujrqe0fxwc"]
 
 [ext_resource type="Script" path="res://Scripts/tentacle_slam_attack.gd" id="1_rmmaa"]
 [ext_resource type="Texture2D" uid="uid://b06ijtf6n7q5d" path="res://assets/images/boss/idleSlam-Sheet.png" id="2_82sl7"]
 [ext_resource type="Texture2D" uid="uid://bh67gwhjap3bn" path="res://assets/images/boss/attackingSlam-Sheet.png" id="2_iqyvi"]
-
-[gd_scene load_steps=13 format=3 uid="uid://dmsujrqe0fxwc"]
-
-[ext_resource type="Script" path="res://Scripts/tentacle_slam_attack.gd" id="1_rmmaa"]
+[ext_resource type="Texture2D" uid="uid://co2207pb7yw65" path="res://assets/images/boss/risingSlam-Sheet.png" id="4_gp462"]
 [ext_resource type="Script" path="res://Scripts/boss_sfx.gd" id="4_nickd"]
 [ext_resource type="AudioStream" uid="uid://0hy0escaphh8" path="res://assets/sfx/Alert.wav" id="5_lng0m"]
 [ext_resource type="AudioStream" uid="uid://w0axpyquhpqe" path="res://assets/sfx/Explosion.wav" id="6_jl1ko"]
 
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_firnd"]
-size = Vector2(221, 534.125)
+size = Vector2(221, 563.125)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1hbhu"]
 atlas = ExtResource("2_iqyvi")
@@ -35,6 +30,14 @@ region = Rect2(0, 0, 50, 123)
 [sub_resource type="AtlasTexture" id="AtlasTexture_l4h7v"]
 atlas = ExtResource("2_82sl7")
 region = Rect2(50, 0, 50, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bg5sn"]
+atlas = ExtResource("4_gp462")
+region = Rect2(0, 0, 74, 139)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23jil"]
+atlas = ExtResource("4_gp462")
+region = Rect2(74, 0, 74, 139)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bcnad"]
 animations = [{
@@ -63,9 +66,15 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bg5sn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23jil")
+}],
 "loop": true,
-"name": &"idle",
+"name": &"rising",
 "speed": 5.0
 }]
 
@@ -118,6 +127,66 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("tentacleSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("tentacleSprite:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attac"]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("shadow:animation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"rising"]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("shadow:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("shadow:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_86qkk"]
@@ -203,6 +272,66 @@ tracks/5/keys = {
 "method": &"playSlamSound"
 }]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("tentacleSprite:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.0374999, 0.2375, 0.490625, 1, 1.59063, 2.19063, 2.69063, 3.19063, 3.79063, 4.39063, 4.8, 5, 5.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("tentacleSprite:animation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5, 4.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [&"rising", &"default", &"attac"]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("shadow:animation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"rising", &"default"]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("shadow:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 1, 1.6, 2.2, 2.7, 3.2, 3.7625, 4.3625),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("shadow:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 4.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_dt2nj"]
 resource_name = "tentacleSafe"
@@ -222,6 +351,54 @@ tracks/0/keys = {
 "method": &"queue_free"
 }]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("tentacleSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"rising", &"default"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("tentacleSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.19375, 0.5, 1.00312, 1.59375, 2.19375, 2.69375, 3.19375, 3.79375, 4.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("shadow:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"rising", &"default"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("shadow:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 1.00937, 1.6, 2.2, 2.7, 3.2, 3.8, 4.40625),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lxu62"]
 _data = {
@@ -231,6 +408,7 @@ _data = {
 }
 
 [node name="tentacleSlamAttack" type="Area2D" groups=["projectile"]]
+z_index = -1
 texture_filter = 1
 collision_layer = 0
 collision_mask = 0
@@ -238,24 +416,40 @@ script = ExtResource("1_rmmaa")
 damage = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -266.938)
+position = Vector2(-0.5, -281.438)
 shape = SubResource("RectangleShape2D_firnd")
 
 [node name="tentacleSprite" type="AnimatedSprite2D" parent="."]
 clip_children = 2
-z_index = -5
+z_index = -1
 position = Vector2(0, -267)
 scale = Vector2(5.5, 5.5)
 sprite_frames = SubResource("SpriteFrames_bcnad")
-animation = &"idle"
-autoplay = "default"
+animation = &"attac"
 
 [node name="ColorRect" type="ColorRect" parent="tentacleSprite"]
-offset_left = -19.0
-offset_top = -46.0
-offset_right = 18.0
-offset_bottom = 49.0
+offset_left = -225.0
+offset_top = -305.0
+offset_right = 266.0
+offset_bottom = 302.0
 color = Color(1, 1, 1, 0)
+
+[node name="shadow" type="AnimatedSprite2D" parent="."]
+clip_children = 2
+z_index = -1
+position = Vector2(-3, 285)
+rotation = 3.14159
+scale = Vector2(5.5, 5.5)
+sprite_frames = SubResource("SpriteFrames_bcnad")
+animation = &"rising"
+flip_h = true
+
+[node name="ColorRect" type="ColorRect" parent="shadow"]
+offset_left = -127.0
+offset_top = -158.0
+offset_right = 118.0
+offset_bottom = 175.0
+color = Color(0.266575, 0.266575, 0.266575, 1)
 
 [node name="animation_player" type="AnimationPlayer" parent="."]
 libraries = {

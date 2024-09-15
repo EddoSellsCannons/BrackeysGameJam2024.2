@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://3tg3fvdml66v"]
+[gd_scene load_steps=41 format=3 uid="uid://3tg3fvdml66v"]
 
 [ext_resource type="Script" path="res://Scripts/village_manager.gd" id="1_8453s"]
 [ext_resource type="Texture2D" uid="uid://b6ctmndytodw5" path="res://assets/images/background/environment.png" id="2_ye1tv"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bovh5se2x4wem" path="res://assets/images/background/fishingDock.png" id="4_erpi2"]
 [ext_resource type="Texture2D" uid="uid://4srgh3gfrr0l" path="res://assets/images/shipyard.png" id="5_31vu7"]
 [ext_resource type="Texture2D" uid="uid://bqqv1vorjofw4" path="res://assets/images/Boat/new/boatNew.png" id="5_gspg7"]
+[ext_resource type="Texture2D" uid="uid://bk5c6pe35g6ec" path="res://assets/images/repairmanSprite.png" id="6_kk4lk"]
 [ext_resource type="Texture2D" uid="uid://jao7raxh5p8w" path="res://assets/images/glowEffect.png" id="6_x86gk"]
 [ext_resource type="Texture2D" uid="uid://brnpibv3xflon" path="res://assets/images/ninepatchWooden.png" id="7_nrjl2"]
 [ext_resource type="Texture2D" uid="uid://dgody1wqwkoc6" path="res://assets/images/woodIcon.png" id="8_ss86h"]
@@ -14,8 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://c8hvamduq5vnf" path="res://assets/images/TextBoxTexture.png" id="9_g40b4"]
 [ext_resource type="Texture2D" uid="uid://bt8ttxdkr066y" path="res://assets/images/volunteerIcon.png" id="10_4uajt"]
 [ext_resource type="Texture2D" uid="uid://c1bp8qrv37u78" path="res://assets/images/rainEffect.png" id="11_5xih2"]
-[ext_resource type="PackedScene" path="res://Scenes/help_menu.tscn" id="13_12tmy"]
-[ext_resource type="PackedScene" path="res://Scenes/shipyard_menu.tscn" id="14_q8gvt"]
+[ext_resource type="PackedScene" uid="uid://h152filg7s85" path="res://Scenes/help_menu.tscn" id="13_12tmy"]
+[ext_resource type="PackedScene" uid="uid://c3sfij5h72rdn" path="res://Scenes/shipyard_menu.tscn" id="14_q8gvt"]
 [ext_resource type="AudioStream" uid="uid://bv8y2m5yvngvh" path="res://assets/music/Tranquil_Tempest (1).mp3" id="17_3x7vg"]
 [ext_resource type="Script" path="res://Scripts/cheat_menu.gd" id="36_s1wjk"]
 [ext_resource type="Texture2D" uid="uid://li0hd23rigyc" path="res://assets/images/CowMob1.png" id="37_jwrhm"]
@@ -346,6 +347,14 @@ theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "Repairman: 9999"
 
+[node name="TextureRect" type="TextureRect" parent="repairman"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = -114.0
+offset_right = 128.0
+offset_bottom = 13.0
+texture = ExtResource("6_kk4lk")
+
 [node name="boat" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -567,7 +576,7 @@ offset_top = -1.0
 offset_right = 40.0
 offset_bottom = 39.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("8_ss86h")
+texture = ExtResource("9_0sonb")
 
 [node name="volunteerButton" type="Button" parent="CanvasLayer/cheats/cheatMenu"]
 layout_mode = 0

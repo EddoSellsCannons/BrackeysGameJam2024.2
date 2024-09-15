@@ -438,13 +438,11 @@ scale = Vector2(4.875, 4.6875)
 sprite_frames = SubResource("SpriteFrames_oxqtt")
 autoplay = "default"
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Control" type="CanvasLayer" parent="."]
 
 [node name="start2" type="Control" parent="Control"]
+texture_filter = 1
+layout_mode = 3
 anchors_preset = 0
 offset_left = 457.0
 offset_top = -288.0
@@ -488,7 +486,6 @@ libraries = {
 autoplay = "buttonSpin"
 
 [node name="deleteSave" type="Button" parent="Control"]
-layout_mode = 0
 offset_left = 950.0
 offset_top = 542.0
 offset_right = 1136.0
@@ -497,6 +494,7 @@ text = "Delete Save file"
 
 [node name="notice" type="NinePatchRect" parent="Control/deleteSave"]
 visible = false
+z_index = 4
 layout_mode = 0
 offset_left = -761.0
 offset_top = -453.0
