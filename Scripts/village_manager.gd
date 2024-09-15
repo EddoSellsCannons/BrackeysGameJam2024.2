@@ -61,6 +61,7 @@ func addLumberjack():
 		numPopulation -= 1
 		costLumberjack *= costIncreaseMultiplier
 		woodEarningRate = numLumberjack * woodPerLumberjack
+		transition_manager.SFX.playAssignWorker()
 		
 func addFisherman():
 	if numFood >= costFisherman and numPopulation >= 1:
@@ -69,6 +70,7 @@ func addFisherman():
 		numPopulation -= 1
 		costFisherman *= costIncreaseMultiplier
 		foodEarningRate = numFisherman * foodPerFisherman
+		transition_manager.SFX.playAssignWorker()
 		
 func addRepairman():
 	if numFood >= costRepairman and numPopulation >= 1:
@@ -76,6 +78,7 @@ func addRepairman():
 		playerStats.numRepairman += 1
 		numPopulation -= 1
 		costRepairman *= costIncreaseMultiplier
+		transition_manager.SFX.playAssignWorker()
 
 func _on_add_lumberjack_button_down() -> void:
 	addLumberjack()
