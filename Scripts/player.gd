@@ -35,25 +35,25 @@ var isAffectedByWind: bool = false
 @onready var main_sprite: AnimatedSprite2D = $mainSprite
 @onready var armor: AnimatedSprite2D = $mainSprite/armor
 
-
+var playerStats = preload("res://Scenes/playerStats.tres")
 
 func _ready() -> void:
-	var curPlayerStats = load("res://Scenes/playerStats.tres")
-	playerMaxHealth = curPlayerStats.maxHealth
+	reload_page()
+	playerMaxHealth = playerStats.maxHealth
 	playerCurHealth = playerMaxHealth
 	
-	playerMaxShield = curPlayerStats.maxShield
+	playerMaxShield = playerStats.maxShield
 	playerCurShield = playerMaxShield
 	
-	playerMaxStamina = curPlayerStats.maxStamina
+	playerMaxStamina = playerStats.maxStamina
 	playerCurStamina = playerMaxStamina
 	
-	staminaRegenAmount = curPlayerStats.maxStamina/500
+	staminaRegenAmount = playerStats.maxStamina/500
 	
-	standardPlayerSpeed = curPlayerStats.standardSpeed
+	standardPlayerSpeed = playerStats.standardSpeed
 	playerSpeed = standardPlayerSpeed
 	
-	repairmanCount =  curPlayerStats.numRepairman
+	repairmanCount =  playerStats.numRepairman
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -101,10 +101,10 @@ func takeDamage(damageTaken):
 	else:
 		playerCurHealth -= damageTaken
 	regen_stopped.start()
+	animation_player.play("takeDamage")
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("projectile"):
-		print(body)
 		takeDamage(body.damage)
 		if body.has_method("playInkSplatter"):
 			body.playInkSplatter()
@@ -180,3 +180,30 @@ func affectedByWind(isAffected: bool):
 		isAffectedByWind = true
 	else:
 		isAffectedByWind = false
+
+func save():
+	var save_dict = {
+		"filename": get_path(),
+		"parent" : get_parent().get_path(),
+		"pos_x" : position.x, # Vector2 is not supported by JSON
+		"pos_y" : position.y
+	}
+	return save_dict
+
+func reload_page():
+	playerStats = get_tree().root.get_node("transitionManager").playerStats
+	playerMaxHealth = playerStats.maxHealth
+	playerCurHealth = playerMaxHealth
+	
+	playerMaxShield = playerStats.maxShield
+	playerCurShield = playerMaxShield
+	
+	playerMaxStamina = playerStats.maxStamina
+	playerCurStamina = playerMaxStamina
+	
+	staminaRegenAmount = playerStats.maxStamina/500
+	
+	standardPlayerSpeed = playerStats.standardSpeed
+	playerSpeed = standardPlayerSpeed
+	
+	repairmanCount =  playerStats.numRepairman

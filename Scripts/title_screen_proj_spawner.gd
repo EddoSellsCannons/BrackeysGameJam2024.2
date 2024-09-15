@@ -8,9 +8,9 @@ extends Node2D
 
 func _on_timer_timeout() -> void:
 	var p = sProj.instantiate()
-	p.position = Vector2(randi_range(left_marker.global_position.x, right_marker.global_position.x), -200)
+	p.position = Vector2(randi_range(left_marker.global_position.x, right_marker.global_position.x), -250)
 	add_child(p)
 	
 	var p2 = mProj.instantiate()
-	p2.position = Vector2(randi_range(left_marker.global_position.x, right_marker.global_position.x), -200)
+	p2.position = Vector2(randi_range(left_marker.global_position.x, right_marker.global_position.x), -250)
 	add_child(p2)

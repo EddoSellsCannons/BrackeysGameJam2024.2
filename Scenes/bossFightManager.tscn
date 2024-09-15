@@ -876,7 +876,7 @@ position = Vector2(480, 156)
 position = Vector2(760, 156)
 
 [node name="tentacleSlamTimer" type="Timer" parent="projectileSpawnManager"]
-wait_time = 7.0
+wait_time = 10.0
 autostart = true
 
 [node name="Player" parent="." instance=ExtResource("3_re2vy")]
@@ -1117,7 +1117,6 @@ autoplay = "default"
 libraries = {
 "": SubResource("AnimationLibrary_ay3vc")
 }
-autoplay = "lightningStrikes"
 
 [node name="oceanMovement" type="AnimationPlayer" parent="."]
 libraries = {

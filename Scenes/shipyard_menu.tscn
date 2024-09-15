@@ -1,0 +1,231 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3sfij5h72rdn"]
+
+[ext_resource type="Script" path="res://Scripts/shipyard_menu.gd" id="1_o18al"]
+[ext_resource type="Texture2D" uid="uid://c8hvamduq5vnf" path="res://assets/images/TextBoxTexture.png" id="2_dprsu"]
+[ext_resource type="Texture2D" uid="uid://dlucc1i517aap" path="res://assets/images/UI_Icons/hullUpgradeIcon.png" id="3_ytx22"]
+[ext_resource type="Texture2D" uid="uid://dgody1wqwkoc6" path="res://assets/images/woodIcon.png" id="4_y8uoh"]
+[ext_resource type="Texture2D" uid="uid://b5picuxjon0pt" path="res://assets/images/UI_Icons/shieldUpgradeIcon.png" id="5_s1f01"]
+[ext_resource type="Texture2D" uid="uid://b8wbhctw23c0p" path="res://assets/images/UI_Icons/boosterUpgradeIcon.png" id="6_1vfy5"]
+[ext_resource type="Texture2D" uid="uid://co1pvwo4nwaye" path="res://assets/images/UI_Icons/movespeedUpgrade.png" id="7_xb160"]
+[ext_resource type="Texture2D" uid="uid://c8vpsf4p7h7ab" path="res://assets/images/UI_Icons/projDeleterUpgradeIcon.png" id="8_bp7ki"]
+
+[node name="shipyardMenu" type="Control" groups=["Persist"]]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 33.0
+offset_top = -6.0
+offset_right = 73.0
+offset_bottom = 34.0
+script = ExtResource("1_o18al")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 1078.0
+offset_bottom = 607.0
+texture = ExtResource("2_dprsu")
+patch_margin_left = 34
+patch_margin_top = 34
+patch_margin_right = 34
+patch_margin_bottom = 34
+
+[node name="MaxHP" type="Control" parent="NinePatchRect"]
+anchors_preset = 0
+offset_left = 58.0
+offset_top = 41.0
+offset_right = 164.0
+offset_bottom = 81.0
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/MaxHP"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = -5.0
+offset_right = 113.0
+offset_bottom = 103.0
+texture = ExtResource("3_ytx22")
+
+[node name="Label" type="Label" parent="NinePatchRect/MaxHP"]
+layout_mode = 2
+offset_left = 115.0
+offset_top = 4.0
+offset_right = 682.0
+offset_bottom = 110.0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+text = "Upgrade Hull: +20 HP"
+
+[node name="buyMaxHPUpgrade" type="Button" parent="NinePatchRect/MaxHP"]
+layout_mode = 2
+offset_left = 775.0
+offset_top = 9.0
+offset_right = 938.0
+offset_bottom = 98.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+theme_override_icons/icon = ExtResource("4_y8uoh")
+text = "900"
+
+[node name="MaxShield" type="Control" parent="NinePatchRect"]
+anchors_preset = 0
+offset_left = 59.0
+offset_top = 143.0
+offset_right = 165.0
+offset_bottom = 183.0
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/MaxShield"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = -5.0
+offset_right = 113.0
+offset_bottom = 103.0
+texture = ExtResource("5_s1f01")
+
+[node name="Label" type="Label" parent="NinePatchRect/MaxShield"]
+layout_mode = 2
+offset_left = 115.0
+offset_top = 4.0
+offset_right = 697.0
+offset_bottom = 110.0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+text = "Upgrade Armor: +10 Armor"
+
+[node name="buyMaxShieldUpgrade" type="Button" parent="NinePatchRect/MaxShield"]
+layout_mode = 2
+offset_left = 773.0
+offset_top = 3.0
+offset_right = 936.0
+offset_bottom = 98.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+theme_override_icons/icon = ExtResource("4_y8uoh")
+text = "900"
+
+[node name="stamina" type="Control" parent="NinePatchRect"]
+anchors_preset = 0
+offset_left = 59.0
+offset_top = 244.0
+offset_right = 165.0
+offset_bottom = 284.0
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/stamina"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = -5.0
+offset_right = 113.0
+offset_bottom = 103.0
+texture = ExtResource("6_1vfy5")
+
+[node name="Label" type="Label" parent="NinePatchRect/stamina"]
+layout_mode = 2
+offset_left = 115.0
+offset_top = 4.0
+offset_right = 774.0
+offset_bottom = 110.0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+text = "Upgrade Boosters: +10 Booster tank
+Increase booster regeneration speed"
+autowrap_mode = 3
+
+[node name="buyStaminaUpgrade" type="Button" parent="NinePatchRect/stamina"]
+layout_mode = 2
+offset_left = 771.0
+offset_top = 5.0
+offset_right = 934.0
+offset_bottom = 99.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+theme_override_icons/icon = ExtResource("4_y8uoh")
+text = "900"
+
+[node name="speed" type="Control" parent="NinePatchRect"]
+anchors_preset = 0
+offset_left = 59.0
+offset_top = 348.0
+offset_right = 165.0
+offset_bottom = 388.0
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/speed"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = -5.0
+offset_right = 113.0
+offset_bottom = 103.0
+texture = ExtResource("7_xb160")
+
+[node name="Label" type="Label" parent="NinePatchRect/speed"]
+layout_mode = 2
+offset_left = 120.0
+offset_top = 3.0
+offset_right = 687.0
+offset_bottom = 109.0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+text = "Upgrade propeller: +30 base Movespeed"
+autowrap_mode = 3
+
+[node name="buySpeedUpgrade" type="Button" parent="NinePatchRect/speed"]
+layout_mode = 2
+offset_left = 772.0
+offset_top = 5.0
+offset_right = 935.0
+offset_bottom = 104.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+theme_override_icons/icon = ExtResource("4_y8uoh")
+text = "900"
+
+[node name="projDeleter" type="Control" parent="NinePatchRect"]
+anchors_preset = 0
+offset_left = 59.0
+offset_top = 453.0
+offset_right = 165.0
+offset_bottom = 493.0
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/projDeleter"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = -5.0
+offset_right = 113.0
+offset_bottom = 103.0
+texture = ExtResource("8_bp7ki")
+
+[node name="Label" type="Label" parent="NinePatchRect/projDeleter"]
+layout_mode = 2
+offset_left = 124.0
+offset_top = 4.0
+offset_right = 784.0
+offset_bottom = 110.0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+text = "Upgrade Safety Net: +1 Safety Net.
+Increase Safety Net regeneration speed"
+autowrap_mode = 3
+
+[node name="buyprojDeleterUpgrade" type="Button" parent="NinePatchRect/projDeleter"]
+layout_mode = 2
+offset_left = 772.0
+offset_top = 8.0
+offset_right = 935.0
+offset_bottom = 102.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+theme_override_icons/icon = ExtResource("4_y8uoh")
+text = "900"
+
+[node name="closeMenu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 996.0
+offset_top = 21.0
+offset_right = 1063.0
+offset_bottom = 86.0
+text = "X"
+
+[connection signal="button_down" from="NinePatchRect/MaxHP/buyMaxHPUpgrade" to="." method="_on_buy_max_hp_upgrade_button_down"]
+[connection signal="button_down" from="NinePatchRect/MaxShield/buyMaxShieldUpgrade" to="." method="_on_buy_max_shield_upgrade_button_down"]
+[connection signal="button_down" from="NinePatchRect/stamina/buyStaminaUpgrade" to="." method="_on_buy_stamina_upgrade_button_down"]
+[connection signal="button_down" from="NinePatchRect/speed/buySpeedUpgrade" to="." method="_on_buy_speed_upgrade_button_down"]
+[connection signal="button_down" from="NinePatchRect/projDeleter/buyprojDeleterUpgrade" to="." method="_on_buyproj_deleter_upgrade_button_down"]
+[connection signal="button_down" from="closeMenu" to="." method="_on_close_menu_button_down"]
