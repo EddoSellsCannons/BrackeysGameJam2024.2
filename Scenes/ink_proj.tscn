@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cogn5fdefpamw"]
 
 [ext_resource type="Script" path="res://Scripts/ink_proj.gd" id="1_10u56"]
-[ext_resource type="Texture2D" uid="uid://cv3puop48487" path="res://assets/images/projectile/poison.png" id="2_ntorf"]
+[ext_resource type="Texture2D" uid="uid://l2g5p8gxwogi" path="res://assets/images/boss/bossProj.png" id="2_1rj3a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_usl0j"]
 
@@ -83,10 +83,9 @@ damage = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.288919, 0.000788911, 0.467141, 1)
-position = Vector2(9.53674e-07, 9.53674e-07)
-scale = Vector2(1.42578, 1.33203)
-texture = ExtResource("2_ntorf")
-hframes = 2
+position = Vector2(9.53674e-07, 3)
+scale = Vector2(0.611091, 0.570909)
+texture = ExtResource("2_1rj3a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

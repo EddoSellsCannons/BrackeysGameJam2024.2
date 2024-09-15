@@ -915,7 +915,8 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="cannon" parent="Player" instance=ExtResource("4_48fab")]
-position = Vector2(53, -13)
+position = Vector2(25, 3)
+scale = Vector2(2.13, 2.13)
 
 [node name="boss" parent="." instance=ExtResource("4_vfl2p")]
 position = Vector2(1154, 320)

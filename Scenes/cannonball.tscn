@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bin6nd5upeef"]
 
 [ext_resource type="Script" path="res://Scripts/cannonball.gd" id="1_48c3o"]
-[ext_resource type="Texture2D" uid="uid://ddo1wntqce10" path="res://assets/images/watermelon.png" id="1_kdi3h"]
+[ext_resource type="Texture2D" uid="uid://1uviao71d8j8" path="res://assets/images/Boat/cannonball.png" id="2_4wr8k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ycg0m"]
 
@@ -11,7 +11,7 @@ script = ExtResource("1_48c3o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.75, 0.71875)
-texture = ExtResource("1_kdi3h")
+texture = ExtResource("2_4wr8k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ycg0m")

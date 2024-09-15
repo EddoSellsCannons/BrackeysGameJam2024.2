@@ -1,23 +1,62 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmsujrqe0fxwc"]
+[gd_scene load_steps=15 format=3 uid="uid://dmsujrqe0fxwc"]
 
 [ext_resource type="Script" path="res://Scripts/tentacle_slam_attack.gd" id="1_rmmaa"]
-[ext_resource type="Texture2D" uid="uid://b4xwri34u7mpr" path="res://assets/images/iceStaffSprite3x1.png" id="1_tecan"]
-[ext_resource type="Texture2D" uid="uid://igu0ri2qamf0" path="res://assets/images/iceStaffSprite3x1 - 2.png" id="2_gn4fy"]
+[ext_resource type="Texture2D" uid="uid://b06ijtf6n7q5d" path="res://assets/images/boss/idleSlam-Sheet.png" id="2_82sl7"]
+[ext_resource type="Texture2D" uid="uid://bh67gwhjap3bn" path="res://assets/images/boss/attackingSlam-Sheet.png" id="2_iqyvi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_firnd"]
 size = Vector2(221, 534.125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hbhu"]
+atlas = ExtResource("2_iqyvi")
+region = Rect2(0, 0, 106, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_su3g4"]
+atlas = ExtResource("2_iqyvi")
+region = Rect2(106, 0, 106, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8a03f"]
+atlas = ExtResource("2_iqyvi")
+region = Rect2(212, 0, 106, 225)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wojy"]
+atlas = ExtResource("2_82sl7")
+region = Rect2(0, 0, 50, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4h7v"]
+atlas = ExtResource("2_82sl7")
+region = Rect2(50, 0, 50, 123)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bcnad"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_tecan")
+"texture": SubResource("AtlasTexture_1hbhu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_gn4fy")
+"texture": SubResource("AtlasTexture_su3g4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8a03f")
+}],
+"loop": true,
+"name": &"attac",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wojy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4h7v")
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -178,11 +217,12 @@ shape = SubResource("RectangleShape2D_firnd")
 
 [node name="tentacleSprite" type="AnimatedSprite2D" parent="."]
 clip_children = 2
-position = Vector2(8.50001, -266.625)
-scale = Vector2(19.6875, 11.099)
+z_index = -5
+position = Vector2(0, -267)
+scale = Vector2(5.5, 5.5)
 sprite_frames = SubResource("SpriteFrames_bcnad")
+animation = &"idle"
 autoplay = "default"
-frame_progress = 0.374106
 
 [node name="ColorRect" type="ColorRect" parent="tentacleSprite"]
 offset_left = -19.0
