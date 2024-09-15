@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2n7s7td1v0k4"]
+
+[ext_resource type="Script" path="res://Scripts/projectile_delete_bar.gd" id="1_urvcr"]
+
+[node name="projectileDeleteBar" type="HBoxContainer"]
+texture_filter = 1
+offset_left = 386.0
+offset_top = 569.0
+offset_right = 760.0
+offset_bottom = 603.0
+scale = Vector2(2, 2)
+alignment = 2
+script = ExtResource("1_urvcr")
+maxProjDeletes = 1

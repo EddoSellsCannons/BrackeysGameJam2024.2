@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var curPlayerStats = preload("res://Scenes/playerStats.tres")
+@onready var playerStats = preload("res://Scenes/playerStats.tres")
 
 var numWood:int = 0
 var woodEarningRate = 0
@@ -19,7 +19,7 @@ var costFisherman:int = 20
 var foodPerFisherman = 3
 
 var numRepairman = 0
-var costRepairman:int = 200
+var costRepairman:int = 100
 
 var costIncreaseMultiplier = 1.05
 var scoreMultiplier:float = 0.02 #every x metres, gets 1 rate of resource (50 for now)
@@ -36,6 +36,11 @@ var scoreMultiplier:float = 0.02 #every x metres, gets 1 rate of resource (50 fo
 
 @onready var transition_manager: Node2D = $".."
 
+func _ready() -> void:
+	$boat/skipToBoss.visible = false
+	foodEarningRate = foodPerFisherman * numFisherman
+	woodEarningRate = woodPerLumberjack * numLumberjack
+
 func _process(delta: float) -> void:
 	wood_count.text = "Wood: " + str(numWood)
 	food_count.text = "Food: " + str(numFood)
@@ -43,11 +48,11 @@ func _process(delta: float) -> void:
 	
 	lumberjack_count.text = "Lumberjacks: " + str(numLumberjack)
 	fisherman_count.text = "Fisherman: " + str(numFisherman)
-	repairman_count.text = "Repairman: " + str(curPlayerStats.numRepairman)
+	repairman_count.text = "Repairman: " + str(playerStats.numRepairman)
 	
-	$forest/addLumberjack.text = "Assign Lumberjack: " + str(costLumberjack) + " food"
-	$fisherman/addFisherman.text = "Assign Fisherman: " + str(costFisherman) + " food"
-	$repairman/addRepairman.text = "Assign Repairman: " + str(costRepairman) + " food"
+	$forest/addLumberjack.text = "Assign Lumberjack:\n" + str(costLumberjack) + " food"
+	$fisherman/addFisherman.text = "Assign Fisherman:\n" + str(costFisherman) + " food"
+	$repairman/addRepairman.text = "Assign Repairman:\n" + str(costRepairman) + " food"
 
 func addLumberjack():
 	if numFood >= costLumberjack and numPopulation >= 1:
@@ -68,7 +73,7 @@ func addFisherman():
 func addRepairman():
 	if numFood >= costRepairman and numPopulation >= 1:
 		numFood -= costRepairman
-		curPlayerStats.numRepairman += 1
+		playerStats.numRepairman += 1
 		numPopulation -= 1
 		costRepairman *= costIncreaseMultiplier
 
@@ -99,8 +104,42 @@ func showVillage():
 	visible = true
 	$CanvasLayer.visible = true
 	$AudioStreamPlayer.play()
+	if transition_manager.hasSeenBoss:
+		$boat/skipToBoss.visible = true
+	else:
+		$boat/skipToBoss.visible = false
 
 func earnResources(score, rescuedCount):
 	numWood += score * scoreMultiplier * woodEarningRate
 	numFood += score * scoreMultiplier * foodEarningRate
 	numPopulation += rescuedCount
+	$CanvasLayer/earnReport.updateReport(score * scoreMultiplier * woodEarningRate, score * scoreMultiplier * foodEarningRate, rescuedCount)
+
+func _on_skip_to_boss_button_down() -> void:
+	hideVillage()
+	transition_manager.bossFightStart(0, 0)
+
+func save():
+	var save_dict = {
+		"filename": get_path(),
+		"parent" : get_parent().get_path(),
+		"pos_x" : position.x, # Vector2 is not supported by JSON
+		"pos_y" : position.y, 
+		"numWood": numWood,
+		"woodEarningRate": woodEarningRate,
+		"numFood": numFood,
+		"foodEarningRate": foodEarningRate,
+		"numPopulation": numPopulation,
+		"numLumberjack": numLumberjack,
+		"costLumberjack": costLumberjack,
+		"woodPerLumberjack": woodPerLumberjack,
+		"numFisherman": numFisherman,
+		"costFisherman": costFisherman,
+		"foodPerFisherman": foodPerFisherman,
+		"numRepairman": numRepairman,
+		"costRepairman": costRepairman
+	}
+	return save_dict
+
+func reload_page():
+	playerStats = transition_manager.playerStats

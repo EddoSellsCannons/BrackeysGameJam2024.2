@@ -50,11 +50,11 @@ _data = {
 texture_filter = 1
 collision_layer = 4
 collision_mask = 4
-mass = 0.001
+mass = 5.0
 gravity_scale = 0.0
 linear_velocity = Vector2(-150, 0)
 script = ExtResource("1_ru6po")
-damage = 5.0
+damage = 25.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1.90735e-06, 0)

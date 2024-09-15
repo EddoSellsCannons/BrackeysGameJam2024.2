@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cealaqip2jtj0" path="res://assets/images/healthBarTop.png" id="5_de0gl"]
 [ext_resource type="Texture2D" uid="uid://dmhfrkgiqis8o" path="res://assets/images/healthBar.png" id="6_nvk4k"]
 [ext_resource type="Texture2D" uid="uid://c2bc4tt1gxlxy" path="res://assets/images/shieldProgress.png" id="7_ux1mb"]
-[ext_resource type="Script" path="res://Scripts/projectile_delete_bar.gd" id="8_78f3n"]
 [ext_resource type="Texture2D" uid="uid://07gylv4m6pi7" path="res://assets/images/staminaBar.png" id="8_teq4q"]
+[ext_resource type="PackedScene" uid="uid://c2n7s7td1v0k4" path="res://Scenes/projectile_delete_bar.tscn" id="9_0y0gu"]
 [ext_resource type="Texture2D" uid="uid://cui2ldsv1btiq" path="res://assets/images/background/water background.png" id="9_eqys0"]
 [ext_resource type="Texture2D" uid="uid://cmb0e7ijy84w8" path="res://assets/images/boosterEffect.png" id="9_hs1ss"]
 [ext_resource type="Texture2D" uid="uid://c1bp8qrv37u78" path="res://assets/images/rainEffect.png" id="10_c51xi"]
@@ -349,11 +349,11 @@ script = ExtResource("1_aasdq")
 position = Vector2(1242, 0)
 
 [node name="smallProjectileSpawnTimer" type="Timer" parent="projectileSpawnManager"]
-wait_time = 0.5
+wait_time = 0.4
 autostart = true
 
 [node name="medProjSpawnTimer" type="Timer" parent="projectileSpawnManager"]
-wait_time = 4.0
+wait_time = 3.0
 autostart = true
 
 [node name="survivorSpawnTimer" type="Timer" parent="projectileSpawnManager"]
@@ -361,7 +361,7 @@ wait_time = 10.0
 autostart = true
 
 [node name="smallObstacleTimer" type="Timer" parent="projectileSpawnManager"]
-wait_time = 5.0
+wait_time = 4.0
 autostart = true
 
 [node name="largeObstacleTimer" type="Timer" parent="projectileSpawnManager"]
@@ -464,16 +464,7 @@ texture_under = ExtResource("4_nqlcq")
 texture_over = ExtResource("5_de0gl")
 texture_progress = ExtResource("8_teq4q")
 
-[node name="projectileDeleteBar" type="HBoxContainer" parent="CanvasLayer"]
-texture_filter = 1
-offset_left = 386.0
-offset_top = 569.0
-offset_right = 760.0
-offset_bottom = 603.0
-scale = Vector2(2, 2)
-alignment = 2
-script = ExtResource("8_78f3n")
-maxProjDeletes = 1
+[node name="projectileDeleteBar" parent="CanvasLayer" instance=ExtResource("9_0y0gu")]
 
 [node name="scoreLabel" type="Label" parent="CanvasLayer"]
 texture_filter = 1

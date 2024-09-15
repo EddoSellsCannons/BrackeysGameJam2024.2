@@ -12,8 +12,6 @@ extends Node2D
 
 @onready var transition_manager = $".."
 
-
-
 var score: float
 var rescuedCount: int = 0
 

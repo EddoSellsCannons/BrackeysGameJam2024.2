@@ -52,3 +52,14 @@ func gameOver():
 	await $CanvasLayer/emergencyRaft/emRaftTimer.timeout
 	transition_manager.villageStart(score * 3, rescuedCount)
 	queue_free()
+
+func playWin():
+	$projectileSpawnManager/smallProjectileSpawnTimer.stop()
+	$projectileSpawnManager/largeObstacleTimer.stop()
+	$projectileSpawnManager/tentacleSlamTimer.stop()
+	for i in range(0, 30):
+		$projectileSpawnManager.spawnSurvivorObject()
+	$eventsAnim.play("playWin")
+	await $eventsAnim.animation_finished
+	transition_manager.villageStart(score * 3, rescuedCount)
+	queue_free()

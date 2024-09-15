@@ -10,9 +10,11 @@ var projDeleteRegenRate = 0.03 * maxProjDeletes
 var curProjIndex
 @onready var projDeleterSingularUI = preload("res://Scenes/proj_deleter_singular.tscn")
 
+var playerStats = preload("res://Scenes/playerStats.tres")
+
 func _ready() -> void:
-	var curPlayerStats = load("res://Scenes/playerStats.tres")
-	maxProjDeletes = curPlayerStats.numProjDeleters
+	reload_page()
+	maxProjDeletes = playerStats.numProjDeleters
 	for a in range(maxProjDeletes):
 		var p = projDeleterSingularUI.instantiate()
 		add_child(p)
@@ -51,3 +53,15 @@ func updateProjDeleteBar():
 		
 func usedProjDeleter():
 	curProjIndex -= 1
+	
+func save():
+	var save_dict = {
+		"filename": get_path(),
+		"parent" : get_parent().get_path(),
+		"pos_x" : position.x, # Vector2 is not supported by JSON
+		"pos_y" : position.y
+	}
+	return save_dict
+	
+func reload_page():
+	playerStats = get_tree().root.get_node("transitionManager").playerStats
