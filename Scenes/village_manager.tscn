@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://3tg3fvdml66v"]
+[gd_scene load_steps=40 format=3 uid="uid://3tg3fvdml66v"]
 
 [ext_resource type="Script" path="res://Scripts/village_manager.gd" id="1_8453s"]
 [ext_resource type="Texture2D" uid="uid://b6ctmndytodw5" path="res://assets/images/background/environment.png" id="2_ye1tv"]
@@ -10,11 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://brnpibv3xflon" path="res://assets/images/ninepatchWooden.png" id="7_nrjl2"]
 [ext_resource type="Texture2D" uid="uid://dgody1wqwkoc6" path="res://assets/images/woodIcon.png" id="8_ss86h"]
 [ext_resource type="Texture2D" uid="uid://ddo1wntqce10" path="res://assets/images/watermelon.png" id="8_wm16u"]
+[ext_resource type="Texture2D" uid="uid://hu16ijbib6cv" path="res://assets/images/fish.png" id="9_0sonb"]
 [ext_resource type="Texture2D" uid="uid://c8hvamduq5vnf" path="res://assets/images/TextBoxTexture.png" id="9_g40b4"]
 [ext_resource type="Texture2D" uid="uid://bt8ttxdkr066y" path="res://assets/images/volunteerIcon.png" id="10_4uajt"]
 [ext_resource type="Texture2D" uid="uid://c1bp8qrv37u78" path="res://assets/images/rainEffect.png" id="11_5xih2"]
-[ext_resource type="PackedScene" uid="uid://biy6bjtvu44kf" path="res://Scenes/help_menu.tscn" id="13_12tmy"]
-[ext_resource type="PackedScene" uid="uid://c3sfij5h72rdn" path="res://Scenes/shipyard_menu.tscn" id="14_q8gvt"]
+[ext_resource type="PackedScene" path="res://Scenes/help_menu.tscn" id="13_12tmy"]
+[ext_resource type="PackedScene" path="res://Scenes/shipyard_menu.tscn" id="14_q8gvt"]
 [ext_resource type="AudioStream" uid="uid://bv8y2m5yvngvh" path="res://assets/music/Tranquil_Tempest (1).mp3" id="17_3x7vg"]
 [ext_resource type="Script" path="res://Scripts/cheat_menu.gd" id="36_s1wjk"]
 [ext_resource type="Texture2D" uid="uid://li0hd23rigyc" path="res://assets/images/CowMob1.png" id="37_jwrhm"]
@@ -440,11 +441,12 @@ patch_margin_bottom = 3
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/foodUI"]
 layout_mode = 0
-offset_left = -1.0
-offset_top = 7.0
-offset_right = 32.0
-offset_bottom = 39.0
-texture = ExtResource("8_wm16u")
+offset_left = -8.0
+offset_top = -3.0
+offset_right = 56.0
+offset_bottom = 61.0
+scale = Vector2(0.787909, 0.787909)
+texture = ExtResource("9_0sonb")
 
 [node name="foodCount" type="Label" parent="CanvasLayer/foodUI"]
 layout_mode = 0

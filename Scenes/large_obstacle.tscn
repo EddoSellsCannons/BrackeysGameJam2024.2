@@ -1,7 +1,29 @@
-[gd_scene load_steps=7 format=3 uid="uid://dr1p1xpl8nfsq"]
+[gd_scene load_steps=10 format=3 uid="uid://dr1p1xpl8nfsq"]
 
 [ext_resource type="Script" path="res://Scripts/small_projectile.gd" id="1_ru6po"]
-[ext_resource type="Texture2D" uid="uid://ddo1wntqce10" path="res://assets/images/watermelon.png" id="2_iph1b"]
+[ext_resource type="Texture2D" uid="uid://b3qdy16rjckux" path="res://assets/images/oceanObst-Sheet.png" id="2_7ahd5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1ynh"]
+atlas = ExtResource("2_7ahd5")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8j6tq"]
+atlas = ExtResource("2_7ahd5")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_or4ho"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1ynh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8j6tq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_egn1u"]
 radius = 51.0
@@ -56,10 +78,12 @@ linear_velocity = Vector2(-150, 0)
 script = ExtResource("1_ru6po")
 damage = 25.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1.90735e-06, 0)
-scale = Vector2(3.55664, 3.60352)
-texture = ExtResource("2_iph1b")
+scale = Vector2(2.54651, 2.58007)
+sprite_frames = SubResource("SpriteFrames_or4ho")
+autoplay = "default"
+frame_progress = 0.0577268
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

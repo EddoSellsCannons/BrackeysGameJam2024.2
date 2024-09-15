@@ -1,7 +1,29 @@
-[gd_scene load_steps=7 format=3 uid="uid://detbi67on35bp"]
+[gd_scene load_steps=10 format=3 uid="uid://detbi67on35bp"]
 
 [ext_resource type="Script" path="res://Scripts/boss_obstacle.gd" id="1_cieru"]
-[ext_resource type="Texture2D" uid="uid://igu0ri2qamf0" path="res://assets/images/iceStaffSprite3x1 - 2.png" id="2_rq3lb"]
+[ext_resource type="Texture2D" uid="uid://d10kljt7dpfha" path="res://assets/images/boss/bossObs-Sheet-Sheet.png" id="2_wj1qx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhw8e"]
+atlas = ExtResource("2_wj1qx")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6jwg"]
+atlas = ExtResource("2_wj1qx")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ryqfw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhw8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6jwg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_egn1u"]
 radius = 22.0
@@ -56,10 +78,12 @@ linear_velocity = Vector2(-150, 0)
 script = ExtResource("1_cieru")
 damage = 50.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1.90735e-06, -0.999993)
-scale = Vector2(3.55664, 2.375)
-texture = ExtResource("2_rq3lb")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-7, -0.999993)
+scale = Vector2(2.7496, 1.83608)
+sprite_frames = SubResource("SpriteFrames_ryqfw")
+autoplay = "default"
+frame_progress = 0.354736
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_egn1u")

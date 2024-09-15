@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dmhfrkgiqis8o" path="res://assets/images/healthBar.png" id="6_nvk4k"]
 [ext_resource type="Texture2D" uid="uid://c2bc4tt1gxlxy" path="res://assets/images/shieldProgress.png" id="7_ux1mb"]
 [ext_resource type="Texture2D" uid="uid://07gylv4m6pi7" path="res://assets/images/staminaBar.png" id="8_teq4q"]
-[ext_resource type="PackedScene" uid="uid://c2n7s7td1v0k4" path="res://Scenes/projectile_delete_bar.tscn" id="9_0y0gu"]
+[ext_resource type="PackedScene" path="res://Scenes/projectile_delete_bar.tscn" id="9_0y0gu"]
 [ext_resource type="Texture2D" uid="uid://cui2ldsv1btiq" path="res://assets/images/background/water background.png" id="9_eqys0"]
 [ext_resource type="Texture2D" uid="uid://cmb0e7ijy84w8" path="res://assets/images/boosterEffect.png" id="9_hs1ss"]
 [ext_resource type="Texture2D" uid="uid://c1bp8qrv37u78" path="res://assets/images/rainEffect.png" id="10_c51xi"]
