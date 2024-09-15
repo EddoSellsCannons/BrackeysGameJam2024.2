@@ -52,6 +52,7 @@ func gameOver():
 	player.visible = false
 	emRaft.activateRaft()
 	$CanvasLayer/emergencyRaft/emRaftTimer.start()
+	transition_manager.SFX.playGameOver()
 	await $CanvasLayer/emergencyRaft/emRaftTimer.timeout
 	transition_manager.villageStart(score, rescuedCount)
 	queue_free()

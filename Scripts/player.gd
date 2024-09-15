@@ -104,6 +104,7 @@ func takeDamage(damageTaken):
 		playerCurHealth -= damageTaken
 	regen_stopped.start()
 	animation_player.play("takeDamage")
+	gameManager.transition_manager.SFX.playTakeDamage()
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("projectile"):
@@ -126,6 +127,7 @@ func projectileDeleteActivate():
 	isDeletingProj = true
 	usedProjDeleter.emit()
 	animation_player.play("projDeleteActivate")
+	gameManager.transition_manager.SFX.playSafetyNet()
 	await animation_player.animation_finished
 	animation_player.play("RESET")
 	isDeletingProj = false
@@ -151,6 +153,7 @@ func regenShield(delta):
 
 func rescuedSurvivor():
 	gameManager.rescuedCount += 1
+	gameManager.transition_manager.SFX.playPickupSurvivor()
 	
 func updatePlayerSprite():
 	var curFrame = main_sprite.get_frame()
