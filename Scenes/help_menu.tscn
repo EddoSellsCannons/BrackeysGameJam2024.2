@@ -1,0 +1,960 @@
+[gd_scene load_steps=48 format=3 uid="uid://biy6bjtvu44kf"]
+
+[ext_resource type="Script" path="res://Scripts/help_menu.gd" id="1_wbh4s"]
+[ext_resource type="Texture2D" uid="uid://c8hvamduq5vnf" path="res://assets/images/TextBoxTexture.png" id="2_b1ry0"]
+[ext_resource type="Texture2D" uid="uid://ccl3qn5mcemir" path="res://assets/images/background/hurricane.png" id="3_m5egb"]
+[ext_resource type="Texture2D" uid="uid://cui2ldsv1btiq" path="res://assets/images/background/water background.png" id="4_07nd6"]
+[ext_resource type="Texture2D" uid="uid://bqqv1vorjofw4" path="res://assets/images/Boat/new/boatNew.png" id="5_5di1q"]
+[ext_resource type="Texture2D" uid="uid://8yp0mog88sjy" path="res://assets/images/background/forest.png" id="6_tg0c7"]
+[ext_resource type="Texture2D" uid="uid://dgody1wqwkoc6" path="res://assets/images/woodIcon.png" id="7_ck37u"]
+[ext_resource type="Texture2D" uid="uid://bovh5se2x4wem" path="res://assets/images/background/fishingDock.png" id="8_6vilu"]
+[ext_resource type="Texture2D" uid="uid://c4m8dywaj4cof" path="res://assets/images/Boat/repairmanAnim.png" id="9_skxke"]
+[ext_resource type="Texture2D" uid="uid://4srgh3gfrr0l" path="res://assets/images/shipyard.png" id="10_fhwai"]
+[ext_resource type="Texture2D" uid="uid://bt8ttxdkr066y" path="res://assets/images/volunteerIcon.png" id="11_7ll46"]
+[ext_resource type="Texture2D" uid="uid://civmp3wicacoo" path="res://assets/images/survivorTube.png" id="12_xtq4t"]
+[ext_resource type="Texture2D" uid="uid://fw76e4w4foly" path="res://assets/images/survivorInOcean.png" id="13_ac6nj"]
+[ext_resource type="Texture2D" uid="uid://dmhfrkgiqis8o" path="res://assets/images/healthBar.png" id="14_rakys"]
+[ext_resource type="Texture2D" uid="uid://cealaqip2jtj0" path="res://assets/images/healthBarTop.png" id="15_w4byg"]
+[ext_resource type="Texture2D" uid="uid://ciarwoaqqvub" path="res://assets/images/Boat/new/armorNew.png" id="16_k11r2"]
+[ext_resource type="Texture2D" uid="uid://c2bc4tt1gxlxy" path="res://assets/images/shieldProgress.png" id="17_67ghq"]
+[ext_resource type="Texture2D" uid="uid://07gylv4m6pi7" path="res://assets/images/staminaBar.png" id="18_lxy22"]
+[ext_resource type="Texture2D" uid="uid://c5qqhfo3lwlfl" path="res://assets/images/netTexture.png" id="19_3kpu5"]
+[ext_resource type="Texture2D" uid="uid://dhywdmlnrv8r8" path="res://assets/images/netIcon.png" id="20_sm77u"]
+[ext_resource type="Texture2D" uid="uid://b8cxws2qu6iql" path="res://assets/images/radialOver.png" id="21_7iwb2"]
+[ext_resource type="Texture2D" uid="uid://cxsl21stvd4de" path="res://assets/images/projectile/Plank.png" id="22_kppcs"]
+[ext_resource type="Texture2D" uid="uid://t4rexl11kho" path="res://assets/images/projectile/shark.png" id="23_hkf0c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5fol"]
+atlas = ExtResource("3_m5egb")
+region = Rect2(0, 0, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tumiv"]
+atlas = ExtResource("3_m5egb")
+region = Rect2(0, 128, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f163v"]
+atlas = ExtResource("3_m5egb")
+region = Rect2(0, 256, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfk2n"]
+atlas = ExtResource("3_m5egb")
+region = Rect2(0, 384, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0ya5"]
+atlas = ExtResource("3_m5egb")
+region = Rect2(0, 512, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83dny"]
+atlas = ExtResource("3_m5egb")
+region = Rect2(0, 640, 384, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88rbl"]
+atlas = ExtResource("3_m5egb")
+region = Rect2(0, 768, 384, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c13iv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5fol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tumiv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f163v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfk2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0ya5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83dny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88rbl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ll0g"]
+atlas = ExtResource("4_07nd6")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_056p8"]
+atlas = ExtResource("4_07nd6")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhnr0"]
+atlas = ExtResource("4_07nd6")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbi80"]
+atlas = ExtResource("4_07nd6")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjiop"]
+atlas = ExtResource("4_07nd6")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ms8k3"]
+atlas = ExtResource("4_07nd6")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehqbu"]
+atlas = ExtResource("4_07nd6")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7uc5"]
+atlas = ExtResource("4_07nd6")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56oas"]
+atlas = ExtResource("4_07nd6")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t0quj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ll0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_056p8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhnr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbi80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjiop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ms8k3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehqbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7uc5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56oas")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ly037"]
+atlas = ExtResource("5_5di1q")
+region = Rect2(0, 0, 64.5633, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jups"]
+atlas = ExtResource("9_skxke")
+region = Rect2(0, 0, 71.5152, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shail"]
+atlas = ExtResource("13_ac6nj")
+region = Rect2(0, 0, 65.6824, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3j34"]
+atlas = ExtResource("16_k11r2")
+region = Rect2(0, 0, 66.0116, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rc1gl"]
+atlas = ExtResource("13_ac6nj")
+region = Rect2(0, 0, 68.5791, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1irh"]
+atlas = ExtResource("23_hkf0c")
+region = Rect2(0, 0, 70.1512, 80)
+
+[node name="helpMenu" type="Control" groups=["Persist"]]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_wbh4s")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 648.0
+texture = ExtResource("2_b1ry0")
+patch_margin_left = 34
+patch_margin_top = 34
+patch_margin_right = 34
+patch_margin_bottom = 34
+
+[node name="Lore_Intro" type="Control" parent="NinePatchRect"]
+visible = false
+anchors_preset = 0
+offset_right = 65.0
+offset_bottom = 63.0
+
+[node name="hurricane" type="AnimatedSprite2D" parent="NinePatchRect/Lore_Intro"]
+position = Vector2(575.25, 318.875)
+scale = Vector2(2.82682, 4.4707)
+sprite_frames = SubResource("SpriteFrames_c13iv")
+autoplay = "default"
+
+[node name="background3" type="AnimatedSprite2D" parent="NinePatchRect/Lore_Intro"]
+texture_filter = 1
+position = Vector2(315, 738)
+scale = Vector2(4.875, 4.6875)
+sprite_frames = SubResource("SpriteFrames_t0quj")
+autoplay = "default"
+
+[node name="background4" type="AnimatedSprite2D" parent="NinePatchRect/Lore_Intro"]
+texture_filter = 1
+position = Vector2(928, 740)
+scale = Vector2(4.875, 4.6875)
+sprite_frames = SubResource("SpriteFrames_t0quj")
+autoplay = "default"
+
+[node name="controls" type="Label" parent="NinePatchRect/Lore_Intro"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 61.0
+offset_right = 1110.0
+offset_bottom = 434.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "A sudden hurricane has torn through the seas, destroying homes and stranding survivors. Rumors spread that \"it\"—a mysterious force—has stirred the storm. As the legendary sailor, you set sail on a dangerous rescue mission. Your goal: save the stranded and defeat \"it\" before more lives are lost. The storm won’t stop until you do."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="boat" type="TextureRect" parent="NinePatchRect/Lore_Intro"]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 408.0
+offset_right = 368.0
+offset_bottom = 657.0
+texture = SubResource("AtlasTexture_ly037")
+
+[node name="Controls" type="Control" parent="NinePatchRect"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="outpostText" type="Label" parent="NinePatchRect/Controls"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 38.0
+offset_right = 1107.0
+offset_bottom = 611.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Controls:
+"
+
+[node name="repairman" type="Control" parent="NinePatchRect/Controls"]
+anchors_preset = 0
+offset_left = -1.0
+offset_top = 326.0
+offset_right = 39.0
+offset_bottom = 366.0
+
+[node name="boat" type="TextureRect" parent="NinePatchRect/Controls/repairman"]
+layout_mode = 0
+offset_left = 406.0
+offset_top = -241.0
+offset_right = 689.0
+offset_bottom = 8.0
+texture = SubResource("AtlasTexture_ly037")
+
+[node name="controls" type="Label" parent="NinePatchRect/Controls/repairman"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = -51.0
+offset_right = 1107.0
+offset_bottom = 282.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Move your ship around the ocean with [WASD] or the arrow keys.
+
+Use [SHIFT] to activate your boosters.
+
+Use [SPACE] to deploy your \"Safety Net\"
+
+Use [ESC] to end the game and return to the outpost"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="outpostPage1" type="Control" parent="NinePatchRect"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="outpostText" type="Label" parent="NinePatchRect/outpostPage1"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 38.0
+offset_right = 1107.0
+offset_bottom = 611.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "The Emergency Outpost:
+"
+
+[node name="forest" type="Control" parent="NinePatchRect/outpostPage1"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="forest" type="TextureRect" parent="NinePatchRect/outpostPage1/forest"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 94.0
+offset_right = 429.0
+offset_bottom = 350.0
+texture = ExtResource("6_tg0c7")
+
+[node name="woodIcon" type="TextureRect" parent="NinePatchRect/outpostPage1/forest"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 137.0
+offset_right = 139.0
+offset_bottom = 221.0
+texture = ExtResource("7_ck37u")
+
+[node name="woodIcon2" type="TextureRect" parent="NinePatchRect/outpostPage1/forest"]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 119.0
+offset_right = 208.0
+offset_bottom = 198.0
+texture = ExtResource("7_ck37u")
+
+[node name="forestText" type="Label" parent="NinePatchRect/outpostPage1/forest"]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 94.0
+offset_right = 1101.0
+offset_bottom = 235.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "The Forest: Assign lumberjacks to the forest to have
+ them chop wood. Wood can be used to upgrade your
+boat, "
+
+[node name="fishing" type="Control" parent="NinePatchRect/outpostPage1"]
+anchors_preset = 0
+offset_left = -3.0
+offset_top = 153.0
+offset_right = 37.0
+offset_bottom = 193.0
+
+[node name="docks" type="TextureRect" parent="NinePatchRect/outpostPage1/fishing"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = -30.0
+offset_right = 432.0
+offset_bottom = 226.0
+texture = ExtResource("8_6vilu")
+
+[node name="fishIcon" type="TextureRect" parent="NinePatchRect/outpostPage1/fishing"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 165.0
+offset_right = 119.0
+offset_bottom = 229.0
+texture = ExtResource("7_ck37u")
+
+[node name="fishIcon2" type="TextureRect" parent="NinePatchRect/outpostPage1/fishing"]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 162.0
+offset_right = 188.0
+offset_bottom = 226.0
+texture = ExtResource("7_ck37u")
+
+[node name="fishingText" type="Label" parent="NinePatchRect/outpostPage1/fishing"]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 94.0
+offset_right = 1101.0
+offset_bottom = 235.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "The Docks: Assign Fisherman to the docks to have
+them fish for food. Food can be used to assign
+volunteers to different tasks."
+
+[node name="repairman" type="Control" parent="NinePatchRect/outpostPage1"]
+anchors_preset = 0
+offset_left = -1.0
+offset_top = 326.0
+offset_right = 39.0
+offset_bottom = 366.0
+
+[node name="boat" type="TextureRect" parent="NinePatchRect/outpostPage1/repairman"]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 80.0
+offset_right = 260.0
+offset_bottom = 266.0
+texture = SubResource("AtlasTexture_ly037")
+
+[node name="repairSprite" type="TextureRect" parent="NinePatchRect/outpostPage1/repairman"]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 121.0
+offset_right = 249.0
+offset_bottom = 263.0
+texture = SubResource("AtlasTexture_5jups")
+
+[node name="repairmanIcon2" type="TextureRect" parent="NinePatchRect/outpostPage1/repairman"]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 164.0
+offset_right = 117.0
+offset_bottom = 228.0
+texture = ExtResource("7_ck37u")
+
+[node name="repairText" type="Label" parent="NinePatchRect/outpostPage1/repairman"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 85.0
+offset_right = 1103.0
+offset_bottom = 274.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Your Ship: Assign very efficient repairman to work on
+repairing the boat while it is out at sea. These
+repairman are top notch and can repair even while
+the boat is moving!"
+
+[node name="outpostPage2" type="Control" parent="NinePatchRect"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="outpostText" type="Label" parent="NinePatchRect/outpostPage2"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 38.0
+offset_right = 1107.0
+offset_bottom = 611.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "The Emergency Outpost:
+"
+
+[node name="shipyard" type="Control" parent="NinePatchRect/outpostPage2"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="shipyard" type="TextureRect" parent="NinePatchRect/outpostPage2/shipyard"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 94.0
+offset_right = 269.0
+offset_bottom = 240.0
+texture = ExtResource("10_fhwai")
+
+[node name="shipyardText" type="Label" parent="NinePatchRect/outpostPage2/shipyard"]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 105.0
+offset_right = 1101.0
+offset_bottom = 246.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "The Shipyard: The shipyard can upgrade your boat
+with wood to make your missions more successful."
+
+[node name="volunteers" type="Control" parent="NinePatchRect/outpostPage2"]
+anchors_preset = 0
+offset_left = -1.0
+offset_top = 172.0
+offset_right = 39.0
+offset_bottom = 212.0
+
+[node name="volunteer" type="TextureRect" parent="NinePatchRect/outpostPage2/volunteers"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 82.0
+offset_right = 289.0
+offset_bottom = 268.0
+texture = ExtResource("11_7ll46")
+
+[node name="survivorIcon" type="TextureRect" parent="NinePatchRect/outpostPage2/volunteers"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 168.0
+offset_right = 129.0
+offset_bottom = 251.0
+texture = ExtResource("12_xtq4t")
+
+[node name="survivorIcon2" type="TextureRect" parent="NinePatchRect/outpostPage2/volunteers/survivorIcon"]
+layout_mode = 0
+offset_left = -18.0
+offset_top = -23.0
+offset_right = 104.0
+offset_bottom = 96.0
+texture = SubResource("AtlasTexture_shail")
+
+[node name="volunteerText" type="Label" parent="NinePatchRect/outpostPage2/volunteers"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 92.0
+offset_right = 1103.0
+offset_bottom = 281.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Volunteers: Rescued survivors become volunteers
+to help out. You can use food to assign them to
+different roles."
+
+[node name="volunteers2" type="Control" parent="NinePatchRect/outpostPage2"]
+anchors_preset = 0
+offset_top = 366.0
+offset_right = 40.0
+offset_bottom = 406.0
+
+[node name="volunteerText" type="Label" parent="NinePatchRect/outpostPage2/volunteers2"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 78.0
+offset_right = 1061.0
+offset_bottom = 247.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "As you go further out, your workers will earn more resources. "
+autowrap_mode = 2
+
+[node name="oceanPage1" type="Control" parent="NinePatchRect"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="oceanText" type="Label" parent="NinePatchRect/oceanPage1"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 38.0
+offset_right = 1107.0
+offset_bottom = 611.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "The Rescue Mission
+"
+
+[node name="boat" type="Control" parent="NinePatchRect/oceanPage1"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 38.0
+offset_bottom = 41.0
+
+[node name="boat" type="TextureRect" parent="NinePatchRect/oceanPage1/boat"]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 80.0
+offset_right = 260.0
+offset_bottom = 266.0
+texture = SubResource("AtlasTexture_ly037")
+
+[node name="repairText" type="Label" parent="NinePatchRect/oceanPage1/boat"]
+layout_mode = 0
+offset_left = 261.0
+offset_top = 85.0
+offset_right = 1084.0
+offset_bottom = 291.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Your ship: Out at sea, your ship can only survive a number of hits. This is represented by your health bar. Your health bar will not regenerate, so watch out!"
+autowrap_mode = 3
+
+[node name="healthBar" type="TextureRect" parent="NinePatchRect/oceanPage1/boat"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 225.0
+offset_right = 252.0
+offset_bottom = 289.0
+texture = ExtResource("14_rakys")
+
+[node name="healtBarTop" type="TextureRect" parent="NinePatchRect/oceanPage1/boat/healthBar"]
+layout_mode = 0
+offset_right = 211.0
+offset_bottom = 65.0
+texture = ExtResource("15_w4byg")
+
+[node name="boat2" type="Control" parent="NinePatchRect/oceanPage1"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = 210.0
+offset_right = 39.0
+offset_bottom = 250.0
+
+[node name="boat" type="TextureRect" parent="NinePatchRect/oceanPage1/boat2"]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 80.0
+offset_right = 260.0
+offset_bottom = 266.0
+texture = SubResource("AtlasTexture_ly037")
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/oceanPage1/boat2/boat"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 15.0
+offset_right = 211.0
+offset_bottom = 182.0
+texture = SubResource("AtlasTexture_l3j34")
+
+[node name="armortext" type="Label" parent="NinePatchRect/oceanPage1/boat2"]
+layout_mode = 0
+offset_left = 265.0
+offset_top = 95.0
+offset_right = 1088.0
+offset_bottom = 301.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Your ship will be reinforced with armor by your repairmen. This will regenerate once the workers can see that it is safe to work. You will regenerate armor if you have not been hit in a while. This is represented by the armor plating on the health bar."
+autowrap_mode = 3
+
+[node name="healthBar" type="TextureRect" parent="NinePatchRect/oceanPage1/boat2"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 225.0
+offset_right = 252.0
+offset_bottom = 289.0
+texture = ExtResource("14_rakys")
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/oceanPage1/boat2/healthBar"]
+layout_mode = 0
+offset_right = 211.0
+offset_bottom = 63.0
+texture = ExtResource("17_67ghq")
+
+[node name="healtBarTop" type="TextureRect" parent="NinePatchRect/oceanPage1/boat2/healthBar"]
+layout_mode = 0
+offset_right = 211.0
+offset_bottom = 65.0
+texture = ExtResource("15_w4byg")
+
+[node name="oceanPage2" type="Control" parent="NinePatchRect"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="oceanText" type="Label" parent="NinePatchRect/oceanPage2"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 38.0
+offset_right = 1107.0
+offset_bottom = 611.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "The Rescue Mission
+"
+
+[node name="boat" type="Control" parent="NinePatchRect/oceanPage2"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 38.0
+offset_bottom = 41.0
+
+[node name="boat" type="TextureRect" parent="NinePatchRect/oceanPage2/boat"]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 80.0
+offset_right = 260.0
+offset_bottom = 266.0
+texture = SubResource("AtlasTexture_ly037")
+
+[node name="boosterText" type="Label" parent="NinePatchRect/oceanPage2/boat"]
+layout_mode = 0
+offset_left = 261.0
+offset_top = 74.0
+offset_right = 1084.0
+offset_bottom = 359.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Your ship is equipped with boosters that can temporarily increase your speed. You can see how much boosters are left represented by the booster bar. Once you deplete all of your booster, it will be overheated and you will have to wait for it to fully regenerate before you can use it again."
+autowrap_mode = 3
+
+[node name="staminaBar" type="TextureRect" parent="NinePatchRect/oceanPage2/boat"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 225.0
+offset_right = 252.0
+offset_bottom = 289.0
+texture = ExtResource("18_lxy22")
+
+[node name="healtBarTop" type="TextureRect" parent="NinePatchRect/oceanPage2/boat/staminaBar"]
+layout_mode = 0
+offset_right = 211.0
+offset_bottom = 65.0
+texture = ExtResource("15_w4byg")
+
+[node name="boat2" type="Control" parent="NinePatchRect/oceanPage2"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -4.0
+offset_top = 276.0
+offset_right = 36.0
+offset_bottom = 316.0
+
+[node name="net" type="TextureRect" parent="NinePatchRect/oceanPage2/boat2"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 64.0
+offset_right = 251.0
+offset_bottom = 250.0
+texture = ExtResource("19_3kpu5")
+
+[node name="netText" type="Label" parent="NinePatchRect/oceanPage2/boat2"]
+layout_mode = 0
+offset_left = 257.0
+offset_top = 118.0
+offset_right = 1060.0
+offset_bottom = 324.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "The \"Safety Net\": You can deploy a safety net in a pinch. To remove all falling debris and obstacles in the water nearby. "
+autowrap_mode = 3
+
+[node name="netBar" type="TextureRect" parent="NinePatchRect/oceanPage2/boat2"]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 236.0
+offset_right = 214.0
+offset_bottom = 331.0
+texture = ExtResource("20_sm77u")
+
+[node name="healtBarTop" type="TextureRect" parent="NinePatchRect/oceanPage2/boat2/netBar"]
+layout_mode = 0
+offset_right = 110.0
+offset_bottom = 100.0
+texture = ExtResource("21_7iwb2")
+
+[node name="oceanPage3" type="Control" parent="NinePatchRect"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="oceanText" type="Label" parent="NinePatchRect/oceanPage3"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 38.0
+offset_right = 1107.0
+offset_bottom = 611.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "The Rescue Mission
+"
+
+[node name="progressBar" type="Control" parent="NinePatchRect/oceanPage3"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 38.0
+offset_bottom = 41.0
+
+[node name="progressBarText" type="Label" parent="NinePatchRect/oceanPage3/progressBar"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 117.0
+offset_right = 1094.0
+offset_bottom = 302.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "The progress bar will tell you how close you are to \"it\". As you get closer to \"it\", the hurricane's effects will be stronger, releasing more debris and obstacles. "
+autowrap_mode = 3
+
+[node name="progressBar" type="TextureRect" parent="NinePatchRect/oceanPage3/progressBar"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 77.0
+offset_right = 719.0
+offset_bottom = 109.0
+texture = ExtResource("14_rakys")
+
+[node name="healtBarTop" type="TextureRect" parent="NinePatchRect/oceanPage3/progressBar/progressBar"]
+layout_mode = 0
+offset_right = 1056.0
+offset_bottom = 32.0
+texture = ExtResource("15_w4byg")
+
+[node name="boat" type="TextureRect" parent="NinePatchRect/oceanPage3/progressBar/progressBar"]
+layout_mode = 0
+offset_left = 641.0
+offset_top = -16.0
+offset_right = 705.0
+offset_bottom = 48.0
+texture = SubResource("AtlasTexture_ly037")
+
+[node name="boat" type="Control" parent="NinePatchRect/oceanPage3"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 30.0
+offset_top = 204.0
+offset_right = 70.0
+offset_bottom = 244.0
+
+[node name="boat" type="TextureRect" parent="NinePatchRect/oceanPage3/boat"]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 80.0
+offset_right = 260.0
+offset_bottom = 266.0
+texture = SubResource("AtlasTexture_ly037")
+
+[node name="boosterText" type="Label" parent="NinePatchRect/oceanPage3/boat"]
+layout_mode = 0
+offset_left = 263.0
+offset_top = 129.0
+offset_right = 943.0
+offset_bottom = 370.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Survivors are waiting to be rescued in the ocean. Pick them up with your boat to help them and they will join you as a volunteer."
+autowrap_mode = 3
+
+[node name="staminaBar" type="TextureRect" parent="NinePatchRect/oceanPage3/boat"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 225.0
+offset_right = 289.0
+offset_bottom = 293.0
+scale = Vector2(0.671532, 1.88596)
+texture = ExtResource("12_xtq4t")
+
+[node name="healtBarTop" type="TextureRect" parent="NinePatchRect/oceanPage3/boat/staminaBar"]
+layout_mode = 0
+offset_right = 211.0
+offset_bottom = 65.0
+texture = SubResource("AtlasTexture_rc1gl")
+
+[node name="oceanPage4" type="Control" parent="NinePatchRect"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="oceanText" type="Label" parent="NinePatchRect/oceanPage4"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 38.0
+offset_right = 1107.0
+offset_bottom = 611.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "The Rescue Mission
+"
+
+[node name="debris" type="Control" parent="NinePatchRect/oceanPage4"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 12.0
+offset_right = 40.0
+offset_bottom = 52.0
+
+[node name="woodProj" type="TextureRect" parent="NinePatchRect/oceanPage4/debris"]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 80.0
+offset_right = 148.0
+offset_bottom = 168.0
+texture = ExtResource("22_kppcs")
+
+[node name="shark" type="TextureRect" parent="NinePatchRect/oceanPage4/debris"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 75.0
+offset_right = 403.0
+offset_bottom = 194.0
+scale = Vector2(0.671532, 1.88596)
+texture = SubResource("AtlasTexture_w1irh")
+
+[node name="boosterText" type="Label" parent="NinePatchRect/oceanPage4/debris"]
+layout_mode = 0
+offset_left = 262.0
+offset_top = 87.0
+offset_right = 1102.0
+offset_bottom = 328.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Debris is falling from the sky due to the hurricane.
+Obstacles drift in the ocean. 
+Avoid these or use your 'Safety Net' to remove them so you can navigate your way through the hurricane.
+Nothing in the ocean is safe during the storm!"
+autowrap_mode = 3
+
+[node name="boat2" type="Control" parent="NinePatchRect/oceanPage4"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 14.0
+offset_top = 267.0
+offset_right = 54.0
+offset_bottom = 307.0
+
+[node name="emergencyRaft" type="TextureRect" parent="NinePatchRect/oceanPage4/boat2"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 93.0
+offset_right = 346.0
+offset_bottom = 212.0
+scale = Vector2(0.671532, 1.88596)
+texture = SubResource("AtlasTexture_w1irh")
+
+[node name="boosterText" type="Label" parent="NinePatchRect/oceanPage4/boat2"]
+layout_mode = 0
+offset_left = 251.0
+offset_top = 100.0
+offset_right = 1091.0
+offset_bottom = 341.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Once your boat is destroyed, you will deploy an emergency raft to take you and all the survivors you have rescued back to the outpost. Your ship can be rebuilt by master shipwrights waiting at the outpost."
+autowrap_mode = 3
+
+[node name="closeHelpMenu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1086.0
+offset_top = 9.0
+offset_right = 1142.0
+offset_bottom = 63.0
+text = "X"
+
+[node name="nextPage" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1054.0
+offset_top = 555.0
+offset_right = 1118.0
+offset_bottom = 615.0
+text = ">"
+
+[node name="prevPage" type="Button" parent="."]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 562.0
+offset_right = 89.0
+offset_bottom = 615.0
+text = "<"
+
+[connection signal="button_down" from="closeHelpMenu" to="." method="_on_close_help_menu_button_down"]
+[connection signal="button_down" from="nextPage" to="." method="_on_next_page_button_down"]
+[connection signal="button_down" from="prevPage" to="." method="_on_prev_page_button_down"]

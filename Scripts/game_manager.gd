@@ -12,9 +12,7 @@ extends Node2D
 
 @onready var transition_manager = $".."
 
-
-
-var score: float = 900
+var score: float
 var rescuedCount: int = 0
 
 const SCORE_FOR_BOSS:float = 1000

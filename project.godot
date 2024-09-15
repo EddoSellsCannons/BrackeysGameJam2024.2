@@ -29,6 +29,7 @@ version_control/autoload_on_startup=true
 projectile=""
 survivor=""
 playerProj=""
+Persist="Nodes to save"
 
 [input]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://3tg3fvdml66v"]
+[gd_scene load_steps=39 format=3 uid="uid://3tg3fvdml66v"]
 
 [ext_resource type="Script" path="res://Scripts/village_manager.gd" id="1_8453s"]
 [ext_resource type="Texture2D" uid="uid://b6ctmndytodw5" path="res://assets/images/background/environment.png" id="2_ye1tv"]
@@ -6,19 +6,19 @@
 [ext_resource type="Texture2D" uid="uid://bovh5se2x4wem" path="res://assets/images/background/fishingDock.png" id="4_erpi2"]
 [ext_resource type="Texture2D" uid="uid://4srgh3gfrr0l" path="res://assets/images/shipyard.png" id="5_31vu7"]
 [ext_resource type="Texture2D" uid="uid://bqqv1vorjofw4" path="res://assets/images/Boat/new/boatNew.png" id="5_gspg7"]
+[ext_resource type="Texture2D" uid="uid://jao7raxh5p8w" path="res://assets/images/glowEffect.png" id="6_x86gk"]
 [ext_resource type="Texture2D" uid="uid://brnpibv3xflon" path="res://assets/images/ninepatchWooden.png" id="7_nrjl2"]
 [ext_resource type="Texture2D" uid="uid://dgody1wqwkoc6" path="res://assets/images/woodIcon.png" id="8_ss86h"]
 [ext_resource type="Texture2D" uid="uid://ddo1wntqce10" path="res://assets/images/watermelon.png" id="8_wm16u"]
 [ext_resource type="Texture2D" uid="uid://c8hvamduq5vnf" path="res://assets/images/TextBoxTexture.png" id="9_g40b4"]
-[ext_resource type="Script" path="res://Scripts/shipyard_menu.gd" id="9_tmpcr"]
 [ext_resource type="Texture2D" uid="uid://bt8ttxdkr066y" path="res://assets/images/volunteerIcon.png" id="10_4uajt"]
 [ext_resource type="Texture2D" uid="uid://c1bp8qrv37u78" path="res://assets/images/rainEffect.png" id="11_5xih2"]
-[ext_resource type="Texture2D" uid="uid://dlucc1i517aap" path="res://assets/images/UI_Icons/hullUpgradeIcon.png" id="11_6ui0l"]
-[ext_resource type="Texture2D" uid="uid://b5picuxjon0pt" path="res://assets/images/UI_Icons/shieldUpgradeIcon.png" id="12_wmped"]
-[ext_resource type="Texture2D" uid="uid://b8wbhctw23c0p" path="res://assets/images/UI_Icons/boosterUpgradeIcon.png" id="13_hktes"]
-[ext_resource type="Texture2D" uid="uid://co1pvwo4nwaye" path="res://assets/images/UI_Icons/movespeedUpgrade.png" id="14_xsiyv"]
-[ext_resource type="Texture2D" uid="uid://c8vpsf4p7h7ab" path="res://assets/images/UI_Icons/projDeleterUpgradeIcon.png" id="15_owwt0"]
+[ext_resource type="PackedScene" uid="uid://biy6bjtvu44kf" path="res://Scenes/help_menu.tscn" id="13_12tmy"]
+[ext_resource type="PackedScene" uid="uid://c3sfij5h72rdn" path="res://Scenes/shipyard_menu.tscn" id="14_q8gvt"]
 [ext_resource type="AudioStream" uid="uid://bv8y2m5yvngvh" path="res://assets/music/Tranquil_Tempest (1).mp3" id="17_3x7vg"]
+[ext_resource type="Script" path="res://Scripts/cheat_menu.gd" id="36_s1wjk"]
+[ext_resource type="Texture2D" uid="uid://li0hd23rigyc" path="res://assets/images/CowMob1.png" id="37_jwrhm"]
+[ext_resource type="Script" path="res://Scripts/earn_report.gd" id="38_5bnfc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2i21o"]
 atlas = ExtResource("2_ye1tv")
@@ -135,17 +135,79 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="villageManager" type="Node2D"]
+[sub_resource type="Animation" id="Animation_hwi8e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/helpButton/glow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/helpButton/glow:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_162n1"]
+resource_name = "glow"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/helpButton/glow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(5, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/helpButton/glow:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6fpde"]
+_data = {
+"RESET": SubResource("Animation_hwi8e"),
+"glow": SubResource("Animation_162n1")
+}
+
+[node name="villageManager" type="Node2D" groups=["Persist"]]
 texture_filter = 1
 script = ExtResource("1_8453s")
 
-[node name="TODO_ background" type="Control" parent="."]
+[node name="background" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="water" type="AnimatedSprite2D" parent="TODO_ background"]
+[node name="water" type="AnimatedSprite2D" parent="background"]
 z_index = -1
 position = Vector2(577, 315)
 scale = Vector2(3, 3)
@@ -254,7 +316,6 @@ theme_override_font_sizes/font_size = 32
 text = "
 Shipyard
 "
-flat = true
 
 [node name="repairman" type="Control" parent="."]
 layout_mode = 3
@@ -294,7 +355,7 @@ offset_bottom = 70.0
 
 [node name="boat" type="AnimatedSprite2D" parent="boat"]
 z_index = -1
-position = Vector2(290, 248)
+position = Vector2(274, 255)
 scale = Vector2(8.58161, 5.95117)
 sprite_frames = SubResource("SpriteFrames_wm63m")
 
@@ -449,275 +510,178 @@ offset_right = 1144.0
 offset_bottom = 89.0
 text = "How to play"
 
-[node name="helpMenu" type="Control" parent="CanvasLayer"]
+[node name="glow" type="Sprite2D" parent="CanvasLayer/helpButton"]
+visible = false
+z_index = -1
+position = Vector2(69, 40)
+texture = ExtResource("6_x86gk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/helpButton"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_6fpde")
+}
+
+[node name="helpMenu" parent="CanvasLayer" instance=ExtResource("13_12tmy")]
+visible = false
+
+[node name="shipyardMenu" parent="CanvasLayer" instance=ExtResource("14_q8gvt")]
+
+[node name="cheats" type="Button" parent="CanvasLayer"]
+offset_right = 45.0
+offset_bottom = 41.0
+flat = true
+
+[node name="cheatMenu" type="Control" parent="CanvasLayer/cheats"]
+texture_filter = 1
+anchors_preset = 0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 43.0
+offset_bottom = 42.0
+script = ExtResource("36_s1wjk")
+
+[node name="woodButton" type="Button" parent="CanvasLayer/cheats/cheatMenu"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/cheats/cheatMenu/woodButton"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_ss86h")
+
+[node name="foodButton" type="Button" parent="CanvasLayer/cheats/cheatMenu"]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 32.0
+offset_bottom = 62.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/cheats/cheatMenu/foodButton"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 40.0
+offset_bottom = 39.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_ss86h")
+
+[node name="volunteerButton" type="Button" parent="CanvasLayer/cheats/cheatMenu"]
+layout_mode = 0
+offset_top = 62.0
+offset_right = 31.0
+offset_bottom = 94.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/cheats/cheatMenu/volunteerButton"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_4uajt")
+
+[node name="bossUnlock" type="Button" parent="CanvasLayer/cheats/cheatMenu"]
+layout_mode = 0
+offset_top = 94.0
+offset_right = 31.0
+offset_bottom = 126.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/cheats/cheatMenu/bossUnlock"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("37_jwrhm")
+
+[node name="earnReport" type="Control" parent="CanvasLayer"]
 visible = false
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("38_5bnfc")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/helpMenu"]
-visible = false
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/earnReport"]
 layout_mode = 0
-offset_right = 1150.0
-offset_bottom = 648.0
+offset_right = 1153.0
+offset_bottom = 646.0
 texture = ExtResource("9_g40b4")
 patch_margin_left = 34
 patch_margin_top = 34
 patch_margin_right = 34
 patch_margin_bottom = 34
 
-[node name="emergencyOutpostTxt" type="Label" parent="CanvasLayer/helpMenu/NinePatchRect"]
-visible = false
+[node name="Label" type="Label" parent="CanvasLayer/earnReport/NinePatchRect"]
 layout_mode = 0
-offset_left = 50.0
-offset_top = 38.0
-offset_right = 1107.0
-offset_bottom = 611.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 304.0
+offset_bottom = 63.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
-text = "The Emergency Outpost:
-You can assign volunteers to chop wood or fish for food. Each 
-assigned worker will generate resources as you are away on
-your boat rescuing more survivors.
+text = "While you were away, you earned:"
 
-Assign repairmen to speed up the reinforcements to your hull.
-
-The Shipyard allows you to upgrade your boat in exchange for
-wood.
-
-The longer (and further) you go, the more resources your workers
-will gather."
-
-[node name="oceanText" type="Label" parent="CanvasLayer/helpMenu/NinePatchRect"]
-visible = false
+[node name="wood" type="TextureRect" parent="CanvasLayer/earnReport/NinePatchRect"]
 layout_mode = 0
-offset_left = 50.0
-offset_top = 38.0
-offset_right = 1107.0
-offset_bottom = 611.0
+offset_left = 72.0
+offset_top = 112.0
+offset_right = 255.0
+offset_bottom = 266.0
+texture = ExtResource("8_ss86h")
+
+[node name="woodLabel" type="Label" parent="CanvasLayer/earnReport/NinePatchRect/wood"]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 13.0
+offset_right = 1006.0
+offset_bottom = 146.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
-text = "The Rescue Mission:
-Go on a rescue mission against the Hurricane to bring back
-survivors.
+text = "+00000 Wood"
 
-Your reinforced hull can be repaired by very efficient repairmen
-while you are out at sea, but your boat cannot, so be careful.
-
-Use your boosters to zip around obstacles and falling debris.
-
-Deploy your Safety Net to remove hazardous materials."
-
-[node name="oceanText2" type="Label" parent="CanvasLayer/helpMenu/NinePatchRect"]
-visible = false
+[node name="food" type="TextureRect" parent="CanvasLayer/earnReport/NinePatchRect"]
 layout_mode = 0
-offset_left = 50.0
-offset_top = 38.0
-offset_right = 1107.0
-offset_bottom = 611.0
+offset_left = 72.0
+offset_top = 267.0
+offset_right = 255.0
+offset_bottom = 421.0
+texture = ExtResource("8_wm16u")
+
+[node name="foodLabel" type="Label" parent="CanvasLayer/earnReport/NinePatchRect/food"]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 13.0
+offset_right = 1006.0
+offset_bottom = 146.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
-text = "The progress bar at the top shows you how close you are to \"it\".
+text = "+00000 Food"
 
-Reports say that \"it\" is the cause of the hurricane, and only you
-can stop them.
-
-"
-
-[node name="shipyardMenu" type="Control" parent="CanvasLayer"]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_left = 33.0
-offset_top = -6.0
-offset_right = 73.0
-offset_bottom = 34.0
-script = ExtResource("9_tmpcr")
-
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/shipyardMenu"]
-texture_filter = 1
+[node name="wood3" type="TextureRect" parent="CanvasLayer/earnReport/NinePatchRect"]
 layout_mode = 0
-offset_right = 1078.0
-offset_bottom = 607.0
-texture = ExtResource("9_g40b4")
-patch_margin_left = 34
-patch_margin_top = 34
-patch_margin_right = 34
-patch_margin_bottom = 34
+offset_left = 74.0
+offset_top = 433.0
+offset_right = 257.0
+offset_bottom = 587.0
+texture = ExtResource("10_4uajt")
 
-[node name="MaxHP" type="Control" parent="CanvasLayer/shipyardMenu/NinePatchRect"]
-anchors_preset = 0
-offset_left = 58.0
-offset_top = 41.0
-offset_right = 164.0
-offset_bottom = 81.0
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/shipyardMenu/NinePatchRect/MaxHP"]
-layout_mode = 2
-offset_left = 4.0
-offset_top = -5.0
-offset_right = 113.0
-offset_bottom = 103.0
-texture = ExtResource("11_6ui0l")
-
-[node name="Label" type="Label" parent="CanvasLayer/shipyardMenu/NinePatchRect/MaxHP"]
-layout_mode = 2
-offset_left = 115.0
-offset_top = 4.0
-offset_right = 682.0
-offset_bottom = 110.0
-theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 32
-text = "Hull: HP"
-
-[node name="buyMaxHPUpgrade" type="Button" parent="CanvasLayer/shipyardMenu/NinePatchRect/MaxHP"]
-layout_mode = 2
-offset_left = 788.0
-offset_top = -4.0
-offset_right = 951.0
-offset_bottom = 111.0
-text = "900"
-
-[node name="MaxShield" type="Control" parent="CanvasLayer/shipyardMenu/NinePatchRect"]
-anchors_preset = 0
-offset_left = 59.0
-offset_top = 143.0
-offset_right = 165.0
-offset_bottom = 183.0
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/shipyardMenu/NinePatchRect/MaxShield"]
-layout_mode = 2
-offset_left = 4.0
-offset_top = -5.0
-offset_right = 113.0
-offset_bottom = 103.0
-texture = ExtResource("12_wmped")
-
-[node name="Label" type="Label" parent="CanvasLayer/shipyardMenu/NinePatchRect/MaxShield"]
-layout_mode = 2
-offset_left = 115.0
-offset_top = 4.0
-offset_right = 682.0
-offset_bottom = 110.0
-theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 32
-text = "Hull armor: Shield"
-
-[node name="buyMaxShieldUpgrade" type="Button" parent="CanvasLayer/shipyardMenu/NinePatchRect/MaxShield"]
-layout_mode = 2
-offset_left = 788.0
-offset_top = -4.0
-offset_right = 951.0
-offset_bottom = 111.0
-text = "900"
-
-[node name="stamina" type="Control" parent="CanvasLayer/shipyardMenu/NinePatchRect"]
-anchors_preset = 0
-offset_left = 59.0
-offset_top = 244.0
-offset_right = 165.0
-offset_bottom = 284.0
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/shipyardMenu/NinePatchRect/stamina"]
-layout_mode = 2
-offset_left = 4.0
-offset_top = -5.0
-offset_right = 113.0
-offset_bottom = 103.0
-texture = ExtResource("13_hktes")
-
-[node name="Label" type="Label" parent="CanvasLayer/shipyardMenu/NinePatchRect/stamina"]
-layout_mode = 2
-offset_left = 115.0
-offset_top = 4.0
-offset_right = 682.0
-offset_bottom = 110.0
-theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 32
-text = "Boosters: Stamina"
-
-[node name="buyStaminaUpgrade" type="Button" parent="CanvasLayer/shipyardMenu/NinePatchRect/stamina"]
-layout_mode = 2
-offset_left = 788.0
-offset_top = -4.0
-offset_right = 951.0
-offset_bottom = 111.0
-text = "900"
-
-[node name="speed" type="Control" parent="CanvasLayer/shipyardMenu/NinePatchRect"]
-anchors_preset = 0
-offset_left = 59.0
-offset_top = 348.0
-offset_right = 165.0
-offset_bottom = 388.0
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/shipyardMenu/NinePatchRect/speed"]
-layout_mode = 2
-offset_left = 4.0
-offset_top = -5.0
-offset_right = 113.0
-offset_bottom = 103.0
-texture = ExtResource("14_xsiyv")
-
-[node name="Label" type="Label" parent="CanvasLayer/shipyardMenu/NinePatchRect/speed"]
-layout_mode = 2
-offset_left = 115.0
-offset_top = 4.0
-offset_right = 682.0
-offset_bottom = 110.0
-theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 32
-text = "Propeller: moveSpeed"
-
-[node name="buySpeedUpgrade" type="Button" parent="CanvasLayer/shipyardMenu/NinePatchRect/speed"]
-layout_mode = 2
-offset_left = 788.0
-offset_top = -4.0
-offset_right = 951.0
-offset_bottom = 111.0
-text = "900"
-
-[node name="projDeleter" type="Control" parent="CanvasLayer/shipyardMenu/NinePatchRect"]
-anchors_preset = 0
-offset_left = 59.0
-offset_top = 453.0
-offset_right = 165.0
-offset_bottom = 493.0
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/shipyardMenu/NinePatchRect/projDeleter"]
-layout_mode = 2
-offset_left = 4.0
-offset_top = -5.0
-offset_right = 113.0
-offset_bottom = 103.0
-texture = ExtResource("15_owwt0")
-
-[node name="Label" type="Label" parent="CanvasLayer/shipyardMenu/NinePatchRect/projDeleter"]
-layout_mode = 2
-offset_left = 115.0
-offset_top = 4.0
-offset_right = 682.0
-offset_bottom = 110.0
-theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 32
-text = "Safety Net: +1"
-
-[node name="buyprojDeleterUpgrade" type="Button" parent="CanvasLayer/shipyardMenu/NinePatchRect/projDeleter"]
-layout_mode = 2
-offset_left = 788.0
-offset_top = -4.0
-offset_right = 951.0
-offset_bottom = 111.0
-text = "900"
-
-[node name="closeMenu" type="Button" parent="CanvasLayer/shipyardMenu"]
+[node name="volunteerLabel" type="Label" parent="CanvasLayer/earnReport/NinePatchRect/wood3"]
 layout_mode = 0
-offset_left = 996.0
-offset_top = 21.0
-offset_right = 1063.0
-offset_bottom = 86.0
+offset_left = 195.0
+offset_top = 13.0
+offset_right = 1006.0
+offset_bottom = 146.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "+00000 Volunteers rescued. "
+
+[node name="closeButton" type="Button" parent="CanvasLayer/earnReport"]
+layout_mode = 0
+offset_left = 1069.0
+offset_top = 34.0
+offset_right = 1119.0
+offset_bottom = 82.0
 text = "X"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -731,9 +695,10 @@ autoplay = true
 [connection signal="button_down" from="repairman/addRepairman" to="." method="_on_add_repairman_button_down"]
 [connection signal="button_down" from="boat/skipToBoss" to="." method="_on_skip_to_boss_button_down"]
 [connection signal="button_down" from="boat/StartGame" to="." method="_on_start_game_button_down"]
-[connection signal="button_down" from="CanvasLayer/shipyardMenu/NinePatchRect/MaxHP/buyMaxHPUpgrade" to="CanvasLayer/shipyardMenu" method="_on_buy_max_hp_upgrade_button_down"]
-[connection signal="button_down" from="CanvasLayer/shipyardMenu/NinePatchRect/MaxShield/buyMaxShieldUpgrade" to="CanvasLayer/shipyardMenu" method="_on_buy_max_shield_upgrade_button_down"]
-[connection signal="button_down" from="CanvasLayer/shipyardMenu/NinePatchRect/stamina/buyStaminaUpgrade" to="CanvasLayer/shipyardMenu" method="_on_buy_stamina_upgrade_button_down"]
-[connection signal="button_down" from="CanvasLayer/shipyardMenu/NinePatchRect/speed/buySpeedUpgrade" to="CanvasLayer/shipyardMenu" method="_on_buy_speed_upgrade_button_down"]
-[connection signal="button_down" from="CanvasLayer/shipyardMenu/NinePatchRect/projDeleter/buyprojDeleterUpgrade" to="CanvasLayer/shipyardMenu" method="_on_buyproj_deleter_upgrade_button_down"]
-[connection signal="button_down" from="CanvasLayer/shipyardMenu/closeMenu" to="." method="_on_close_menu_button_down"]
+[connection signal="button_down" from="CanvasLayer/helpButton" to="CanvasLayer/helpMenu" method="_on_help_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/cheats" to="CanvasLayer/cheats/cheatMenu" method="_on_cheats_button_down"]
+[connection signal="button_down" from="CanvasLayer/cheats/cheatMenu/woodButton" to="CanvasLayer/cheats/cheatMenu" method="_on_wood_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/cheats/cheatMenu/foodButton" to="CanvasLayer/cheats/cheatMenu" method="_on_food_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/cheats/cheatMenu/volunteerButton" to="CanvasLayer/cheats/cheatMenu" method="_on_volunteer_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/cheats/cheatMenu/bossUnlock" to="CanvasLayer/cheats/cheatMenu" method="_on_boss_unlock_button_down"]
+[connection signal="button_down" from="CanvasLayer/earnReport/closeButton" to="CanvasLayer/earnReport" method="_on_close_button_button_down"]

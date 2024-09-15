@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://dxmpdnbf8ei8r"]
+[gd_scene load_steps=66 format=3 uid="uid://dxmpdnbf8ei8r"]
 
 [ext_resource type="Script" path="res://Scripts/boss_fight_manager.gd" id="1_ym6xm"]
 [ext_resource type="Script" path="res://Scripts/boss_projectile_spawn_manager.gd" id="2_vc5f8"]
@@ -476,6 +476,18 @@ tracks/18/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("CanvasLayer/winText:position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(24, 659)]
+}
 
 [sub_resource type="Animation" id="Animation_mkf7h"]
 resource_name = "affectedByWind"
@@ -772,6 +784,23 @@ tracks/0/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_q3trc"]
+resource_name = "playWin"
+length = 30.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/winText:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 30),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(24, 659), Vector2(24, -1113)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ay3vc"]
 _data = {
 "RESET": SubResource("Animation_uqyi0"),
@@ -779,7 +808,8 @@ _data = {
 "cameraRocking": SubResource("Animation_c5n40"),
 "emRaftAnim": SubResource("Animation_gxap6"),
 "inkDebuff": SubResource("Animation_f1gal"),
-"lightningStrikes": SubResource("Animation_w8jhr")
+"lightningStrikes": SubResource("Animation_w8jhr"),
+"playWin": SubResource("Animation_q3trc")
 }
 
 [sub_resource type="Animation" id="Animation_bboxe"]
@@ -876,7 +906,7 @@ position = Vector2(480, 156)
 position = Vector2(760, 156)
 
 [node name="tentacleSlamTimer" type="Timer" parent="projectileSpawnManager"]
-wait_time = 7.0
+wait_time = 10.0
 autostart = true
 
 [node name="Player" parent="." instance=ExtResource("3_re2vy")]
@@ -1041,6 +1071,33 @@ scale = Vector2(0.05, 1)
 sprite_frames = SubResource("SpriteFrames_b2i7t")
 flip_h = true
 
+[node name="winText" type="Label" parent="CanvasLayer"]
+z_index = 3
+offset_left = 24.0
+offset_top = 659.0
+offset_right = 1140.0
+offset_bottom = 1904.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "As “It” lets out a final, piercing screech, the hurricane's fierce grip begins to unravel, its winds diminishing like a fading nightmare. Survivors, buoyed by hope, drift toward the shore, their hearts racing with relief and gratitude.
+
+
+
+
+When you return to the outpost, the air is electric with cheers and applause. Faces light up with joy, eyes sparkling as they gather around you, eager to hear your tale. You stand tall, the weight of your journey resting on your shoulders, yet you feel lighter than air.
+
+
+
+
+You’ve done it again—proven yourself as the legendary sailor they always believed you to be. Their admiration washes over you like a warm tide, enveloping you in a sense of belonging and purpose. In this moment, you are not just a hero; you are a symbol of resilience, a beacon of hope in their darkest hours.
+
+
+
+
+Thank you for playing!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="background" type="AnimatedSprite2D" parent="."]
 z_index = -5
 texture_filter = 1
@@ -1117,7 +1174,6 @@ autoplay = "default"
 libraries = {
 "": SubResource("AnimationLibrary_ay3vc")
 }
-autoplay = "lightningStrikes"
 
 [node name="oceanMovement" type="AnimationPlayer" parent="."]
 libraries = {
