@@ -1,17 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://bicjcplm70tw8"]
+[gd_scene load_steps=8 format=3 uid="uid://bicjcplm70tw8"]
 
-[ext_resource type="Texture2D" uid="uid://li0hd23rigyc" path="res://assets/images/CowMob1.png" id="1_ibe1o"]
 [ext_resource type="Script" path="res://Scripts/emergency_raft.gd" id="1_y032i"]
-[ext_resource type="Texture2D" uid="uid://b7faeynrhwr0l" path="res://assets/images/CowMob2.png" id="2_i16vv"]
+[ext_resource type="Texture2D" uid="uid://cf44fb4g37i5n" path="res://assets/images/raft-Sheet.png" id="2_6nm0w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eputw"]
+atlas = ExtResource("2_6nm0w")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mb2j"]
+atlas = ExtResource("2_6nm0w")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmmc4"]
+atlas = ExtResource("2_6nm0w")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdc5j"]
+atlas = ExtResource("2_6nm0w")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wto3c"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_ibe1o")
+"texture": SubResource("AtlasTexture_eputw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_i16vv")
+"texture": SubResource("AtlasTexture_1mb2j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmmc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdc5j")
 }],
 "loop": true,
 "name": &"default",
@@ -23,6 +44,7 @@ texture_filter = 1
 script = ExtResource("1_y032i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.23855, 1.23855)
 sprite_frames = SubResource("SpriteFrames_wto3c")
 autoplay = "default"
 frame_progress = 0.572727

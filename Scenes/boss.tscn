@@ -1,7 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://8lmom2xb8ysm"]
+[gd_scene load_steps=8 format=3 uid="uid://8lmom2xb8ysm"]
 
 [ext_resource type="Script" path="res://Scripts/boss.gd" id="1_y8ccm"]
-[ext_resource type="Texture2D" uid="uid://li0hd23rigyc" path="res://assets/images/CowMob1.png" id="2_qca6b"]
+[ext_resource type="Texture2D" uid="uid://4fnihq2jtvvg" path="res://assets/images/boss/boss-Sheet.png" id="2_3ly1s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgc3v"]
+atlas = ExtResource("2_3ly1s")
+region = Rect2(0, 0, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ag0q7"]
+atlas = ExtResource("2_3ly1s")
+region = Rect2(384, 0, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abiu0"]
+atlas = ExtResource("2_3ly1s")
+region = Rect2(768, 0, 384, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4rosa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgc3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ag0q7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abiu0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mk2w8"]
 size = Vector2(434, 1189)
@@ -10,9 +39,11 @@ size = Vector2(434, 1189)
 texture_filter = 1
 script = ExtResource("1_y8ccm")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(14.3125, 12.5938)
-texture = ExtResource("2_qca6b")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-581, 0)
+scale = Vector2(4.61751, 4.61751)
+sprite_frames = SubResource("SpriteFrames_4rosa")
+autoplay = "default"
 
 [node name="hurtbox" type="Area2D" parent="."]
 

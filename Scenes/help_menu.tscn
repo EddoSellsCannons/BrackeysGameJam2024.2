@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://biy6bjtvu44kf"]
+[gd_scene load_steps=49 format=3 uid="uid://h152filg7s85"]
 
 [ext_resource type="Script" path="res://Scripts/help_menu.gd" id="1_wbh4s"]
 [ext_resource type="Texture2D" uid="uid://c8hvamduq5vnf" path="res://assets/images/TextBoxTexture.png" id="2_b1ry0"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dgody1wqwkoc6" path="res://assets/images/woodIcon.png" id="7_ck37u"]
 [ext_resource type="Texture2D" uid="uid://bovh5se2x4wem" path="res://assets/images/background/fishingDock.png" id="8_6vilu"]
 [ext_resource type="Texture2D" uid="uid://c4m8dywaj4cof" path="res://assets/images/Boat/repairmanAnim.png" id="9_skxke"]
+[ext_resource type="Texture2D" uid="uid://bk5c6pe35g6ec" path="res://assets/images/repairmanSprite.png" id="10_csjlr"]
 [ext_resource type="Texture2D" uid="uid://4srgh3gfrr0l" path="res://assets/images/shipyard.png" id="10_fhwai"]
 [ext_resource type="Texture2D" uid="uid://bt8ttxdkr066y" path="res://assets/images/volunteerIcon.png" id="11_7ll46"]
 [ext_resource type="Texture2D" uid="uid://civmp3wicacoo" path="res://assets/images/survivorTube.png" id="12_xtq4t"]
@@ -420,7 +421,7 @@ offset_left = 53.0
 offset_top = 164.0
 offset_right = 117.0
 offset_bottom = 228.0
-texture = ExtResource("7_ck37u")
+texture = ExtResource("10_csjlr")
 
 [node name="repairText" type="Label" parent="NinePatchRect/outpostPage1/repairman"]
 layout_mode = 0
