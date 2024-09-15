@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://h152filg7s85"]
+[gd_scene load_steps=52 format=3 uid="uid://h152filg7s85"]
 
 [ext_resource type="Script" path="res://Scripts/help_menu.gd" id="1_wbh4s"]
 [ext_resource type="Texture2D" uid="uid://c8hvamduq5vnf" path="res://assets/images/TextBoxTexture.png" id="2_b1ry0"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://8yp0mog88sjy" path="res://assets/images/background/forest.png" id="6_tg0c7"]
 [ext_resource type="Texture2D" uid="uid://dgody1wqwkoc6" path="res://assets/images/woodIcon.png" id="7_ck37u"]
 [ext_resource type="Texture2D" uid="uid://bovh5se2x4wem" path="res://assets/images/background/fishingDock.png" id="8_6vilu"]
+[ext_resource type="Texture2D" uid="uid://hu16ijbib6cv" path="res://assets/images/fish.png" id="9_0s3ol"]
 [ext_resource type="Texture2D" uid="uid://c4m8dywaj4cof" path="res://assets/images/Boat/repairmanAnim.png" id="9_skxke"]
 [ext_resource type="Texture2D" uid="uid://bk5c6pe35g6ec" path="res://assets/images/repairmanSprite.png" id="10_csjlr"]
 [ext_resource type="Texture2D" uid="uid://4srgh3gfrr0l" path="res://assets/images/shipyard.png" id="10_fhwai"]
@@ -24,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://b8cxws2qu6iql" path="res://assets/images/radialOver.png" id="21_7iwb2"]
 [ext_resource type="Texture2D" uid="uid://cxsl21stvd4de" path="res://assets/images/projectile/Plank.png" id="22_kppcs"]
 [ext_resource type="Texture2D" uid="uid://t4rexl11kho" path="res://assets/images/projectile/shark.png" id="23_hkf0c"]
+[ext_resource type="Texture2D" uid="uid://cf44fb4g37i5n" path="res://assets/images/raft-Sheet.png" id="26_n1b8i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e5fol"]
 atlas = ExtResource("3_m5egb")
@@ -176,6 +178,10 @@ region = Rect2(0, 0, 68.5791, 68)
 [sub_resource type="AtlasTexture" id="AtlasTexture_w1irh"]
 atlas = ExtResource("23_hkf0c")
 region = Rect2(0, 0, 70.1512, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63c8c"]
+atlas = ExtResource("26_n1b8i")
+region = Rect2(0, 0, 61, 64)
 
 [node name="helpMenu" type="Control" groups=["Persist"]]
 texture_filter = 1
@@ -370,7 +376,7 @@ offset_left = 54.0
 offset_top = 165.0
 offset_right = 119.0
 offset_bottom = 229.0
-texture = ExtResource("7_ck37u")
+texture = ExtResource("9_0s3ol")
 
 [node name="fishIcon2" type="TextureRect" parent="NinePatchRect/outpostPage1/fishing"]
 layout_mode = 0
@@ -378,7 +384,7 @@ offset_left = 123.0
 offset_top = 162.0
 offset_right = 188.0
 offset_bottom = 226.0
-texture = ExtResource("7_ck37u")
+texture = ExtResource("9_0s3ol")
 
 [node name="fishingText" type="Label" parent="NinePatchRect/outpostPage1/fishing"]
 layout_mode = 0
@@ -919,7 +925,7 @@ offset_top = 93.0
 offset_right = 346.0
 offset_bottom = 212.0
 scale = Vector2(0.671532, 1.88596)
-texture = SubResource("AtlasTexture_w1irh")
+texture = SubResource("AtlasTexture_63c8c")
 
 [node name="boosterText" type="Label" parent="NinePatchRect/oceanPage4/boat2"]
 layout_mode = 0
