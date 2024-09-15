@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var curPlayerStats = preload("res://Scenes/playerStats.tres")
+@onready var playerStats = preload("res://Scenes/playerStats.tres")
 
 var numWood:int = 0
 var woodEarningRate = 0
@@ -48,7 +48,7 @@ func _process(delta: float) -> void:
 	
 	lumberjack_count.text = "Lumberjacks: " + str(numLumberjack)
 	fisherman_count.text = "Fisherman: " + str(numFisherman)
-	repairman_count.text = "Repairman: " + str(curPlayerStats.numRepairman)
+	repairman_count.text = "Repairman: " + str(playerStats.numRepairman)
 	
 	$forest/addLumberjack.text = "Assign Lumberjack:\n" + str(costLumberjack) + " food"
 	$fisherman/addFisherman.text = "Assign Fisherman:\n" + str(costFisherman) + " food"
@@ -73,7 +73,7 @@ func addFisherman():
 func addRepairman():
 	if numFood >= costRepairman and numPopulation >= 1:
 		numFood -= costRepairman
-		curPlayerStats.numRepairman += 1
+		playerStats.numRepairman += 1
 		numPopulation -= 1
 		costRepairman *= costIncreaseMultiplier
 
@@ -140,3 +140,6 @@ func save():
 		"costRepairman": costRepairman
 	}
 	return save_dict
+
+func reload_page():
+	playerStats = transition_manager.playerStats

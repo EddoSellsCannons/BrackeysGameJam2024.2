@@ -3,7 +3,7 @@ extends Control
 var pageArray: Array
 var pageIndex = 0
 
-var hasOpened: bool = false
+var hasOpened: bool
 
 @onready var animation_player: AnimationPlayer = $"../helpButton/AnimationPlayer"
 
@@ -21,6 +21,7 @@ func _ready() -> void:
 		animation_player.play("glow")
 	else:
 		animation_player.play("RESET")
+	reload_page()
 	
 func _on_close_help_menu_button_down() -> void:
 	visible = false
@@ -62,3 +63,9 @@ func save():
 		"hasOpened": hasOpened 
 	}
 	return save_dict
+
+func reload_page():
+	if !hasOpened:
+		animation_player.play("glow")
+	else:
+		animation_player.play("RESET")

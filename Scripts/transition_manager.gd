@@ -16,6 +16,7 @@ var oldRescuedCount: int = 0
 
 func _ready() -> void:
 	load_game()
+	village_manager.showVillage()
 
 func gameStart():
 	var g = game_manager.instantiate()
@@ -116,9 +117,10 @@ func load_game():
 		for i in node_data.keys():
 			if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
 				continue
+			print(i)
+			print(node_data[i])
 			new_object.set(i, node_data[i])
 		for j in node_data.keys():
-			print(new_object)
 			if new_object.has_method("reload_page"):
 				new_object.reload_page() 
 

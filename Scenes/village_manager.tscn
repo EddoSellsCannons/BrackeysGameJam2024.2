@@ -316,7 +316,6 @@ theme_override_font_sizes/font_size = 32
 text = "
 Shipyard
 "
-flat = true
 
 [node name="repairman" type="Control" parent="."]
 layout_mode = 3
@@ -524,6 +523,7 @@ libraries = {
 }
 
 [node name="helpMenu" parent="CanvasLayer" instance=ExtResource("13_12tmy")]
+visible = false
 
 [node name="shipyardMenu" parent="CanvasLayer" instance=ExtResource("14_q8gvt")]
 

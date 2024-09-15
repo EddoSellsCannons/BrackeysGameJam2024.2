@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bgjsod815nka7"]
+[gd_scene load_steps=52 format=3 uid="uid://bgjsod815nka7"]
 
 [ext_resource type="Script" path="res://Scripts/title_screen.gd" id="1_1jp6c"]
 [ext_resource type="Texture2D" uid="uid://ccl3qn5mcemir" path="res://assets/images/background/hurricane.png" id="1_8b58o"]
@@ -8,6 +8,47 @@
 [ext_resource type="Texture2D" uid="uid://p5nni4wrexyk" path="res://assets/images/Boat/damaged/boatDamaged.png" id="4_15trg"]
 [ext_resource type="Texture2D" uid="uid://bqqv1vorjofw4" path="res://assets/images/Boat/new/boatNew.png" id="5_haqq5"]
 [ext_resource type="Texture2D" uid="uid://8pkwqewfttbj" path="res://assets/images/Boat/worn/boatWorn.png" id="6_e8fr0"]
+[ext_resource type="Texture2D" uid="uid://cxsl21stvd4de" path="res://assets/images/projectile/Plank.png" id="6_it8mf"]
+[ext_resource type="Texture2D" uid="uid://c8hvamduq5vnf" path="res://assets/images/TextBoxTexture.png" id="6_koafo"]
+
+[sub_resource type="Animation" id="Animation_rfam5"]
+resource_name = "titleEffect"
+length = 3.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("title:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 0.972549, 1), Color(0.356863, 0.807843, 0.980392, 1), Color(0.976471, 0.662745, 0.721569, 1), Color(1, 1, 0.972549, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_el1m4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("title:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 0.972549, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jv0tv"]
+_data = {
+"RESET": SubResource("Animation_el1m4"),
+"titleEffect": SubResource("Animation_rfam5")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e5fol"]
 atlas = ExtResource("1_8b58o")
@@ -166,6 +207,68 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Animation" id="Animation_r3moa"]
+resource_name = "buttonSpin"
+length = 5.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(457, -288), Vector2(404, 403)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-6.28319, 0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_xnjbc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(457, -288)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n3sdv"]
+_data = {
+"RESET": SubResource("Animation_xnjbc"),
+"buttonSpin": SubResource("Animation_r3moa")
+}
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_7bsq0"]
 atlas = ExtResource("4_15trg")
 region = Rect2(0, 0, 64, 64)
@@ -272,6 +375,25 @@ animations = [{
 texture_filter = 1
 script = ExtResource("1_1jp6c")
 
+[node name="title" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 0.972549, 1)
+z_index = 1
+offset_left = 287.0
+offset_top = 246.0
+offset_right = 922.0
+offset_bottom = 341.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/normal_font_size = 64
+text = "The Hurricane Hero"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jv0tv")
+}
+autoplay = "titleEffect"
+
 [node name="projSpawner" type="Node2D" parent="."]
 script = ExtResource("2_6q0j1")
 
@@ -322,19 +444,87 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="start" type="Button" parent="Control"]
+[node name="start2" type="Control" parent="Control"]
+anchors_preset = 0
+offset_left = 457.0
+offset_top = -288.0
+offset_right = 497.0
+offset_bottom = -248.0
+rotation = -6.28319
+
+[node name="TextureRect" type="TextureRect" parent="Control/start2"]
+layout_mode = 0
+offset_top = -29.0
+offset_right = 451.0
+offset_bottom = 258.0
+rotation = -6.28319
+texture = ExtResource("6_it8mf")
+
+[node name="start" type="Button" parent="Control/start2"]
+z_index = 3
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.725
-anchor_top = 9.3
-anchor_right = 16.2
-anchor_bottom = 14.7
-offset_left = 215.0
-offset_top = 16.0
-offset_right = 262.0
-offset_bottom = 47.0
-text = "PLAY"
+anchor_left = 4.175
+anchor_top = 9.9
+anchor_right = 13.425
+anchor_bottom = 13.65
+offset_left = -167.0
+offset_top = -396.0
+offset_right = -120.0
+offset_bottom = -365.0
+rotation = -6.28319
+theme_override_colors/font_hover_color = Color(0.355314, 0.355314, 0.355314, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Enter the Storm"
+flat = true
 metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/start2"]
+root_node = NodePath("../start")
+libraries = {
+"": SubResource("AnimationLibrary_n3sdv")
+}
+autoplay = "buttonSpin"
+
+[node name="deleteSave" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 950.0
+offset_top = 542.0
+offset_right = 1136.0
+offset_bottom = 634.0
+text = "Delete Save file"
+
+[node name="notice" type="NinePatchRect" parent="Control/deleteSave"]
+visible = false
+layout_mode = 0
+offset_left = -761.0
+offset_top = -453.0
+offset_right = -4.0
+offset_bottom = -17.0
+texture = ExtResource("6_koafo")
+patch_margin_left = 34
+patch_margin_top = 34
+patch_margin_right = 34
+patch_margin_bottom = 34
+
+[node name="Label" type="Label" parent="Control/deleteSave/notice"]
+layout_mode = 0
+offset_left = 242.0
+offset_top = 185.0
+offset_right = 495.0
+offset_bottom = 230.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Save file deleted"
+
+[node name="closeNotice" type="Button" parent="Control/deleteSave/notice"]
+layout_mode = 0
+offset_left = 679.0
+offset_top = 34.0
+offset_right = 724.0
+offset_bottom = 85.0
+text = "X"
 
 [node name="mainSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(135, 595)
@@ -343,4 +533,6 @@ sprite_frames = SubResource("SpriteFrames_ebdnn")
 autoplay = "default"
 
 [connection signal="timeout" from="projSpawner/Timer" to="projSpawner" method="_on_timer_timeout"]
-[connection signal="button_down" from="Control/start" to="." method="_on_start_button_down"]
+[connection signal="button_down" from="Control/start2/start" to="." method="_on_start_button_down"]
+[connection signal="button_down" from="Control/deleteSave" to="." method="_on_delete_save_button_down"]
+[connection signal="button_down" from="Control/deleteSave/notice/closeNotice" to="." method="_on_close_notice_button_down"]

@@ -274,17 +274,20 @@ texture = SubResource("AtlasTexture_ly037")
 
 [node name="controls" type="Label" parent="NinePatchRect/Controls/repairman"]
 layout_mode = 0
-offset_left = 52.0
-offset_top = -37.0
-offset_right = 1112.0
-offset_bottom = 237.0
+offset_left = 47.0
+offset_top = -51.0
+offset_right = 1107.0
+offset_bottom = 282.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "Move your ship around the ocean with [WASD] or the arrow keys.
 
 Use [SHIFT] to activate your boosters.
 
-Use [SPACE] to deploy your \"Safety Net\""
+Use [SPACE] to deploy your \"Safety Net\"
+
+Use [ESC] to end the game and return to the outpost"
+horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="outpostPage1" type="Control" parent="NinePatchRect"]

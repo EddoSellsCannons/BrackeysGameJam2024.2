@@ -90,6 +90,8 @@ func _physics_process(delta: float) -> void:
 	if playerCurHealth <= 0:
 		gameOver()
 	updatePlayerSprite()
+	if Input.is_action_pressed("ui_cancel"):
+		gameOver()
 
 func takeDamage(damageTaken):
 	if playerCurShield >= 0:
